@@ -2,20 +2,13 @@
 #
 # Copyright (C) 2012-2024 Rafael Corchuelo.
 #
-# In keeping with the traditional purpose of furthering education and research, it is
-# the policy of the copyright owner to permit non-commercial use and redistribution of
-# this software. It has been tested carefully, but it is not guaranteed for any particular
-# purposes.  The copyright owner does not offer any warranties or representations, nor do
-# they accept any liabilities with respect to them.
+#Este proyecto se encuentra bajo la Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 
+#Internacional (CC BY-NC-SA 4.0), permitiendo su uso, adaptación y distribución con fines académicos. 
+#Sin embargo, es importante destacar que este repositorio no está destinado para uso personal y es exclusivamente 
+#académico. Además, queda estrictamente prohibido que compañeros de la universidad utilicen este proyecto para
+#copiar o plagiar.
 
-This is a starter project.  It is intended to be a core learning asset for the students
-who have enrolled the Design and Testing subject of the Software Engineering curriculum of the 
-University of Seville.  This project helps them start working on their new information system 
-projects.
-
-To get this project up and running, please follow the guideline in the theory/lab materials,
-taking into account that you must link the appropriate version of the Acme-Framework excluding 
-the following resources:
-
-- **/fragments/**
+Este se trata de un proyecto puramente académico, únicamente pensado para el uso de los alumnos del grupo
+de laboratorio C1.012, cuya guía de instalación viene dada por las diapositivas de las asignaturas, unicamente
+cambiando los datos usados en esta por la de nuestro proyecto.
  
