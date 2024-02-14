@@ -1,0 +1,16 @@
+tipo: asunto
+
+cuerpo
+
+### tipo
+# feat (nueva funcionalidad)
+# fix (corrección de bugs)
+# refactor (refactorización de código)
+# test (incorporación o modificación de tests)
+
+### asunto
+# Consiste en una breve descripción del problema que se ha tratado y que debe de comenzar con un verbo en participio. 
+# Se referenciará la issue correspondiente (en caso de existir) tal que: `#<ID_issue>`
+
+### cuerpo (opcional)
+# Se utilizará en caso de que el asunto no sea suficientemente descriptivo.
