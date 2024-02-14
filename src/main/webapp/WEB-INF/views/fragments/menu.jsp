@@ -21,8 +21,10 @@
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.nicolas-link" action="https://www.leagueoflegends.com/es-es/"/>
 			<acme:menu-suboption code="master.menu.anonymous.alvaro-link" action="https://www.us.es/estudiar/que-estudiar/oferta-de-grados/grado-en-ingenieria-informatica-ingenieria-del-software/2050049"/>
+			<acme:menu-suboption code="master.menu.anonymous.ronald-link" action="https://www.m4sevilla.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.jaime-link" action="https://ev.us.es/"/>
 			<acme:menu-suboption code="master.menu.anonymous.juanjo-link" action="https://yourmom.zip"/>
+
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
