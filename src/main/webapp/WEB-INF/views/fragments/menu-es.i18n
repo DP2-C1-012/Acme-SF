@@ -18,7 +18,7 @@ master.menu.sign-out = Salir
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anónimo
-master.menu.anonymous.nicolas-link = 24523481: Herrera Lobo, Nicolás
+master.menu.anonymous.favourite-link = Link favorito
 
 # master.menu.administrator ###################################################
 
