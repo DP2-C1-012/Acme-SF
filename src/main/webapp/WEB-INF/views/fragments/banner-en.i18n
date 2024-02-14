@@ -8,5 +8,5 @@
 # academic. In addition, it is strictly forbidden for university colleagues to use this project to
 # copy or plagiarize.
 
-master.banner.background = #DFFFA5
+master.banner.background = linear-gradient(#d6c8c8, #e7e2df 30%);
 master.banner.alt = Acme SF, Inc.
