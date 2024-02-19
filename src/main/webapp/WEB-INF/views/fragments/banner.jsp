@@ -1,7 +1,7 @@
 <%--
 - banner.jsp
 -
-- Copyright (C) 2012-2024 Rafael Corchuelo.
+-
 -
 - In keeping with the traditional purpose of furthering education and research, it is
 - the policy of the copyright owner to permit non-commercial use and redistribution of
