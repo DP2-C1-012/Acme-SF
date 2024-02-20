@@ -1,26 +1,30 @@
 
-package acme.entities.UserStory;
+package acme.entities.projects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.projects.Project;
-import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-public class UserStory extends AbstractEntity {
+public class Project extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
+
+	@Pattern(regexp = "[A-Z]{3}-[0-9]{4}")
+	@NotBlank
+	@Column(unique = true)
+	private String				code;
 
 	@NotBlank
 	@Length(max = 76)
@@ -28,24 +32,20 @@ public class UserStory extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 101)
-	private String				description;
+	private String				abstrac;
 
 	@Range(min = 1)
-	private Integer				estimated_cost;
+	private Integer				cost;
 
-	@NotBlank
-	@Length(max = 101)
-	private String				acceptance_criteria;
+	private boolean				indication;
 
-	private Priority			priority;
+
+	public boolean isRejected() {
+		return this.indication;
+	}
+
 
 	@URL
-	private String				link;
-
-	@ManyToOne(optional = false)
-	private Manager				manager;
-
-	@ManyToOne
-	private Project				project;
+	private String link;
 
 }
