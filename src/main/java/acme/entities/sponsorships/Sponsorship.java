@@ -1,54 +1,57 @@
 
-package acme.entities.claim;
+package acme.entities.sponsorships;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.projects.Project;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-public class Claim extends AbstractEntity {
+public class Sponsorship extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Pattern(regexp = "C-[0-9]{4}")
+	@ManyToOne
+	private Project				project;
+
+	@Pattern(regexp = "[A-Z]{1,3}-[0,9]{3}")
 	@NotBlank
 	@Column(unique = true)
 	private String				code;
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				instatiationMoment;
+	private Date				moment;
 
-	@NotBlank
-	@Length(max = 76)
-	private String				heading;
+	@FutureOrPresent
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date					duration;
 
-	@NotBlank
-	@Length(max = 101)
-	private String				description;
+	@Range(min = 1)
+	private Integer				amount;
 
-	@NotBlank
-	@Length(max = 101)
-	private String				department;
+	private Type				type;
 
 	@Email
-	private String				email;
+	private String				contact;
 
 	@URL
 	private String				link;
