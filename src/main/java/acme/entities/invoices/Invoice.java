@@ -1,5 +1,5 @@
 
-package acme.entities.sponsorships;
+package acme.entities.invoices;
 
 import java.util.Date;
 
@@ -8,8 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.FutureOrPresent;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
@@ -18,46 +17,50 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.projects.Project;
+import acme.entities.sponsorships.Sponsorship;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-public class Sponsorship extends AbstractEntity {
+public class Invoice extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Pattern(regexp = "[A-Z]{1,3}-[0,9]{3}")
+	@Pattern(regexp = "IN-[0,9]{4}-[0,9]{4}")
 	@NotBlank
 	@Column(unique = true)
 	private String				code;
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				moment;
+	private Date				registrationTime;
 
-	@FutureOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
-	public Date					duration;
+	private Date				dueDate;
 
 	@Min(1)
-	private Integer				amount;
+	private Integer				quantity;
 
-	private Type				type;
-
-	@Email
-	private String				contact;
+	@Min(0)
+	private Integer				tax;
 
 	@URL
 	private String				link;
 
 	// Derived attributes -----------------------------------------------------
 
+
+	@Transient
+	public Integer totalAmount() {
+		return this.quantity + this.tax;
+	}
+
 	// Relationships ----------------------------------------------------------
 
+
 	@ManyToOne
-	private Project				project;
+	private Sponsorship sponsorship;
 
 }
