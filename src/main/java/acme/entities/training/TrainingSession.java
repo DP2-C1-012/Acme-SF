@@ -4,6 +4,7 @@ package acme.entities.training;
 import java.sql.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,7 +15,12 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import lombok.Getter;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
 public class TrainingSession extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -37,8 +43,6 @@ public class TrainingSession extends AbstractEntity {
 	@Length(max = 75)
 	private String				instructor;
 
-	@NotBlank
-	@NotNull
 	@Email
 	private String				email;
 
