@@ -1,5 +1,5 @@
 
-package acme.entities.codeAudit;
+package acme.entities.auditRecord;
 
 public enum Mark {
 

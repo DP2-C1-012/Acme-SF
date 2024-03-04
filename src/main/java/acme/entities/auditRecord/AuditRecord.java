@@ -1,5 +1,5 @@
 
-package acme.entities.codeAudit;
+package acme.entities.auditRecord;
 
 import java.util.Date;
 
@@ -9,40 +9,32 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.auditRecord.Mark;
-import acme.roles.Auditor;
+import acme.entities.codeAudit.CodeAudit;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-public class CodeAudit extends AbstractEntity {
+public class AuditRecord extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 	@NotBlank
 	@NotNull
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
+	@Pattern(regexp = "AU-[0-9]{4}-[0-9]{3}")
 	private String				code;
-	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				executionDate;
-	private Type				type;
-	@Length(max = 100)
-	@NotBlank
-	@NotNull
-	private String				correctiveActions;
+	private Date				periodStart;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				periodEnd;
 	private Mark				mark;
 	@URL
 	private String				optionalLink;
-	private boolean				published;
 	@ManyToOne(optional = false)
-	private Auditor				auditor;
+	private CodeAudit			codeAudit;
 }
