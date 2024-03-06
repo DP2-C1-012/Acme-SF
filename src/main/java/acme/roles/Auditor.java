@@ -1,6 +1,7 @@
 
 package acme.roles;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -26,6 +27,7 @@ public class Auditor extends AbstractRole {
 	@NotBlank
 	@NotNull
 	@Length(max = 25)
+	@Column(unique = true)
 	private String				professionalID;
 	@NotBlank
 	@NotNull
