@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -33,16 +34,20 @@ public class CodeAudit extends AbstractEntity {
 	private String				code;
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	private Date				executionDate;
 	private Type				type;
 	@Length(max = 100)
 	@NotBlank
 	@NotNull
 	private String				correctiveActions;
+	@NotNull
 	private Mark				mark;
 	@URL
 	private String				optionalLink;
 	private boolean				published;
 	@ManyToOne(optional = false)
+	@NotNull
+	@Valid
 	private Auditor				auditor;
 }
