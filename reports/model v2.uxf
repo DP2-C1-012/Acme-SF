@@ -658,18 +658,18 @@ m2=0..n</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>640</x>
+      <x>616</x>
       <y>1240</y>
-      <w>304</w>
+      <w>328</w>
       <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Role&gt;&gt;
 Auditor
 bg=#dea1fb
 --
--firm:string{not blank, Length(max=75)}
--profesionalID: string{not blank, Length(max=25)}
--certifications: string{not blank, Length(max=100)}
+-firm:string{not null,not blank, Length(max=75)}
+-profesionalID: string{not null,not blank, Length(max=25), unique}
+-certifications: string{not null,not blank, Length(max=100)}
 -moreInfo:string{URL}
 </panel_attributes>
     <additional_attributes/>
@@ -679,19 +679,19 @@ bg=#dea1fb
     <coordinates>
       <x>1136</x>
       <y>1240</y>
-      <w>304</w>
+      <w>336</w>
       <h>128</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 CodeAudit
 bg=green
 --
--code:string{pattern“[A-Z]{1,3}-[0-9]{3}”, not blank, unique}
--executionDate: Date{past}
+-code:string{pattern“[A-Z]{1,3}-[0-9]{3}”, not blank, unique, not null}
+-executionDate: Date{past, not null}
 -type: Type {not null}
--correctiveActions: String{not blank, Legnth(max=100)}
--mark: Mark
--published:Bool
+-correctiveActions: String{not null,not blank, Legnth(max=100)}
+-mark: Mark {not null}
+-published:Boolean
 -moreInfo:String{URL}
 </panel_attributes>
     <additional_attributes/>
@@ -699,7 +699,7 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1440</x>
+      <x>1504</x>
       <y>1240</y>
       <w>112</w>
       <h>72</h>
@@ -717,7 +717,7 @@ bg=gray
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1440</x>
+      <x>1504</x>
       <y>1344</y>
       <w>112</w>
       <h>112</h>
@@ -741,17 +741,17 @@ bg=gray
     <coordinates>
       <x>1136</x>
       <y>1440</y>
-      <w>304</w>
+      <w>336</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 AuditRecord
 bg=green
 --
--code:string{pattern “[A-Z]{1,3}-[0-9]{3}”, not blank, unique}
--periodStart: Date{past}
--periodEnd: Date{Past}
--mark:Mark
+-code:string{not null,pattern “[A-Z]{1,3}-[0-9]{3}”, not blank, unique}
+-periodStart: Date{not null,past}
+-periodEnd: Date{not null,Past}
+-mark:Mark {not null,}
 -moreInfo:string{URL}
 </panel_attributes>
     <additional_attributes/>
@@ -759,7 +759,7 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>320</x>
+      <x>248</x>
       <y>1240</y>
       <w>304</w>
       <h>168</h>
@@ -798,22 +798,22 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1280</x>
+      <x>1296</x>
       <y>1360</y>
       <w>88</w>
       <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m2=1
-m1=1..n
+m2=1..n
+m1=1
 &lt; belongs to</panel_attributes>
-    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1280</x>
-      <y>1360</y>
+      <x>1296</x>
+      <y>1424</y>
       <w>16</w>
       <h>16</h>
     </coordinates>
@@ -841,5 +841,19 @@ bg=green
 
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1304</x>
+      <y>1184</y>
+      <w>144</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=0..n
+m2=1
+&lt; Audited by</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;30.0;150.0;30.0;150.0;10.0</additional_attributes>
   </element>
 </diagram>
