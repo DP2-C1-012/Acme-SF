@@ -9,6 +9,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
@@ -32,12 +33,15 @@ public class Risk extends AbstractEntity {
 	private String				reference;
 
 	@Past
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				identificationDate;
 
 	@Min(0)
+	@NotNull
 	private Integer				impact;
 
+	@NotNull
 	private Integer				probability;
 
 
@@ -46,8 +50,9 @@ public class Risk extends AbstractEntity {
 	}
 
 
+	@NotNull
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	private String	description;
 
 	@URL
