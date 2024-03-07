@@ -4,13 +4,14 @@ package acme.entities.userstory;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,12 +31,13 @@ public class UserStory extends AbstractEntity {
 	@Length(max = 101)
 	private String				description;
 
-	@Min(0)
-	private Integer				estimated_cost;
+	@Valid
+	@NotNull
+	private Money				estimatedCost;
 
 	@NotBlank
 	@Length(max = 101)
-	private String				acceptance_criteria;
+	private String				acceptanceCriteria;
 
 	private Priority			priority;
 
