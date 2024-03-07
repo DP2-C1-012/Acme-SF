@@ -9,6 +9,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
@@ -29,22 +30,27 @@ public class Claim extends AbstractEntity {
 	@Pattern(regexp = "C-[0-9]{4}")
 	@NotBlank
 	@Column(unique = true)
+	@NotNull
 	private String				code;
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	private Date				instatiationMoment;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
+	@NotNull
 	private String				heading;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
+	@NotNull
 	private String				description;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
+	@NotNull
 	private String				department;
 
 	@Email
