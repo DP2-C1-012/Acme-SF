@@ -3,11 +3,12 @@ package acme.entities.projects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -34,18 +35,13 @@ public class Project extends AbstractEntity {
 	@Length(max = 101)
 	private String				abstrac;
 
-	@Range(min = 1)
+	@Min(0)
 	private Integer				cost;
 
+	@Transient
 	private boolean				indication;
 
-
-	public boolean isRejected() {
-		return this.indication;
-	}
-
-
 	@URL
-	private String link;
+	private String				link;
 
 }

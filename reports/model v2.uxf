@@ -275,7 +275,7 @@ bg=green</panel_attributes>
       <w>104</w>
       <h>184</h>
     </coordinates>
-    <panel_attributes>lt=-&gt;
+    <panel_attributes>lt=x-&gt;
 m1=0..n
 m2=1
 Used by ^</panel_attributes>
@@ -305,6 +305,7 @@ bg=gray
     <coordinates>
       <x>1488</x>
       <y>792</y>
+
       <w>288</w>
       <h>120</h>
     </coordinates>
@@ -334,6 +335,7 @@ m2=0..n</panel_attributes>
     <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
+
     <id>UMLClass</id>
     <coordinates>
       <x>848</x>
@@ -532,7 +534,50 @@ bg=green
 m1=0..n
 m2=1
 &lt; Audited by</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;30.0;150.0;30.0;150.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;20.0;150.0;20.0;370.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1248</x>
+      <y>1104</y>
+      <w>96</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+ProjectUs
+
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1160</x>
+      <y>1112</y>
+      <w>112</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=1..n
+m2=1
+</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1336</x>
+      <y>1112</y>
+      <w>112</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=1..n
+m2=1
+</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
