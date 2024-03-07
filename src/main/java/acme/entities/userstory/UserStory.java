@@ -3,14 +3,14 @@ package acme.entities.userstory;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.projects.Project;
 import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,7 +30,7 @@ public class UserStory extends AbstractEntity {
 	@Length(max = 101)
 	private String				description;
 
-	@Range(min = 1)
+	@Min(0)
 	private Integer				estimated_cost;
 
 	@NotBlank
@@ -43,9 +43,7 @@ public class UserStory extends AbstractEntity {
 	private String				link;
 
 	@ManyToOne(optional = false)
+	@Valid
 	private Manager				manager;
-
-	@ManyToOne
-	private Project				project;
 
 }
