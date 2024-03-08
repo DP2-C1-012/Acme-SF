@@ -1,5 +1,5 @@
 
-package acme.entities.training;
+package acme.entities.trainingModule;
 
 public enum DifficultyLevel {
 	BASIC, INTERMEDIATE, ADVANCED
