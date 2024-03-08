@@ -33,6 +33,8 @@ public class Banner extends AbstractEntity {
 	private Date				displayPeriodStart;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				displayPeriodEnd;
+	@NotBlank
+	@NotNull
 	@Length(max = 75)
 	private String				slogan;
 	@URL
