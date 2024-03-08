@@ -1,5 +1,5 @@
 
-package acme.entities.claim;
+package acme.entities.risk;
 
 import java.util.Date;
 
@@ -7,7 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -23,40 +23,39 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Claim extends AbstractEntity {
+public class Risk extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Pattern(regexp = "C-[0-9]{4}")
+	@Pattern(regexp = "R-[0-9]{3}")
 	@NotBlank
 	@Column(unique = true)
-	@NotNull
-	private String				code;
+	private String				reference;
 
 	@Past
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	@NotNull
-	private Date				instatiationMoment;
+	private Date				identificationDate;
 
-	@NotBlank
-	@Length(max = 75)
+	@Min(0)
 	@NotNull
-	private String				heading;
+	private Integer				impact;
 
+	@NotNull
+	private Integer				probability;
+
+
+	public double value() {
+		return this.impact * this.probability;
+	}
+
+
+	@NotNull
 	@NotBlank
 	@Length(max = 100)
-	@NotNull
-	private String				description;
-
-	@NotBlank
-	@Length(max = 100)
-	@NotNull
-	private String				department;
-
-	@Email
-	private String				email;
+	private String	description;
 
 	@URL
-	private String				link;
+	private String	link;
 
 }

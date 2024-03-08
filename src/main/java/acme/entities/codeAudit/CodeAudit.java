@@ -1,5 +1,5 @@
 
-package acme.entities.sponsorships;
+package acme.entities.codeAudit;
 
 import java.util.Date;
 
@@ -9,73 +9,54 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.client.data.datatypes.Money;
+import acme.entities.auditRecord.Mark;
 import acme.entities.projects.Project;
-import acme.roles.Sponsor;
+import acme.roles.Auditor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-public class Sponsorship extends AbstractEntity {
+public class CodeAudit extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
-
-	@Pattern(regexp = "[A-Z]{1,3}-[0,9]{3}")
 	@NotBlank
 	@NotNull
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	@Column(unique = true)
 	private String				code;
-
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				moment;
-
-	@Temporal(TemporalType.TIMESTAMP)
+	private Date				executionDate;
 	@NotNull
-	public Date					startDate;
-
-	@Temporal(TemporalType.TIMESTAMP)
+	private Type				type;
+	@Length(max = 100)
+	@NotBlank
 	@NotNull
-	public Date					endtDate;
-
+	private String				correctiveActions;
 	@NotNull
-	private Money				amount;
-
-	@NotNull
-	private SponsorshipType		type;
-
-	@Email
-	private String				contact;
-
+	private Mark				mark				= Mark.F_MINUS;
 	@URL
-	private String				link;
-
-	private Boolean				draftMode;
-
-	// Derived attributes -----------------------------------------------------
-
-	// Relationships ----------------------------------------------------------
-
+	private String				optionalLink;
+	private boolean				published;
+	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
-	@ManyToOne
-	private Sponsor				sponsor;
-
+	private Auditor				auditor;
+	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
-	@ManyToOne
 	private Project				project;
 
 }

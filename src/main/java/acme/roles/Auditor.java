@@ -1,8 +1,8 @@
 
 package acme.roles;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -16,24 +16,23 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Sponsor extends AbstractRole {
+public class Auditor extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
+	@NotNull
 	@Length(max = 75)
-	@NotNull
-	private String				name;
-
+	private String				firm;
 	@NotBlank
-	@Length(max = 100)
 	@NotNull
-	private String				benefits;
-
+	@Length(max = 25)
+	@Column(unique = true)
+	private String				professionalID;
+	@NotBlank
+	@NotNull
+	@Length(max = 100)
+	private String				certifications;
 	@URL
-	private String				webPage;
-
-	@Email
-	private String				email;
-
+	private String				moreInfo;
 }

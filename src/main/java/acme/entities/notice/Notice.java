@@ -1,9 +1,8 @@
 
-package acme.entities.claim;
+package acme.entities.notice;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,40 +22,31 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Claim extends AbstractEntity {
+public class Notice extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
-
-	@Pattern(regexp = "C-[0-9]{4}")
-	@NotBlank
-	@Column(unique = true)
-	@NotNull
-	private String				code;
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				instatiationMoment;
+	private Date				moment;
 
 	@NotBlank
 	@Length(max = 75)
-	@NotNull
-	private String				heading;
+	private String				title;
+
+	@NotBlank
+	@Length(max = 75)
+	@Pattern(regexp = "^\\w+ - \\w+, \\w+$")
+	private String				author;
 
 	@NotBlank
 	@Length(max = 100)
-	@NotNull
-	private String				description;
-
-	@NotBlank
-	@Length(max = 100)
-	@NotNull
-	private String				department;
+	private String				message;
 
 	@Email
 	private String				email;
 
 	@URL
 	private String				link;
-
 }
