@@ -4,8 +4,10 @@ package acme.entities.objective;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.FutureOrPresent;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.Length;
@@ -23,22 +25,33 @@ public class Objective extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Past
-	private Date				instantiation_moment;
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				instantiationMoment;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
+	@NotNull
 	private String				title;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
+	@NotNull
 	private String				description;
 
+	@NotNull
 	private Priority			priority;
 
+	@NotNull
 	private boolean				status;
 
-	@FutureOrPresent
-	private Date				duration;
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	public Date					startDate;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	public Date					endDate;
 
 	@URL
 	private String				link;
