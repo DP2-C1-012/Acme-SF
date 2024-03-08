@@ -61,6 +61,3 @@ user-account-developer-07,true,"UserIdentity{name: 'Grace', surname: 'Taylor', e
 user-account-developer-08,true,"UserIdentity{name: 'Henry', surname: 'White', email: 'developer8@acme.es'}",developer8,developer8
 user-account-developer-09,true,"UserIdentity{name: 'Nombre9', surname: 'Apellido9', email: 'developer9@acme.es'}",developer9,developer9
 user-account-developer-10,true,"UserIdentity{name: 'Nombre10', surname: 'Apellido10', email: 'developer10@acme.es'}",developer10,developer10
-user-account-developer-11,true,"UserIdentity{name: 'Nombre11', surname: 'Apellido11', email: 'developer11@acme.es'}",developer11,developer11
-user-account-developer-12,true,"UserIdentity{name: 'Nombre12', surname: 'Apellido12', email: 'developer12@acme.es'}",developer12,developer12
-user-account-developer-13,true,"UserIdentity{name: 'Nombre13', surname: 'Apellido13', email: 'developer13@acme.es'}",developer13,developer13
