@@ -17,3 +17,16 @@ user-account-adminitrator-12,true,"UserIdentity{name: 'Ä????????ã?ô?', surnam
 user-account-adminitrator-13,true,"UserIdentity{name: 'Â????????å???', surname: '?ø????ä', email: 'administrator@acme.com'}",administrator12,administrator12
 user-account-adminitrator-14,true,"UserIdentity{name: '???ï??å?ø?', surname: '??????', email: 'administrator@acme.com'}",administrator13,administrator13
 user-account-adminitrator-15,true,"UserIdentity{name: 'Â????????å?ö?', surname: '??????', email: 'administrator@acme.com'}",administrator14,administrator14
+user-account-adminitrator-03,true,"UserIdentity{name: 'Administrator', surname: '罗德里格斯', email: 'administrator@acme.com'}",administrator2,administrator2
+user-account-auditor-01,true,"UserIdentity{name: 'auditor1', surname: 'auditor1', email: 'auditor1@acme.com'}",auditor1,auditor1
+user-account-auditor-02,true,"UserIdentity{name: '秋風の さざめくやまねの しずくかな', surname: 'El viento de otoño, susurra en las montañas, gotas de rocío.', email: 'auditor2@acme.com'}",auditor2,auditor2
+user-account-auditor-03,false,"UserIdentity{name: 'auditor3', surname: 'auditor3', email: 'auditor3@acme.com'}",auditor3,auditor3
+user-account-manager-01,true,"UserIdentity{name: 'Nicolas', surname: 'Herrera', email: 'manager1@acme.com'}",manager1,manager1
+user-account-manager-02,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager2,manager2
+user-account-manager-03,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager3,manager3
+user-account-manager-04,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager4,manager4
+user-account-manager-05,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager5,manager5
+user-account-manager-06,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager6,manager6
+user-account-manager-07,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager7,manager7
+user-account-manager-08,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager8,manager8
+user-account-manager-09,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager9,manager9
