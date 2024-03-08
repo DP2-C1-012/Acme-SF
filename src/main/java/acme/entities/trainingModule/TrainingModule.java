@@ -27,6 +27,7 @@ public class TrainingModule extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
+	@NotNull
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
@@ -37,6 +38,7 @@ public class TrainingModule extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				creationMoment;
 
+	@NotNull
 	@NotBlank
 	@Length(max = 100)
 	private String				details;

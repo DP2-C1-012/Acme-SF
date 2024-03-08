@@ -30,15 +30,18 @@ public class TrainingSession extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
+	@NotNull
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
+	@NotNull
 	@NotBlank
 	@Length(max = 75)
 	private String				location;
 
+	@NotNull
 	@NotBlank
 	@Length(max = 75)
 	private String				instructor;
