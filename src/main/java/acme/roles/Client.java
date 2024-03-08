@@ -1,10 +1,10 @@
 
 package acme.roles;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -16,23 +16,25 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Auditor extends AbstractRole {
+public class Client extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
-	@NotNull
+	@Pattern(regexp = "CLI-[0-9]{4}")
+	private String				identification;
+
+	@NotBlank
 	@Length(max = 75)
-	private String				firm;
+	private String				company;
+
 	@NotBlank
-	@NotNull
-	@Length(max = 25)
-	@Column(unique = true)
-	private String				professionalID;
+	private ClientType			type;
+
+	@Email
 	@NotBlank
-	@NotNull
-	@Length(max = 100)
-	private String				certifications;
+	private String				email;
+
 	@URL
-	private String				moreInfo;
+	private String				link;
 }
