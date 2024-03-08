@@ -1,11 +1,13 @@
 
 package acme.entities.training;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Min;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -32,6 +34,7 @@ public class TrainingModule extends AbstractEntity {
 
 	@Past
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				creationMoment;
 
 	@NotBlank
@@ -42,12 +45,18 @@ public class TrainingModule extends AbstractEntity {
 
 	//After(creationMoment)
 	@Past
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				updateMoment;
 
 	@URL
 	private String				link;
 
-	@Min(0)
-	private double				totalTime;
 
+	@Transient
+	public Integer getTotalTime() {
+		if (this.updateMoment != null)
+			return (int) (this.updateMoment.getTime() - this.creationMoment.getTime());
+		else
+			return (int) (new Date().getTime() - this.creationMoment.getTime());
+	}
 }

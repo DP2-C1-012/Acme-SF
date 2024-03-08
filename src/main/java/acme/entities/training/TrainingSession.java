@@ -1,14 +1,18 @@
 
 package acme.entities.training;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -30,11 +34,6 @@ public class TrainingSession extends AbstractEntity {
 	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
-	//Revisar
-	@Past
-	@NotNull
-	private Date				period;
-
 	@NotBlank
 	@Length(max = 75)
 	private String				location;
@@ -44,9 +43,34 @@ public class TrainingSession extends AbstractEntity {
 	private String				instructor;
 
 	@Email
+	@NotNull
+	@NotBlank
 	private String				email;
 
 	@URL
 	private String				link;
+
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				startPeriod;
+
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				endPeriod;
+
+
+	@Transient
+	public Integer getPeriod() {
+		if (this.endPeriod != null)
+			return (int) (this.endPeriod.getTime() - this.startPeriod.getTime());
+		else
+			return (int) (new Date().getTime() - this.startPeriod.getTime());
+	}
+
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private TrainingModule trainingModule;
 
 }
