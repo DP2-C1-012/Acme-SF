@@ -67,7 +67,7 @@ bg=gray
     <coordinates>
       <x>0</x>
       <y>399</y>
-      <w>427</w>
+      <w>294</w>
       <h>105</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
@@ -75,7 +75,7 @@ Notice
 --
 + moment: Date {NotNull,Past, Temporal(TIMESTAMP)}
 + title: String {NotNull, NotBlank, Length(max=75)}
-+ author: String {NotNull,Pattern(“&lt;username&gt; - &lt;surname,name&gt;”), NotBlank, Length(max=75)}
++ author: String {NotNull, NotBlank, Length(max=75)}
 + message: String {NotNull, NotBlank, Length(max=100)}
 + email: String {Email}
 + link: String {URL}
@@ -160,13 +160,13 @@ bg=#f9901e</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
+      <x>287</x>
       <y>448</y>
-      <w>35</w>
+      <w>63</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -193,7 +193,7 @@ bg=#f9901e</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>441</x>
+      <x>336</x>
       <y>406</y>
       <w>168</w>
       <h>91</h>
@@ -880,5 +880,163 @@ bg=#f9901e</panel_attributes>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
     <additional_attributes>140.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1722</x>
+      <y>938</y>
+      <w>336</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Contract
+--
++ code: String {Pattern(“[A-Z]{1,3}-[0-9]{3}”), NotNull, NotBlank,Unique}
++ moment: Date {NotNull,Past, Temporal(TIMESTAMP)}
++ provider: String {NotNull, NotBlank, Length(max=75)}
++ customer: String {NotNull, NotBlank, Length(max=75)}
++ goals: String {NotNull, NotBlank, Length(max=100)}
++ budget: Money {NotNull}
++ draftMode: Boolean
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2128</x>
+      <y>938</y>
+      <w>315</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+ProgressLogs
+--
++ record id: String {Pattern(“PG-[A-Z]{1,2}-[0-9]{4}”),NotNull NotBlank,Unique}
++ completeness: Integer {NotNull, Min{1}}
++ comment: String {NotNull, NotBlank, Length(max=100)}
++ moment: Date {Past, Temporal(TIMESTAMP), NotNull}
++ responsible: String (NotNull, NotBlank, Length(max=75))
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1575</x>
+      <y>1099</y>
+      <w>182</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>- budget: 
+Less than or equal to the corresponding
+project cost.
+bg=#f9901e</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1771</x>
+      <y>1113</y>
+      <w>315</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Clients
+--
+identification: String {Pattern(“CLI-[0-9]{4}”),NotNull, NotBlank,Unique}
+company: String {NotNull, NotBlank, Length(max=75)}
+type: Type {NotNull}
+email: String {Email, NotNull, NotBlank}
+link: String{URL}
+bg=#dea1fb</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2093</x>
+      <y>1120</y>
+      <w>98</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+ClientType
+--
++ COMPANY
++ INDIVIDUAL
+bg=gray
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1414</x>
+      <y>567</y>
+      <w>231</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+rules ^
+m1=1
+m2= 1..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0;290.0;100.0;290.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1645</x>
+      <y>791</y>
+      <w>245</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+rules ^
+m1=1
+m2= 1..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0;310.0;140.0;310.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2051</x>
+      <y>973</y>
+      <w>91</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x
+
+m2= 1..*</panel_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1722</x>
+      <y>1043</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1904</x>
+      <y>1043</y>
+      <w>77</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+
+created by ^
+m1=1
+m2=  0..*
+</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
