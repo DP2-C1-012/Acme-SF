@@ -53,7 +53,6 @@ public class UserStory extends AbstractEntity {
 
 	@ManyToOne(optional = false)
 	@Valid
-	@NotNull
 	private Manager				manager;
 
 }
