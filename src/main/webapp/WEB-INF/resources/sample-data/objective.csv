@@ -1,0 +1,15 @@
+key,instantiation_moment,title,description,priority,status,start_date,end_date,link
+objective-01,2010/10/20 20:00,Titulo Estandar,Descripcion estandar,LOW,true,2010/11/21 14:00,2010/12/22 17:00,https://www.leagueoflegends.com/es-es/
+objective-02,2010/10/20 20:00,Este es un titulo de 75 caracteres.........................................,Descripcion estandar,LOW,true,2010/11/21 14:00,2010/12/22 17:00,https://www.leagueoflegends.com/es-es/
+objective-03,2010/10/20 20:00,E,Descripcion estandar,LOW,true,2010/11/21 14:00,2010/12/22 17:00,https://www.leagueoflegends.com/es-es/
+objective-04,2010/10/20 20:00,Titulo medio,Descripcion estandar,LOW,true,2010/11/21 14:00,2010/12/22 17:00,https://www.leagueoflegends.com/es-es/
+objective-05,2010/10/20 20:00,Titulo medio,Descripcion estandar,LOW,true,2010/11/21 14:00,2010/12/22 17:00,https://www.leagueoflegends.com/es-es/
+objective-06,2010/10/20 20:00,Titulo medio,Esta es una descripcion de 100 caracteres ..........................................................,LOW,true,2010/11/21 14:00,2010/12/22 17:00,https://www.leagueoflegends.com/es-es/
+objective-07,2010/10/20 20:00,Titulo medio,D,LOW,true,2010/11/21 14:00,2010/12/22 17:00,https://www.leagueoflegends.com/es-es/
+objective-08,2010/10/20 20:00,Titulo medio,Descripcion media,LOW,true,2010/11/21 14:00,2010/12/22 17:00,https://www.leagueoflegends.com/es-es/
+objective-09,2010/10/20 20:00,Titulo medio,Descripcion media,MEDIUM,true,2010/11/21 14:00,2010/12/22 17:00,https://www.leagueoflegends.com/es-es/
+objective-10,2010/10/20 20:00,Titulo medio,Descripcion media,HIGH,true,2010/11/21 14:00,2010/12/22 17:00,https://www.leagueoflegends.com/es-es/
+objective-11,2010/10/20 20:00,Titulo medio,Descripcion media,HIGH,false,2010/11/21 14:00,2010/12/22 17:00,https://www.leagueoflegends.com/es-es/
+objective-12,2010/10/20 20:00,Titulo medio,Descripcion media,HIGH,false,2010/10/20 20:01,2010/12/22 17:00,https://www.leagueoflegends.com/es-es/
+objective-13,2010/10/20 20:00,Titulo medio,Descripcion media,HIGH,false,2010/10/20 20:01,2010/10/20 20:02,https://www.leagueoflegends.com/es-es/
+objective-14,2010/10/20 20:00,Titulo medio,Descripcion media,HIGH,false,2010/10/20 20:01,2010/10/20 20:02,null

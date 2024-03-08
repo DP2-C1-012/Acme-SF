@@ -1,0 +1,11 @@
+key,degree,specialisation,skills,email,link,key:userAccount
+developer-01,Grado en Informática,Inteligencia Artificial,अजगर,developer1@acme.es,null,user-account-developer-01
+developer-02,Grado en Informática,Desarrollo Web,Java,developer2@acme.es,https://www.€x@mplëÜRL.com,user-account-developer-02
+developer-03,Licenciatura en Ingeniería Eléctrica,Especialización en Sistemas,C,developer3@acme.es,null,user-account-developer-03
+developer-04,Esto es un dregee de 75 caracteres_-------------------,Esto es una especialización de 100 caracteres@----------------------------------,Esto es una lista de habilidades de 100 caracteres*--------------------------------,developer4@acme.es,https://es.linkedin.com,user-account-developer-04
+developer-05,Ingeniería en Software,Desarrollo de Aplicaciones Móviles,Android,developer5@acme.es,https://www.xzzyb4wq9v7l3c7a2e1.com,user-account-developer-05
+developer-06,Grado en Ciencias de la Computación,人工智慧專業,Machine Learning,developer6@acme.es,null,user-account-developer-06
+developer-07,Licenciatura en Ingeniería de Software,電腦安全專業,ຄວາມປອດໄພທາງໄຊເບີ,developer7@acme.es,https://www.ʕ•ᴥ•ʔstr@ngëURŁ.com,user-account-developer-07
+developer-08,¡Esto es un grado que tiene exactamente 75 caracteres_--*-----------------!,¡Esto es una especialización que tiene exactamente 100 caracteres@--------------------------------!,¿Esto es una lista de habilidades que tiene exactamente 100 caracteres*----------------------------?,developer8@acme.es,https://www.ß¡zårr0wURŁ.xyz,user-account-developer-08
+developer-09,Grado en Ingeniería Informática,D€sar®ollo d€ $oƒtwa®€,Java/C++/Python,developer9@acme.es,https://es.linkedin.com,user-account-developer-09
+developer-10,Licenciatura en Ciencias de la Computación,Int£li9£n¢¡ª Artiƒ¡¢¡@l,Python/TensorFlow,developer10@acme.es,https://www.ß¡zårr0wURŁ.xyz,user-account-developer-10
