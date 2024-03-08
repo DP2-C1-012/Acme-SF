@@ -10,7 +10,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -39,7 +38,6 @@ public class Notice extends AbstractEntity {
 	@NotNull
 	@NotBlank
 	@Length(max = 75)
-	@Pattern(regexp = "^\\w+ - \\w+, \\w+$")
 	private String				author;
 
 	@NotNull
