@@ -31,7 +31,7 @@ public class Sponsorship extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Pattern(regexp = "[A-Z]{1,3}-[0,9]{3}")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	@NotBlank
 	@NotNull
 	@Column(unique = true)
@@ -48,7 +48,7 @@ public class Sponsorship extends AbstractEntity {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	public Date					endtDate;
+	public Date					endDate;
 
 	@NotNull
 	private Money				amount;

@@ -1,0 +1,20 @@
+key,code,instatiation_moment,heading,description,department,email,link
+claim-01,C-0001,2021/12/24 06:00,P,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
+claim-02,C-0002,2021/12/24 06:00,Pr,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
+claim-03,C-0003,2021/12/24 06:00,Prueba,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
+claim-04,C-0004,2021/12/24 06:00,Prueba,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
+claim-05,C-0005,2021/12/24 06:00,Prueba,E,LSI,sponsor1@acme.com,https://example.com
+claim-06,C-0006,2021/12/24 06:00,Prueba,Es,LSI,sponsor1@acme.com,https://example.com
+claim-07,C-0007,2021/12/24 06:00,Prueba,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
+claim-08,C-0008,2021/12/24 06:00,Prueba,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
+claim-09,C-0009,2021/12/24 06:00,Prueba,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
+claim-10,C-0010,2021/12/24 06:00,Prueba,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
+claim-11,C-0011,2021/12/24 06:00,Prueba,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
+claim-12,C-0012,2021/12/24 06:00,Prueba,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
+claim-13,C-0013,2021/12/24 06:00,Este heading tiene el numero maximos de caracteres que es 75. Manuel grande,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
+claim-14,C-0014,2021/12/24 06:00,Este heading tiene el numero 74 caracteres en lugar de 75. . Manuel grande,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
+claim-15,C-0015,2021/12/24 06:00,A mi me gusta el flow de la cucaracha,Esto es una descripcion poco descriptiva,Inserta aqui un nombre de departamento jeje es broma,sponsor1@acme.com,https://example.com
+claim-16,C-0016,2021/12/24 06:00,代代代代代代,Esto es una descripcion poco descriptiva,Inserta aqui un nombre de departamento jeje es broma,sponsor1@acme.com,
+claim-17,C-0017,2021/12/24 06:00,ლორემ იფსუმ ლორემ იფსუმ,Esto es una descripcion poco descriptiva,Inserta aqui un nombre de departamento jeje es broma,sponsor1@acme.com,
+claim-18,C-0018,2021/12/24 06:00,ლორემ იფსუმ ლორემ იფსუმ,Esto es una descripcion poco descriptiva,Inserta aqui un nombre de departamento jeje es broma,,https://example.com
+claim-19,C-0019,2021/12/24 06:00,<p>nombre</p>,Esto es una descripcion poco descriptiva,Inserta aqui un nombre de departamento jeje es broma,,https://example.com

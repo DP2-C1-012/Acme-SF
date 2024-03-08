@@ -30,7 +30,7 @@ public class Invoice extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Pattern(regexp = "IN-[0,9]{4}-[0,9]{4}")
+	@Pattern(regexp = "IN-[0-9]{4}-[0-9]{4}")
 	@NotBlank
 	@Column(unique = true)
 	@NotNull
