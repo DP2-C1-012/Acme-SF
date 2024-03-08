@@ -27,7 +27,7 @@ bg=green</panel_attributes>
     <coordinates>
       <x>0</x>
       <y>200</y>
-      <w>380</w>
+      <w>440</w>
       <h>180</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
@@ -146,11 +146,13 @@ bg=#f9901e</panel_attributes>
       <x>490</x>
       <y>300</y>
       <w>190</w>
-      <h>70</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>- startDate must start
 at any moment after the 
 instantiation moment.
+- endDate must start at any 
+moment after  the startDate
 
 bg=#f9901e</panel_attributes>
     <additional_attributes/>
@@ -180,13 +182,13 @@ bg=#f9901e</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>370</x>
+      <x>430</x>
       <y>330</y>
-      <w>140</w>
+      <w>80</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
