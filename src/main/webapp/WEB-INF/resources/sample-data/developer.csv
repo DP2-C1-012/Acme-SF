@@ -1,0 +1,14 @@
+key,degree,specialisation,skills,email,link,key:userAccount
+developer-01,Grado en Informática,Inteligencia Artificial,अजगर,developer1@acme.es,null,user-account-developer-01
+developer-02,Gr@do en Informática,Désárrôllø Wëb,Jâvâ,developer2@acme.es,https://www.€x@mplëÜRL.com,user-account-developer-02
+developer-03,Licenciatura en Ingeniería Eléctrica,Espëcîalización en Sïstëmas,C,developer3@acme.es,null,user-account-developer-03
+developer-04,Esto es un dregee de 75 caracteres_-------------------,Esto es una especialización de 100 caracteres@----------------------------------,Esto es una lista de habilidades de 100 caracteres*--------------------------------,developer4@acme.es,https://es.linkedin.com,user-account-developer-04
+developer-05,Ingeniería en Software,Desarrollo de Aplicaciones Móviles,Ândrøīd,developer5@acme.es,https://www.xzzyb4wq9v7l3c7a2e1.com,user-account-developer-05
+developer-06,Grãdø en Ciëncias de lã Cømputåção,人工智慧專業,Machine Lëarning,developer6@acme.es,null,user-account-developer-06
+developer-07,Lïcénciãtūrå en Ingęnieríå de Søftwåré,電腦安全專業,ຄວາມປອດໄພທາງໄຊເບີ,developer7@acme.es,https://www.ʕ•ᴥ•ʔstr@ngëURŁ.com,user-account-developer-07
+developer-08,¡Esto es un grado que tiene exactamente 75 caracteres_--*-----------------!,¡Esto es una specialisation que tiene exactamente 100 caracteres@----------------------------------!,¿Esto es una lista de habilidades que tiene exactamente 100 caracteres*----------------------------?,developer8@acme.es,https://www.ß¡zårr0wURŁ.xyz,user-account-developer-08
+developer-09,Grãdø en Ingeniería Informática,Desarrollo de Software,Java/C++/Python,developer9@acme.es,https://es.linkedin.com,user-account-developer-09
+developer-10,Licenciatura en Ciencias de la Computación,Inteligencia Artificial,Python/TensorFlow,developer10@acme.es,https://www.ß¡zårr0wURŁ.xyz,user-account-developer-10,user-account-developer-10
+developer-11,Este va a tener un título con 75 caracteres exactos_-----------------------,Esto es una especialización con 100 caracteres exactos@----¿¿¿¿¿¿¿¿¿¿¿------------------------------,No me gusta programar lo siento,developer11@acme.es,https://es.linkedin.com,user-account-developer-11
+developer-12,Ingeniería en Desarrollo de Software,Espëcîalización en Desarrollo Web,HTML/CSS/JavaScript,developer12@acme.es,https://es.linkedin.com,user-account-developer-12
+developer-13,Grado en Ciencias de la Información,Tecnologías de la Información,SQL/PHP/Laravel,developer13@acme.es,https://es.linkedin.com,user-account-developer-13
