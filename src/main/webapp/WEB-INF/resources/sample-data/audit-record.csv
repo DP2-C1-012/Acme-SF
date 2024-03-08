@@ -1,0 +1,19 @@
+key,code,periodStart,periodEnd,mark,optionalLink,key:code-audit
+audit-record-01,AU-0000-000,2022/07/29 22:59,2022/07/29 23:59,A_PLUS,"https://yourmom.zip/",code-audit-01
+audit-record-02,AU-9999-999,1999/07/01 22:59,2022/07/29 23:59,A_PLUS,"https://yourmom.zip/",code-audit-02
+audit-record-03,AU-0000-001,2022/07/29 22:59,2022/07/29 23:59,A_PLUS,"https://yourmom.zip/",code-audit-03
+audit-record-04,AU-0000-002,2022/07/29 22:59,2022/07/29 23:59,A_PLUS,"https://yourmom.zip/",code-audit-04
+audit-record-05,AU-0000-003,1999/07/01 22:59,2022/07/29 23:59,A_PLUS,"https://yourmom.zip/",code-audit-05
+audit-record-06,AU-0000-004,2022/07/29 22:59,2022/07/29 23:59,A_PLUS,"https://yourmom.zip/",code-audit-06
+audit-record-07,AU-0000-006,2022/07/29 22:59,2022/07/29 23:59,A_PLUS,"https://yourmom.zip/",code-audit-07
+audit-record-08,AU-0000-007,1999/07/01 22:59,2022/07/29 23:59,A,"https://yourmom.zip/",code-audit-08
+audit-record-09,AU-0000-008,2022/07/29 22:59,2022/07/29 23:59,B,"https://yourmom.zip/",code-audit-09
+audit-record-10,AU-0000-009,2022/07/29 22:59,2022/07/29 23:59,C,"https://yourmom.zip/",code-audit-10
+audit-record-11,AU-0000-010,1999/07/01 22:59,2022/07/29 23:59,F,"https://yourmom.zip/",code-audit-11
+audit-record-12,AU-0000-011,2022/07/29 22:59,2022/07/29 23:59,F_MINUS,"https://yourmom.zip/",code-audit-12
+audit-record-13,AU-0000-012,2022/07/29 22:59,2022/07/29 23:59,F_MINUS,"https://yourmom.zip/",code-audit-13
+audit-record-14,AU-0000-013,1999/07/01 22:59,2022/07/29 23:59,F_MINUS,"https://yourmom.zip/",code-audit-14
+audit-record-15,AU-0000-014,2022/07/29 22:59,2022/07/29 23:59,F_MINUS,"https://yourmom.zip/",code-audit-15
+audit-record-16,AU-0000-015,2022/07/29 22:59,2022/07/29 23:59,F_MINUS,"https://yourmom.zip/",code-audit-16
+audit-record-17,AU-0000-016,1999/07/01 22:59,2022/07/29 23:59,F_MINUS,"https://yourmom.zip/",code-audit-17
+audit-record-18,AU-0000-017,2022/07/29 22:59,2022/07/29 23:59,F_MINUS,"https://yourmom.zip/",code-audit-18

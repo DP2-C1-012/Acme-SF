@@ -9,14 +9,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.Min;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.entities.sponsorships.Sponsorship;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,23 +30,26 @@ public class Invoice extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Pattern(regexp = "IN-[0,9]{4}-[0,9]{4}")
+	@Pattern(regexp = "IN-[0-9]{4}-[0-9]{4}")
 	@NotBlank
 	@Column(unique = true)
+	@NotNull
 	private String				code;
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	private Date				registrationTime;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	private Date				dueDate;
 
-	@Min(1)
-	private Integer				quantity;
+	@NotNull
+	private Money				quantity;
 
-	@Min(0)
-	private Integer				tax;
+	@NotNull
+	private Money				tax;
 
 	@URL
 	private String				link;
@@ -53,14 +58,20 @@ public class Invoice extends AbstractEntity {
 
 
 	@Transient
-	public Integer totalAmount() {
-		return this.quantity + this.tax;
+	public Money totalAmount() {
+		double total = this.quantity.getAmount() + this.tax.getAmount();
+		Money totalAmount = new Money();
+		totalAmount.setAmount(total);
+		totalAmount.setCurrency(this.quantity.getCurrency());
+		return totalAmount;
 	}
 
 	// Relationships ----------------------------------------------------------
 
 
-	@ManyToOne
+	@ManyToOne(optional = false)
+	@Valid
+	@NotNull
 	private Sponsorship sponsorship;
 
 }

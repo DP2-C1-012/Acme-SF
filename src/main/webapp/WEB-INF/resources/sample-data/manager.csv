@@ -1,0 +1,11 @@
+key,degree,overview,certifications,link,key:user-account
+manager-01,Degree 1 example,Overview 1 Example, Certifications 1 example,https://example1.com,user-account-manager-01
+manager-02,Degree 2 example,Overview 2 Example, Certifications 2 example,https://example2.com,user-account-manager-02
+manager-03,Esto es un degree de 75 caracteres ........................................,Overview 2 Example, Certifications 2 example,https://example2.com,user-account-manager-03
+manager-04,a,Overview 2 Example, Certifications 2 example,https://example2.com,user-account-manager-04
+manager-05,Degree example,Esto es una overview de 100 caracteres ............................................................., Certifications 2 example,https://example2.com,user-account-manager-05
+manager-06,Degree example,e, Certifications 2 example,https://example2.com,user-account-manager-06
+manager-07,Degree 1 example,Overview 1 Example,Esto es una certification de 100 caracteres ........................................................,https://example1.com,user-account-manager-07
+manager-08,Degree 1 example,Overview 1 Example,E,https://example1.com,user-account-manager-08
+manager-09,Degree 1 example,Overview 1 Example,Certifications example,,user-account-manager-09
+manager-10,Degree 1 example,Overview 1 Example,Certifications example,null,user-account-manager-10
