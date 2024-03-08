@@ -1,12 +1,13 @@
-key,code,title,abstrac,cost,indication,link,key:manager
-project-01,ABC-1234,Titulo de longitud normal, abstrac de longitud normal,EUR 20.0,false,https://thispersondoesnotexist.com/,manager-01
-project-02,ABZ-1235,Titulo de 76 caracteres ..................................................., abstrac de ejemplo,EUR 20.0,false,https://thispersondoesnotexist.com/,manager-01
-project-03,ABY-1236,T, abstrac de ejemplo,EUR 20.0,false,https://thispersondoesnotexist.com/,manager-01
-project-04,ABN-1237,Titulo de longitud normal,Abstrac de 101 caracteres ...........................................................................,EUR 20.0,false,https://thispersondoesnotexist.com/,manager-01
-project-05,ABM-1238,Titulo de longitud normal,A,EUR 20.0,false,https://thispersondoesnotexist.com/,manager-01
-project-07,ABS-1234,Titulo de longitud normal,abstrac de longitud normal,EUR 1000.0,false,https://thispersondoesnotexist.com/,manager-01
-project-08,ABH-1254,Titulo de longitud normal,abstrac de longitud normal,EUR 0.01,false,https://thispersondoesnotexist.com/,manager-01
-project-09,ABH-1134,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,false,https://thispersondoesnotexist.com/,manager-01
-project-10,ABH-5234,Titulo de longitud normal,abstrac de longitud normal,EUR 0.1,false,null,manager-01
-project-11,ABH-8234,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,true,https://thispersondoesnotexist.com/,manager-01
-project-12,ABH-1534,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,false,https://www.leagueoflegends.com/es-es/,manager-01
+key,code,title,abstrac,cost,indication,link,draft_mode,key:manager
+project-01,ABC-1234,Titulo de longitud normal, abstrac de longitud normal,EUR 20.0,false,https://thispersondoesnotexist.com/,true,manager-01
+project-02,ABZ-1235,Titulo de 75 caracteres .................................................., abstrac de ejemplo,EUR 20.0,false,https://thispersondoesnotexist.com/,true,manager-01
+project-03,ABY-1236,T, abstrac de ejemplo,EUR 20.0,false,https://thispersondoesnotexist.com/,false,manager-01
+project-04,ABN-1237,Titulo de longitud normal,Abstrac de 100 caracteres ..........................................................................,EUR 20.0,false,https://thispersondoesnotexist.com/,true,manager-01
+project-05,ABM-1238,Titulo de longitud normal,A,EUR 20.0,false,https://thispersondoesnotexist.com/,true,manager-01
+project-07,ABS-1234,Titulo de longitud normal,abstrac de longitud normal,EUR 1000.0,false,https://thispersondoesnotexist.com/,false,manager-01
+project-08,ABH-1254,Titulo de longitud normal,abstrac de longitud normal,EUR 0.01,false,https://thispersondoesnotexist.com/,false,manager-01
+project-09,ABH-1134,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,false,https://thispersondoesnotexist.com/,false,manager-01
+project-10,ABH-5234,Titulo de longitud normal,abstrac de longitud normal,EUR 0.1,false,null,false,manager-01
+project-11,ABH-8234,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,true,https://thispersondoesnotexist.com/,false,manager-01
+project-12,ABH-1534,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,false,https://www.leagueoflegends.com/es-es/,false,manager-01
+project-13,ABH-1634,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,false,,false,manager-01

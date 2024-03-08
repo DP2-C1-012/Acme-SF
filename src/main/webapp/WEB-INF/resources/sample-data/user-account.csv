@@ -29,6 +29,7 @@ user-account-manager-06,true,"UserIdentity{name: 'Manager', surname: 'Two', emai
 user-account-manager-07,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager7,manager7
 user-account-manager-08,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager8,manager8
 user-account-manager-09,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager9,manager9
+user-account-manager-10,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager10,manager10
 user-account-sponsor-01,true,"UserIdentity{name: 'Sponsor1', surname: 'Acme', email: 'sponsor1@acme.com'}",sponsor1,sponsor1
 user-account-sponsor-02,true,"UserIdentity{name: 'Sponsor2', surname: 'Acme', email: 'sponsor2@acme.com'}",sponsor2,sponsor2
 user-account-sponsor-03,true,"UserIdentity{name: 'Sponsor3', surname: 'Acme', email: 'sponsor3@acme.com'}",sponsor3,sponsor3
@@ -50,4 +51,3 @@ user-account-sponsor-18,true,"UserIdentity{name: 'Sponsor18', surname: 'Acme', e
 user-account-sponsor-19,true,"UserIdentity{name: 'Sponsor19', surname: 'Acme', email: 'sponsor19@acme.com'}",sponsor19,sponsor19
 user-account-sponsor-20,true,"UserIdentity{name: 'Sponsor20', surname: 'Acme', email: 'sponsor20@acme.com'}",sponsor20,sponsor20
 user-account-sponsor-21,true,"UserIdentity{name: 'Sponsor20', surname: 'Acme', email: 'sponsor21@acme.com'}",sponsor21,sponsor21
-
