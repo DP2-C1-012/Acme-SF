@@ -1,8 +1,25 @@
 key,enabled,identity,password,username
 user-account-consumer-01,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",consumer1,consumer1
-user-account-consumer-02,true,"UserIdentity{name: 'Mary', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'mary@acme.com'}",consumer2,consumer2
+user-account-consumer-02,true,"UserIdentity{name: 'Mary', surname: 'è²¸ã‚“ã„å»ºæ¿¯ã‚ˆèŠå¼¾ãƒ†ã‚½ Î›Î¿ÏÎµÎ¼ Î¹Ï€ÏƒÎ¸Î¼', email: 'mary@acme.com'}",consumer2,consumer2
 user-account-provider-01,true,"UserIdentity{name: 'Laurel', surname: 'Provider', email: 'laurel@acme.com'}",provider1,provider1
-user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза თხა', email: 'martina@acme.com'}",provider2,provider2
+user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'ÐºÐ¾Ð·Ð° áƒ—áƒ®áƒ', email: 'martina@acme.com'}",provider2,provider2
+user-account-adminitrator-02,true,"UserIdentity{name: 'Administrator', surname: 'Rodrºæ¿¯ã‚ˆèŠ‚½ Î›Î¿ÏÎµÎ¼guez', email: 'administrator@acme.com'}",administrator1,administrator1
+user-account-adminitrator-03,true,"UserIdentity{name: 'Administrator', surname: '?????', email: 'administrator@acme.com'}",administrator2,administrator2
+user-account-adminitrator-04,true,"UserIdentity{name: 'Âdmï?ï???åtôr', surname: 'Admî?', email: 'administrator@acme.com'}",administrator3,administrator3
+user-account-adminitrator-05,true,"UserIdentity{name: 'Ädm????trãtœr', surname: 'Álvârëž', email: 'administrator@acme.com'}",administrator4,administrator4
+user-account-adminitrator-06,true,"UserIdentity{name: 'Å????????å??r', surname: 'Â????ï?', email: 'administrator@acme.com'}",administrator5,administrator5
+user-account-adminitrator-07,true,"UserIdentity{name: 'Ã???n???rå?ôr', surname: 'Ångëlô', email: 'administrator@acme.com'}",administrator6,administrator6
+user-account-adminitrator-08,true,"UserIdentity{name: '?????????ã?ö?', surname: 'Ã???ø?', email: 'administrator@acme.com'}",administrator7,administrator7
+user-account-adminitrator-09,true,"UserIdentity{name: 'Â????????ä?ô?', surname: '????â', email: 'administrator@acme.com'}",administrator8,administrator8
+user-account-adminitrator-10,true,"UserIdentity{name: 'Ã????????ã???', surname: '?????', email: 'administrator@acme.com'}",administrator9,administrator9
+user-account-adminitrator-11,true,"UserIdentity{name: '???ï?ï???å?ö?', surname: '?ï??????', email: 'administrator@acme.com'}",administrator10,administrator10
+user-account-adminitrator-12,true,"UserIdentity{name: 'Ä????????ã?ô?', surname: 'Ä?më', email: 'administrator@acme.com'}",administrator11,administrator11
+user-account-adminitrator-13,true,"UserIdentity{name: 'Â????????å???', surname: '?ø????ä', email: 'administrator@acme.com'}",administrator12,administrator12
+user-account-adminitrator-14,true,"UserIdentity{name: '???ï??å?ø?', surname: '??????', email: 'administrator@acme.com'}",administrator13,administrator13
+user-account-adminitrator-15,true,"UserIdentity{name: 'Â????????å?ö?', surname: '??????', email: 'administrator@acme.com'}",administrator14,administrator14
+user-account-auditor-01,true,"UserIdentity{name: 'auditor1', surname: 'auditor1', email: 'auditor1@acme.com'}",auditor1,auditor1
+user-account-auditor-02,true,"UserIdentity{name: '秋風の さざめくやまねの しずくかな', surname: 'El viento de otoño, susurra en las montañas, gotas de rocío.', email: 'auditor2@acme.com'}",auditor2,auditor2
+user-account-auditor-03,false,"UserIdentity{name: 'auditor3', surname: 'auditor3', email: 'auditor3@acme.com'}",auditor3,auditor3
 user-account-manager-01,true,"UserIdentity{name: 'Nicolas', surname: 'Herrera', email: 'manager1@acme.com'}",manager1,manager1
 user-account-manager-02,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager2,manager2
 user-account-manager-03,true,"UserIdentity{name: 'Manager', surname: 'Two', email: 'manager2@mail.com'}",manager3,manager3
@@ -33,3 +50,4 @@ user-account-sponsor-18,true,"UserIdentity{name: 'Sponsor18', surname: 'Acme', e
 user-account-sponsor-19,true,"UserIdentity{name: 'Sponsor19', surname: 'Acme', email: 'sponsor19@acme.com'}",sponsor19,sponsor19
 user-account-sponsor-20,true,"UserIdentity{name: 'Sponsor20', surname: 'Acme', email: 'sponsor20@acme.com'}",sponsor20,sponsor20
 user-account-sponsor-21,true,"UserIdentity{name: 'Sponsor20', surname: 'Acme', email: 'sponsor21@acme.com'}",sponsor21,sponsor21
+

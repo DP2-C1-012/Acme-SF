@@ -33,8 +33,6 @@ public class Auditor extends AbstractRole {
 	@NotNull
 	@Length(max = 100)
 	private String				certifications;
-	@NotBlank
-	@NotNull
 	@URL
 	private String				moreInfo;
 }

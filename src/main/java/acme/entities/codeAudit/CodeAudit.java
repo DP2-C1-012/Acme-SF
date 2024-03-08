@@ -3,6 +3,7 @@ package acme.entities.codeAudit;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -32,18 +33,20 @@ public class CodeAudit extends AbstractEntity {
 	@NotBlank
 	@NotNull
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
+	@Column(unique = true)
 	private String				code;
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date				executionDate;
+	@NotNull
 	private Type				type;
 	@Length(max = 100)
 	@NotBlank
 	@NotNull
 	private String				correctiveActions;
 	@NotNull
-	private Mark				mark;
+	private Mark				mark				= Mark.F_MINUS;
 	@URL
 	private String				optionalLink;
 	private boolean				published;
