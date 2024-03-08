@@ -29,15 +29,16 @@ public class Project extends AbstractEntity {
 	@Pattern(regexp = "[A-Z]{3}-[0-9]{4}")
 	@NotBlank
 	@Column(unique = true)
+	@NotNull
 	private String				code;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	@NotNull
 	private String				title;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	@NotNull
 	private String				abstrac;
 
@@ -51,6 +52,8 @@ public class Project extends AbstractEntity {
 
 	@URL
 	private String				link;
+
+	private boolean				draftMode;
 
 	@ManyToOne(optional = false)
 	@Valid
