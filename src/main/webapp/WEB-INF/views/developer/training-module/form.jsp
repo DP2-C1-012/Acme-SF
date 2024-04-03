@@ -12,6 +12,14 @@
 	<acme:input-textbox code="developer.trainingModule.form.label.difficulty-level" path="difficultyLevel" readonly="true"/>
 	<acme:input-url code="developer.trainingModule.form.label.link" path="link" readonly="true"/>
 	<acme:input-integer code="developer.trainingModule.form.label.total-time" path="totalTime" readonly="true"/>
-	<acme:input-integer code="developer.trainingModule.form.label.project" path="project" readonly="true"/>
-	
+	<acme:input-integer code="developer.trainingModule.form.label.project" path="project" readonly="true"/>	
+	<jstl:choose>	 
+		<jstl:when test="${draftMode == true}">
+			<acme:submit code="developer.trainingModule.form.button.delete" action="/developer/trainingModule/delete"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="developer.trainingModule.form.button.create" action="/developer/trainingModule/create"/>
+		</jstl:when>		
+	</jstl:choose>
+
 </acme:form>
