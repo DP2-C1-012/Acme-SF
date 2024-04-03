@@ -14,7 +14,10 @@ import acme.roles.Developer;
 public class DeveloperTrainingModuleController extends AbstractController<Developer, TrainingModule> {
 
 	@Autowired
-	protected DeveloperTrainingModuleListService listTrainingModule;
+	protected DeveloperTrainingModuleListService	listTrainingModule;
+
+	@Autowired
+	private DeveloperTrainingModuleShowService		showService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -22,6 +25,8 @@ public class DeveloperTrainingModuleController extends AbstractController<Develo
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listTrainingModule);
+		super.addBasicCommand("show", this.showService);
+
 	}
 
 }

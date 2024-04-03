@@ -61,10 +61,13 @@ public class TrainingModule extends AbstractEntity {
 
 	@Transient
 	public Integer getTotalTime() {
-		if (this.updateMoment != null)
-			return (int) (this.updateMoment.getTime() - this.creationMoment.getTime());
-		else
-			return (int) (new Date().getTime() - this.creationMoment.getTime());
+		int totalTime = 0;
+		if (this.updateMoment != null) {
+			totalTime = (int) (this.updateMoment.getTime() - this.creationMoment.getTime());
+			//Pasamos de milisegundos a horas enteras
+			return totalTime / (1000 * 60 * 60);
+		} else
+			return totalTime;
 	}
 
 

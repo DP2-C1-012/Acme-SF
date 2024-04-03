@@ -6,6 +6,7 @@
 
 <acme:list>
 	<acme:list-column code="developer.trainingModule.list.label.code" path="code"  width="40%"/>
+	<acme:list-column code="developer.trainingModule.list.label.creationMoment" path="creationMoment" width="40%"/>
 	<acme:list-column code="developer.trainingModule.list.label.difficultyLevel" path="difficultyLevel" width="40%" />
-	<acme:list-column code="developer.trainingModule.list.label.link" path="link" width="40%" />
+	<acme:list-column code="developer.trainingModule.list.label.draftMode" path="draftMode" width="15%"/>
 </acme:list>

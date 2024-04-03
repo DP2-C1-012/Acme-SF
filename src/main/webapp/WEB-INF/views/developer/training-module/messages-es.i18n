@@ -9,9 +9,19 @@
 # they accept any liabilities with respect to them.
 
 
-developer.training-module.list.title = Listado de módulos de formación
+developer.training-module.list.title = Listado de Módulos de Entrenamiento
 
+developer.trainingModule.list.label.code = Código
+developer.trainingModule.list.label.creationMoment = Momento de Creación
+developer.trainingModule.list.label.difficultyLevel = Nivel de Dificultad
+developer.trainingModule.list.label.draftMode = Modo Borrador
 
-developer.trainingModule.list.label.code = Codigo
-developer.trainingModule.list.label.difficultyLevel = Nivel Dificultad
-developer.trainingModule.list.label.link = Url 
+developer.training-module.form.title = Detalles
+
+developer.trainingModule.form.label.code = Código
+developer.trainingModule.form.label.creation-moment = Momento de Creación
+developer.trainingModule.form.label.update-moment = Momento de Actualización
+developer.trainingModule.form.label.details = Detalles
+developer.trainingModule.form.label.difficulty-level = Nivel de Dificultad
+developer.trainingModule.form.label.link = Enlace
+developer.trainingModule.form.label.total-time = Tiempo Total
