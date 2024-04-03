@@ -1,11 +1,13 @@
 
-package acme.entities.progressLogs;
+package acme.entities.progress_logs;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -15,6 +17,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.contract.Contract;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,9 +28,13 @@ public class ProgressLogs extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
+	/*
+	 * Attributes
+	 */
+
 	@NotNull
 	@NotBlank
-	@Pattern(regexp = "PG-[A-Z]{1-2}-[0-9]{4}")
+	@Pattern(regexp = "PG-[A-Z]{1,2}-[0-9]{4}")
 	private String				recordId;
 
 	@NotNull
@@ -48,5 +55,14 @@ public class ProgressLogs extends AbstractEntity {
 	@NotBlank
 	@Length(max = 75)
 	private String				responsible;
+
+	/*
+	 * Relations
+	 */
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private Contract			contract;
 
 }
