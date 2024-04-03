@@ -11,6 +11,10 @@ public class ClientDashboard extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
 
+	/*
+	 * Attributes
+	 */
+
 	private Integer				numPLCompletenessBelow25;
 	private Integer				numPLCompletenessBetween25To50;
 	private Integer				numPLCompletenessBetween50To75;
