@@ -26,17 +26,18 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	@Override
 	public void load() {
 		TrainingModule object;
+		Developer developer;
+		developer = this.repository.getDeveloper(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new TrainingModule();
-		final Developer developer = this.repository.getDeveloper(super.getRequest().getPrincipal().getActiveRoleId());
-		object.setDeveloper(developer);
 		object.setDraftMode(true);
+		object.setDeveloper(developer);
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void bind(final TrainingModule object) {
 		assert object != null;
-		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode");
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "project");
 	}
 
 	@Override
@@ -53,10 +54,10 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			if (creationMoment == null || creationMoment.after(now))
 				super.state(false, "creationMoment", "developer.trainingModule.form.error.code");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
+		if (!super.getBuffer().getErrors().hasErrors("details"))
 			if (object.getDetails() == null || object.getDetails().isBlank() || object.getDetails().length() > 100)
 				super.state(false, "details", "developer.trainingModule.form.error.code");
-		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
+		if (!super.getBuffer().getErrors().hasErrors("difficultyLevel"))
 			if (object.getDifficultyLevel() == null)
 				super.state(false, "difficultyLevel", "developer.trainingModule.form.error.code");
 		Date now = new Date(); // Obtener la fecha actual
@@ -75,7 +76,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void unbind(final TrainingModule object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "project");
 		super.getResponse().addData(dataset);
 	}
 

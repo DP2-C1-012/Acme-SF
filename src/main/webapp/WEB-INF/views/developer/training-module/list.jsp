@@ -9,9 +9,4 @@
     <acme:list-column code="developer.trainingModule.list.label.draftMode" path="draftMode" width="20%" />
     <acme:list-column code="developer.trainingModule.form.label.project" path="project" width="20%" />
 </acme:list>
-
-<jstl:choose>	 
-    <jstl:when test="${_command == 'create'}">
-        <acme:submit code="manager.project.form.button.create" action="/manager/project/create" />
-    </jstl:when>
-</jstl:choose>
+<acme:button code="developer.training-module.list.button.create" action="/developer/training-module/create"/>
