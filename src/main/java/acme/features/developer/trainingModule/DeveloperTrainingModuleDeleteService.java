@@ -32,6 +32,7 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 
 		super.getResponse().setAuthorised(object.getDeveloper().getUserAccount().getId() == userAccountId && object.getDraftMode());
 	}
+
 	@Override
 	public void load() {
 		TrainingModule object;

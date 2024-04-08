@@ -14,13 +14,15 @@
 	<acme:input-integer code="developer.trainingModule.form.label.total-time" path="totalTime"  readonly="true"/>
 	<acme:input-checkbox code="developer.training-module.form.label.draft-mode" path="draftMode"/>	
 	<acme:input-integer code="developer.trainingModule.form.label.project" path="project"/>
-	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|delete') && draftMode == true}">
+	<jstl:choose>	 
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')  && draftMode == true }">
+			<acme:submit code="developer.training-module.form.button.update" action="/developer/training-module/update"/>
 			<acme:submit code="developer.training-module.form.button.delete" action="/developer/training-module/delete"/>
+			<acme:submit code="developer.training-module.form.button.publish" action="/developer/training-module/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="developer.training-module.form.button.create" action="/developer/training-module/create"/>
-		</jstl:when>		
+		</jstl:when>			
 	</jstl:choose>
 
 </acme:form>
