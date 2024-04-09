@@ -18,15 +18,16 @@
 <acme:form> 
 	<acme:input-textbox code="sponsor.sponsorship.form.label.code" path="code"/>
 	<acme:input-moment code="sponsor.sponsorship.form.label.moment" path="moment"/>	
-	<acme:input-textbox code="sponsor.sponsorship.form.label.duration" path="duration"/>
+	<acme:input-moment code="sponsor.sponsorship.form.label.duration" path="duration"/>
 	<acme:input-select code="sponsor.sponsorship.form.label.type" path="amount" choices ="${types}"/>
 	<acme:input-textbox code="sponsor.sponsorship.form.label.email" path="contact"/>
 	<acme:input-url code="sponsor.sponsorship.form.label.url" path="link" placeholder="sponsor.sponsorship.form.placeholder.link"/>
+	<acme:input-textbox code="sponsor.sponsorship.form.label.project" path="project"/>
 	<acme:input-checkbox code="sponsor.sponsorship.form.label.draftMode" path="draftMode"/>
 
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && draftMode == false}">
-			<acme:button code="sponsor.sponsorship.form.button.duties" action="/sponsor/invoice/list?masterId=${id}"/>			
+			<acme:button code="sponsor.sponsorship.form.button.invoice" action="/sponsor/invoice/list?masterId=${id}"/>			
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:button code="sponsor.sponsorship.form.button.invoice" action="/sponsor/invoice/list?masterId=${id}"/>

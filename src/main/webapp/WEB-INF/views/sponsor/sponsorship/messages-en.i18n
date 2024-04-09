@@ -15,3 +15,27 @@ sponsor.sponsorship.list.label.type = Type
 sponsor.sponsorship.list.label.amount = Amount
 
 sponsor.sponsorship.list.button.create = Create
+
+sponsor.sponsorship.form.title = Sponsorship Details
+
+sponsor.sponsorship.form.label.code = Code:
+sponsor.sponsorship.form.label.moment = Moment: 
+sponsor.sponsorship.form.label.duration = Duration: 
+sponsor.sponsorship.form.label.type = Type:
+sponsor.sponsorship.form.label.email = Email Contact:
+sponsor.sponsorship.form.label.url = Link:
+sponsor.sponsorship.form.label.project = Project:
+sponsor.sponsorship.form.label.draftMode = Draft Mode:
+
+sponsor.sponsorship.form.placeholder.link = http://localhost:8080/Acme-SF
+		
+sponsor.sponsorship.form.button.invoice = Invoices
+sponsor.sponsorship.form.button.update = Update
+sponsor.sponsorship.form.button.delete = Delete
+sponsor.sponsorship.form.button.publish = Publish
+sponsor.sponsorship.form.button.create = Create
+
+sponsor.sponsorship.form.error.duplicated = This reference is taken
+sponsor.sponsorship.form.error.too-close = Deadline must be at least one week ahead
+sponsor.sponsorship.form.error.bad-work-load = The work load is not 100%
+sponsor.sponsorship.form.error.negative-salary = The salary must be positive
