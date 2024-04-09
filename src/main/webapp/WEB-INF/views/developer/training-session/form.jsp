@@ -9,6 +9,6 @@
 	<acme:input-moment code="developer.trainingSession.form.label.endPeriod" path="endPeriod"/>
 	<acme:input-textarea code="developer.trainingSession.form.label.location" path="location"/>
 	<acme:input-textbox code="developer.trainingSession.form.label.instructor" path="instructor"/>
-	<acme:input-email code="developer.trainingSession.form.label.contactEmail" path="contactEmail"/>
+	<acme:input-email code="developer.trainingSession.form.label.email" path="email"/>
 	<acme:input-url code="developer.trainingSession.form.label.link" path="link"/>
 </acme:form>

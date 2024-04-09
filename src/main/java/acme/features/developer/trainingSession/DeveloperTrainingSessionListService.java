@@ -6,8 +6,10 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.trainingModule.TrainingModule;
 import acme.entities.trainingSession.TrainingSession;
 import acme.roles.Developer;
 
@@ -20,16 +22,24 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		TrainingModule object;
+		int tmId;
+
+		tmId = super.getRequest().getData("trainingModuleId", int.class);
+		object = this.repository.findTrainingModuleById(tmId);
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
+
+		super.getResponse().setAuthorised(object.getDeveloper().getUserAccount().getId() == userAccountId);
 	}
 
 	@Override
 	public void load() {
 		Collection<TrainingSession> objects;
-		int trainingModuleId;
+		int tmId;
 
-		trainingModuleId = super.getRequest().getData("trainingModuleId", int.class);
-		objects = this.repository.findAllTrainingSessionsBytrainingModuleId(trainingModuleId);
+		tmId = super.getRequest().getData("trainingModuleId", int.class);
+		objects = this.repository.findAllTrainingSessionsBytrainingModuleId(tmId);
 
 		super.getBuffer().addData(objects);
 	}
@@ -40,9 +50,25 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startPeriod", "endPeriod");
+		dataset = super.unbind(object, "code", "startPeriod", "instructor", "location", "endPeriod", "draftMode");
 
 		super.getResponse().addData(dataset);
+		super.getResponse().addGlobal("trainingModuleId", object.getTrainingModule().getId());
+	}
+
+	@Override
+	public void unbind(final Collection<TrainingSession> objects) {
+		assert objects != null;
+		int moduleId;
+		TrainingModule tm;
+		final boolean showCreate;
+
+		moduleId = super.getRequest().getData("trainingModuleId", int.class);
+		tm = this.repository.findTrainingModuleById(moduleId);
+		showCreate = tm.getDraftMode() && super.getRequest().getPrincipal().hasRole(Developer.class);
+
+		super.getResponse().addGlobal("trainingModuleId", moduleId);
+		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 
 }
