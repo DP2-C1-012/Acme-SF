@@ -8,10 +8,12 @@ developer.trainingSession.list.label.draftMode = Modo Borrador
 developer.trainingSession.list.label.location = Ubicación
 developer.trainingSession.list.label.instructor = Instructor
 
-developer.trainingSession.form.label.code = Código
-developer.trainingSession.form.label.startPeriod = Fecha de Inicio
-developer.trainingSession.form.label.endPeriod = Fecha de Fin
-developer.trainingSession.form.label.location = Ubicación
-developer.trainingSession.form.label.instructor = Instructor
-developer.trainingSession.form.label.email = Correo de Contacto
-developer.trainingSession.form.label.link = Enlace
+developer.training-session.form.label.code = Código
+developer.training-session.form.label.startPeriod = Fecha de Inicio
+developer.training-session.form.label.endPeriod = Fecha de Fin
+developer.training-session.form.label.location = Ubicación
+developer.training-session.form.label.instructor = Instructor
+developer.training-session.form.label.email = Correo de Contacto
+developer.training-session.form.label.link = Enlace
+developer.training-session.form.label.draftMode = Modo Borrador
+

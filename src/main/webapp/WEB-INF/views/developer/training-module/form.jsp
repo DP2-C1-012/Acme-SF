@@ -19,6 +19,7 @@
 			<acme:button code="developer.training-module.form.button.training-session" action="/developer/training-session/list?trainingModuleId=${id}"/>		
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')  && draftMode == true }">
+			<acme:button code="developer.training-module.form.button.training-session" action="/developer/training-session/list?trainingModuleId=${id}"/>
 			<acme:submit code="developer.training-module.form.button.update" action="/developer/training-module/update"/>
 			<acme:submit code="developer.training-module.form.button.delete" action="/developer/training-module/delete"/>
 			<acme:submit code="developer.training-module.form.button.publish" action="/developer/training-module/publish"/>
