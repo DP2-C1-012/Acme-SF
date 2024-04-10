@@ -5,3 +5,21 @@ auditor.codeAudit.list.label.type = Type
 auditor.codeAudit.list.label.mark = Mark
 auditor.codeAudit.form.label.project = Project
 auditor.codeAudit.list.button.create = Create
+
+auditor.code-audit.form.title = Code Audit
+
+auditor.codeAudit.form.label.code = Code
+auditor.codeAudit.form.label.executionDate = Execution date
+auditor.codeAudit.form.label.type = Type
+auditor.codeAudit.form.mark = Mark
+auditor.codeAudit.form.label.correctiveActions = Corrective Actions
+auditor.codeAudit.form.label.optionalLink = Optional Link
+auditor.codeAudit.form.label.project = Project
+auditor.codeAudit.form.button.update = Update
+auditor.codeAudit.form.button.delete = Delete
+auditor.codeAudit.form.button.publish = Publish
+auditor.codeAudit.form.button.create = Create
+
+auditor.codeAudit.form.error.code = Another audit with this code already exists
+auditor.codeAudit.form.error.executionDate = Must be in the past
+auditor.codeAudit.form.error.mark = The mark must be at least C

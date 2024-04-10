@@ -28,14 +28,16 @@ public class AuditorCodeAuditListService extends AbstractService<Auditor, CodeAu
 		Collection<CodeAudit> codeAudits;
 		int id;
 		id = super.getRequest().getPrincipal().getActiveRoleId();
-		codeAudits = this.repository.FindCodeAuditsByAuditorID(id);
+		codeAudits = this.repository.findCodeAuditsByAuditorID(id);
 		super.getBuffer().addData(codeAudits);
 	}
 
 	@Override
 	public void unbind(final CodeAudit object) {
 		Dataset data;
-		data = super.unbind(object, "code", "type", "mark", "project");
+		data = super.unbind(object, "code", "type");
+		data.put("mark", object.getMark().toString());
+		data.put("project", object.getProject().getCode());
 		super.getResponse().addData(data);
 	}
 }

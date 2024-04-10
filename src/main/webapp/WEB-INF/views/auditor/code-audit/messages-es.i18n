@@ -5,3 +5,21 @@ auditor.codeAudit.list.label.type = Tipo
 auditor.codeAudit.list.label.mark = Nota
 auditor.codeAudit.form.label.project = Proyecto
 auditor.codeAudit.list.button.create = Crear
+
+auditor.code-audit.form.title=Auditación de Código
+
+auditor.codeAudit.form.label.code = Código
+auditor.codeAudit.form.label.executionDate = Fecha de ejecución
+auditor.codeAudit.form.label.type = Tipo
+auditor.codeAudit.form.mark = Nota
+auditor.codeAudit.form.label.correctiveActions = Acciones correctivas
+auditor.codeAudit.form.label.optionalLink = Link Opcional
+auditor.codeAudit.form.label.project = Proyecto
+auditor.codeAudit.form.button.update = Actualizar
+auditor.codeAudit.form.button.delete = Eliminar
+auditor.codeAudit.form.button.publish = Publicar
+auditor.codeAudit.form.button.create = Crear
+
+auditor.codeAudit.form.error.code = Otra auditación con este código ya existe
+auditor.codeAudit.form.error.executionDate = Debe estar en el pasado
+auditor.codeAudit.form.error.mark = La nota debe de ser al menos C

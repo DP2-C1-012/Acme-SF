@@ -45,4 +45,6 @@ public class AuditRecord extends AbstractEntity {
 	@NotNull
 	@Valid
 	private CodeAudit			codeAudit;
+
+	private boolean				published;
 }
