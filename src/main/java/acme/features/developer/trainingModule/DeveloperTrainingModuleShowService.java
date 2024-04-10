@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.trainingModule.DifficultyLevel;
 import acme.entities.trainingModule.TrainingModule;
 import acme.roles.Developer;
 
@@ -50,6 +52,10 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "developer");
 		dataset.put("totalTime", object.getTotalTime());
 		dataset.put("project", object.getProject().getId());
+
+		SelectChoices choices;
+		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
+		dataset.put("difficultyLevels", choices);
 
 		super.getResponse().addData(dataset);
 

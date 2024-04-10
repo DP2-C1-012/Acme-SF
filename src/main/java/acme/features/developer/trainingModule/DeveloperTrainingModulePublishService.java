@@ -10,7 +10,9 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
+import acme.entities.trainingModule.DifficultyLevel;
 import acme.entities.trainingModule.TrainingModule;
 import acme.entities.trainingSession.TrainingSession;
 import acme.roles.Developer;
@@ -100,6 +102,10 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link");
+
+		SelectChoices choices;
+		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
+		dataset.put("difficultyLevels", choices);
 
 		super.getResponse().addData(dataset);
 

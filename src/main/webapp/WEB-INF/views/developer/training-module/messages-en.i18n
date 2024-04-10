@@ -13,7 +13,6 @@ developer.training-module.list.title = Listing of Training Modules
 
 developer.trainingModule.list.label.code = Code
 developer.trainingModule.list.label.creationMoment = Creation Moment
-developer.trainingModule.list.label.difficultyLevel = Difficulty Level
 developer.trainingModule.list.label.draftMode = Draft Mode
 
 
@@ -23,7 +22,7 @@ developer.trainingModule.form.label.code = Code
 developer.trainingModule.form.label.creation-moment = Creation Moment
 developer.trainingModule.form.label.update-moment = Update Moment
 developer.trainingModule.form.label.details = Details
-developer.trainingModule.form.label.difficulty-level = Difficulty Level
+developer.trainingModule.form.label.difficultyLevel = Difficulty Level
 developer.trainingModule.form.label.link = Link
 developer.trainingModule.form.label.total-time = Total Time
 developer.trainingModule.form.label.project = Project
