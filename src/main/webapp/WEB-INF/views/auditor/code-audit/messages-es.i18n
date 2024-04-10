@@ -1,0 +1,7 @@
+auditor.code-audit.list.title = Auditaciones de Código
+
+auditor.codeAudit.list.label.code = Código
+auditor.codeAudit.list.label.type = Tipo
+auditor.codeAudit.list.label.mark = Nota
+auditor.codeAudit.form.label.project = Proyecto
+auditor.codeAudit.list.button.create = Crear
