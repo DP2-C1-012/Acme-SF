@@ -20,4 +20,5 @@ developer.training-session.form.label.draftMode = Draft Mode
 developer.training-session.list.button.create = Create
 developer.training-session.form.button.create = Create
 developer.training-session.form.button.update = Update
+developer.training-session.form.button.delete = Delete
 

@@ -20,5 +20,7 @@ developer.training-session.form.label.draftMode = Modo Borrador
 developer.training-session.list.button.create = Crear
 developer.training-session.form.button.create = Crear
 developer.training-session.form.button.update = Actualizar
+developer.training-session.form.button.delete = Eliminar
+
 
 

@@ -13,8 +13,9 @@
 		<acme:input-url code="developer.training-session.form.label.link" path="link"/>
 		<acme:input-checkbox code="developer.training-session.form.label.draftMode" path="draftMode"/>	
 		<jstl:choose>	
-			<jstl:when test="${acme:anyOf(_command, 'show|update')  && draftMode == true }">
+			<jstl:when test="${acme:anyOf(_command, 'show|update|delete')  && draftMode == true }">
 				<acme:submit code="developer.training-session.form.button.update" action="/developer/training-session/update"/>
+				<acme:submit code="developer.training-session.form.button.delete" action="/developer/training-session/delete"/>	
 			</jstl:when> 
 			<jstl:when test="${_command == 'create'}">
 				<acme:submit code="developer.training-session.list.button.create" action="/developer/training-session/create?trainingModuleId=${trainingModuleId}"/>

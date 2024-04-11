@@ -10,14 +10,10 @@ import acme.entities.trainingSession.TrainingSession;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingSessionShowService extends AbstractService<Developer, TrainingSession> {
-
-	// Internal state ---------------------------------------------------------
+public class DeveloperTrainingSessionDeleteService extends AbstractService<Developer, TrainingSession> {
 
 	@Autowired
-	private DeveloperTrainingSessionRepository repository;
-
-	// AbstractService interface ----------------------------------------------
+	protected DeveloperTrainingSessionRepository repository;
 
 
 	@Override
@@ -49,13 +45,27 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 	}
 
 	@Override
+	public void bind(final TrainingSession object) {
+		assert object != null;
+		super.bind(object, "code", "startPeriod", "instructor", "location", "endPeriod", "email", "link", "draftMode");
+	}
+
+	@Override
+	public void validate(final TrainingSession object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final TrainingSession object) {
+		assert object != null;
+		this.repository.delete(object);
+	}
+
+	@Override
 	public void unbind(final TrainingSession object) {
 		assert object != null;
-
 		Dataset dataset;
-
 		dataset = super.unbind(object, "code", "startPeriod", "instructor", "location", "endPeriod", "email", "link", "draftMode");
-
 		super.getResponse().addData(dataset);
 	}
 
