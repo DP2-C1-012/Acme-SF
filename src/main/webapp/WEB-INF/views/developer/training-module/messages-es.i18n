@@ -22,7 +22,7 @@ developer.trainingModule.form.label.code = Código
 developer.trainingModule.form.label.creation-moment = Momento de Creación
 developer.trainingModule.form.label.update-moment = Momento de Actualización
 developer.trainingModule.form.label.details = Detalles
-developer.trainingModule.form.label.difficulty-level = Nivel de Dificultad
+developer.trainingModule.form.label.difficultyLevel = Nivel de Dificultad
 developer.trainingModule.form.label.link = Enlace
 developer.trainingModule.form.label.total-time = Tiempo Total
 developer.trainingModule.form.label.project = Proyecto
@@ -33,3 +33,7 @@ developer.training-module.form.label.difficulty-level = Nivel de Dificultad
 
 developer.training-module.form.button.create = Crear
 developer.training-module.list.button.create = Crear
+developer.training-module.form.button.update = Actualizar
+developer.training-module.form.button.publish = Publicar
+developer.training-module.form.button.delete = Eliminar
+developer.training-module.form.button.training-session = Sesiones de Entrenamiento
