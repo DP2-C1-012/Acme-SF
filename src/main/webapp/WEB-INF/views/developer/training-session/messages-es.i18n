@@ -21,6 +21,7 @@ developer.training-session.list.button.create = Crear
 developer.training-session.form.button.create = Crear
 developer.training-session.form.button.update = Actualizar
 developer.training-session.form.button.delete = Eliminar
+developer.training-session.form.button.publish = Publicar
 
 
 

@@ -10,14 +10,10 @@ import acme.entities.trainingSession.TrainingSession;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingSessionShowService extends AbstractService<Developer, TrainingSession> {
-
-	// Internal state ---------------------------------------------------------
+public class DeveloperTrainingSessionPublishService extends AbstractService<Developer, TrainingSession> {
 
 	@Autowired
 	private DeveloperTrainingSessionRepository repository;
-
-	// AbstractService interface ----------------------------------------------
 
 
 	@Override
@@ -31,7 +27,7 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 		sessionId = super.getRequest().getData("id", int.class);
 		session = this.repository.findTrainingSessionById(sessionId);
 		developer = session == null ? null : session.getTrainingModule().getDeveloper();
-		status = session != null && super.getRequest().getPrincipal().hasRole(developer);
+		status = session != null && session.getDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
 
 		super.getResponse().setAuthorised(status);
 
@@ -49,14 +45,33 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 	}
 
 	@Override
-	public void unbind(final TrainingSession object) {
+	public void bind(final TrainingSession object) {
 		assert object != null;
 
-		Dataset dataset;
-
-		dataset = super.unbind(object, "code", "startPeriod", "instructor", "location", "endPeriod", "email", "link", "draftMode");
-
-		super.getResponse().addData(dataset);
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode");
 	}
 
+	@Override
+	public void validate(final TrainingSession object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final TrainingSession object) {
+		assert object != null;
+
+		object.setDraftMode(false);
+		this.repository.save(object);
+	}
+
+	@Override
+	public void unbind(final TrainingSession object) {
+		assert object != null;
+		Dataset dataset;
+
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode");
+
+		super.getResponse().addData(dataset);
+
+	}
 }
