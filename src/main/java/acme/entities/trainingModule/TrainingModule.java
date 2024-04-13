@@ -57,6 +57,10 @@ public class TrainingModule extends AbstractEntity {
 
 	private Boolean				draftMode;
 
+	// Derived attributes -----------------------------------------------------
+
+	private Integer				totalTime;
+
 
 	@Transient
 	public Integer getTotalTime() {

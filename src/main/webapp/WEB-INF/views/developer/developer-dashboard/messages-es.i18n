@@ -1,0 +1,9 @@
+developer.developer-dashboard.form.title = Panel de Desarrollador
+
+developer.dashboard.form.title.general-indicators = Indicadores Generales
+
+developer.dashboard.form.label.num-ts-link = Número de sesiones de entrenamiento con enlace
+developer.dashboard.form.label.avg-tm-time = Tiempo promedio de módulo de entrenamiento
+developer.dashboard.form.label.min-tm-time = Tiempo mínimo de módulo de entrenamiento
+developer.dashboard.form.label.max-tm-time = Tiempo máximo de módulo de entrenamiento
+developer.dashboard.form.label.num-tm-developer = Número de módulos de entrenamiento del desarrollador
