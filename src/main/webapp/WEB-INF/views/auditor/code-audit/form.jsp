@@ -22,5 +22,8 @@
 			<acme:submit code="auditor.codeAudit.form.button.create" action="/auditor/code-audit/create"/>
 		</jstl:when>			
 	</jstl:choose>
+	<jstl:if test="${!(_command == 'create')}">
+		<acme:button code="auditor.codeAudit.form.button.list.auditRecords" action="/auditor/audit-record/list-of-code-audit?id=${id}"/>
+	</jstl:if>
 
 </acme:form>
