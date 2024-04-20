@@ -19,6 +19,7 @@ auditor.codeAudit.form.button.update = Actualizar
 auditor.codeAudit.form.button.delete = Eliminar
 auditor.codeAudit.form.button.publish = Publicar
 auditor.codeAudit.form.button.create = Crear
+auditor.codeAudit.form.button.list.auditRecords = Ver registros
 
 auditor.codeAudit.form.error.code = Otra auditación con este código ya existe
 auditor.codeAudit.form.error.executionDate = Debe estar en el pasado

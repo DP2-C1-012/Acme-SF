@@ -49,6 +49,7 @@
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
 			<acme:menu-suboption code="master.menu.auditor.codeAudit" action="/auditor/code-audit/list"/>
+			<acme:menu-suboption code="master.menu.auditor.auditRecord" action="/auditor/audit-record/create"/>
 		</acme:menu-option>
 	</acme:menu-left>
 

@@ -4,6 +4,7 @@ package acme.features.auditor.codeAudit;
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.auditRecord.AuditRecord;
@@ -11,6 +12,7 @@ import acme.entities.codeAudit.CodeAudit;
 import acme.entities.projects.Project;
 import acme.roles.Auditor;
 
+@Repository
 public interface AuditorCodeAuditRepository extends AbstractRepository {
 
 	@Query("SELECT ca FROM CodeAudit ca WHERE ca.auditor.id = :id")
