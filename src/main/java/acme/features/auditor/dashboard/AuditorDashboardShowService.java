@@ -67,7 +67,8 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 				maxARinCA = entry.getValue().intValue();
 			total = total + entry.getValue().intValue();
 		}
-		avgARinCA = (double) total / k;
+		minARinCA = minMaxCA.size() > 0 ? minARinCA : 0;
+		avgARinCA = k > 0 ? (double) total / k : 0.;
 		double sumatory = 0.;
 		for (Integer num : numsAR)
 			sumatory = sumatory + Math.pow(num - avgARinCA, 2);
@@ -80,11 +81,14 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 			minDur = minDur > dur ? dur : minDur;
 			maxDur = maxDur < dur ? dur : maxDur;
 		}
-		avgDur = totalDur / duraciones.size();
+		avgDur = duraciones.size() > 0 ? totalDur / duraciones.size() : 0.;
+		minDur = duraciones.size() > 0 ? minDur : 0.;
+
 		double sumDur = duraciones.stream().map(d -> Math.pow(d - avgDur, 2)).collect(Collectors.summingDouble(Double::doubleValue));
 		deviationAR = Math.sqrt(sumatory / k);
 		devDur = Math.sqrt(sumDur / duraciones.size());
-
+		deviationAR = k > 0 ? deviationAR : 0;
+		devDur = duraciones.size() > 0 ? devDur : 0;
 		dahsbaord.setDeviationNumAuditRecords(deviationAR);
 		dahsbaord.setAverageNumAuditRecords(avgARinCA);
 		dahsbaord.setMaxAuditRecords(maxARinCA);
