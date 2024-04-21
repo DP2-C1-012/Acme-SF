@@ -54,6 +54,7 @@ master.menu.developer.dashboard = Panel de Desarrollador
 master.menu.auditor = Auditor
 master.menu.auditor.codeAudit = Listar mis auditaciones
 master.menu.auditor.auditRecord = Crear un registro
+master.menu.auditor.dashboard = Panel de control
 
 # master.menu.user-account ####################################################
 
