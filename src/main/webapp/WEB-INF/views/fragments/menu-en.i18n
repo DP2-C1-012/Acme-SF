@@ -57,6 +57,11 @@ master.menu.auditor = Auditor
 master.menu.auditor.codeAudit = List my audits
 master.menu.auditor.auditRecord = Create a record
 
+# master.menu.client #############################################
+
+master.menu.client = Client
+master.menu.client.contract = Contract
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
