@@ -20,3 +20,4 @@ client.contract.form.label.draftMode = Modo borrador
 client.contract.list.button.create = Crear Contrato
 
 client.contract.form.button.create = Crear
+client.contract.form.button.delete = Eliminar
