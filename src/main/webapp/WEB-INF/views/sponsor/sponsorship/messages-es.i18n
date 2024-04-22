@@ -19,14 +19,18 @@ sponsor.sponsorship.list.button.create = Crear
 sponsor.sponsorship.form.title = Detalles del patrocinador 
 sponsor.sponsorship.form.label.code = Código:
 sponsor.sponsorship.form.label.moment = Momento: 
-sponsor.sponsorship.form.label.duration = Duración: 
+sponsor.sponsorship.form.label.startDate = Fecha de inicio:
+sponsor.sponsorship.form.label.endDate = Fecha de fin:
+sponsor.sponsorship.form.label.amount= Cantidad:
 sponsor.sponsorship.form.label.type = Tipo:
 sponsor.sponsorship.form.label.email = Correo de contacto:
 sponsor.sponsorship.form.label.url = Enlace:
 sponsor.sponsorship.form.label.project = Proyecto:
 sponsor.sponsorship.form.label.draftMode = Draft Mode:
 
+sponsor.sponsorship.form.placeholder.contact = example@us.es
 sponsor.sponsorship.form.placeholder.link = http://localhost:8080/Acme-SF
+
 		
 sponsor.sponsorship.form.button.invoice = Facturas
 sponsor.sponsorship.form.button.update = Actualizar

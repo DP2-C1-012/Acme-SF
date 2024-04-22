@@ -1,14 +1,10 @@
 
 package acme.features.sponsor.sponsorship;
 
-import java.time.Duration;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.sponsorships.Sponsorship;
@@ -58,26 +54,9 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 		SelectChoices choices;
 		Dataset dataset;
 
-		Date start = object.getStartDate();
-		Date end = object.getEndDate();
-		final Duration duration = MomentHelper.computeDuration(start, end);
-
-		long days = duration.toDaysPart();
-		long hours = duration.toHoursPart();
-		long minutes = duration.toMinutesPart();
-		StringBuilder sb = new StringBuilder();
-
-		if (days > 0)
-			sb.append(days).append("d ");
-		if (hours > 0)
-			sb.append(hours).append("h ");
-		sb.append(minutes).append("m");
-		sb.toString();
-
 		choices = SelectChoices.from(SponsorshipType.class, object.getType());
 		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contact", "link", "draftMode", "sponsor", "project");
 		dataset.put("types", choices);
-		dataset.put("duration", sb);
 		super.getResponse().addData(dataset);
 	}
 }

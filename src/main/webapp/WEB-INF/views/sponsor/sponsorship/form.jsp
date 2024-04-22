@@ -18,9 +18,11 @@
 <acme:form> 
 	<acme:input-textbox code="sponsor.sponsorship.form.label.code" path="code"/>
 	<acme:input-moment code="sponsor.sponsorship.form.label.moment" path="moment"/>	
-	<acme:input-moment code="sponsor.sponsorship.form.label.duration" path="duration"/>
-	<acme:input-select code="sponsor.sponsorship.form.label.type" path="amount" choices ="${types}"/>
-	<acme:input-textbox code="sponsor.sponsorship.form.label.email" path="contact"/>
+	<acme:input-moment code="sponsor.sponsorship.form.label.startDate" path="startDate"/>
+	<acme:input-moment code="sponsor.sponsorship.form.label.endDate" path="endDate"/>
+	<acme:input-select code="sponsor.sponsorship.form.label.type" path="type" choices ="${types}"/>
+	<acme:input-money code="sponsor.sponsorship.form.label.amount" path="amount"/>
+	<acme:input-textbox code="sponsor.sponsorship.form.label.email" path="contact" placeholder="sponsor.sponsorship.form.placeholder.contact" />
 	<acme:input-url code="sponsor.sponsorship.form.label.url" path="link" placeholder="sponsor.sponsorship.form.placeholder.link"/>
 	<acme:input-textbox code="sponsor.sponsorship.form.label.project" path="project"/>
 	<acme:input-checkbox code="sponsor.sponsorship.form.label.draftMode" path="draftMode"/>

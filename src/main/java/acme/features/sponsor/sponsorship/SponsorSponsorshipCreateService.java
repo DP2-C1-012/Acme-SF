@@ -65,17 +65,13 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		if (!super.getBuffer().getErrors().hasErrors("amount"))
 			super.state(SponsorSponsorshipCreateService.validateMoneyCurrency(object.getAmount()), "amount", "sponsor.sponsorship.form.error.amount");
 		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
-			super.state(MomentHelper.isAfterOrEqual(object.getStartDate(), MomentHelper.getCurrentMoment()), "startPeriod", "sponsor.sponsorship.form.error.start-period");
-			super.state(SponsorSponsorshipCreateService.validateDate(object.getStartDate()), "startPeriod", "sponsor.sponsorship.form.error.dates");
+			super.state(MomentHelper.isAfterOrEqual(object.getStartDate(), MomentHelper.getCurrentMoment()), "startDate", "sponsor.sponsorship.form.error.start-date");
+			super.state(SponsorSponsorshipCreateService.validateDate(object.getStartDate()), "startDate", "sponsor.sponsorship.form.error.dates");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
-			Date minimumEndDate;
-			super.state(SponsorSponsorshipCreateService.validateDate(object.getEndDate()), "endPeriod", "sponsor.sponsorship.form.error.dates");
-			if (object.getStartDate() != null) {
-				minimumEndDate = MomentHelper.deltaFromMoment(object.getStartDate(), 30, ChronoUnit.DAYS);
-				super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimumEndDate), "endPeriod", "sponsor.sponsorship.form.error.end-period");
-
-			}
+			super.state(SponsorSponsorshipCreateService.validateDate(object.getEndDate()), "endDate", "sponsor.sponsorship.form.error.dates");
+			if (object.getStartDate() != null)
+				super.state(SponsorSponsorshipCreateService.validateMoment(object.getStartDate(), object.getEndDate()), "endDate", "sponsor.sponsorship.form.error.end-date");
 		}
 	}
 
@@ -89,7 +85,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "amount", "moment", "startPeriod", "endPeriod", "type", "email", "link", "draftMode", "sponsor");
+		dataset = super.unbind(object, "code", "amount", "moment", "startDate", "endDate", "type", "contact", "link", "draftMode", "sponsor");
 		final SelectChoices choices = new SelectChoices();
 		Collection<Project> projects;
 		projects = this.repository.findAllPublishedProjects();
@@ -107,15 +103,19 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	}
 
 	public static boolean validateMoneyQuantity(final Money value) {
-		//Validate here quantity 0 y 100000
-		return true;
+		return value.getAmount() >= 0 && value.getAmount() <= 1000000;
 	}
 	public static boolean validateMoneyCurrency(final Money value) {
 		//Validate here currency
 		return true;
 	}
 	public static boolean validateDate(final Date value) {
-		//Validate here 
+		//Validate here date
 		return true;
+	}
+	public static boolean validateMoment(final Date startDate, final Date endDate) {
+		//Validate here moment 1 month at least
+		Date minimum = MomentHelper.deltaFromMoment(startDate, 30, ChronoUnit.DAYS);
+		return MomentHelper.isAfterOrEqual(endDate, minimum);
 	}
 }

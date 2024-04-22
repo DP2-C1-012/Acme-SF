@@ -10,8 +10,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -49,18 +47,16 @@ public class Invoice extends AbstractEntity {
 	private Date				dueDate;
 
 	@NotNull
-	@Min(value = 0)
-	@Max(value = 1000000)
 	private Money				quantity;
 
 	@NotNull
-	@Min(value = 0)
-	@Max(value = 1000000)
 	private Money				tax;
 
 	@URL
 	@Length(max = 255)
 	private String				link;
+
+	protected boolean			draftMode;
 
 	// Derived attributes -----------------------------------------------------
 

@@ -20,13 +20,16 @@ sponsor.sponsorship.form.title = Sponsorship Details
 
 sponsor.sponsorship.form.label.code = Code:
 sponsor.sponsorship.form.label.moment = Moment: 
-sponsor.sponsorship.form.label.duration = Duration: 
+sponsor.sponsorship.form.label.startDate = Start Date: 
+sponsor.sponsorship.form.label.endDate = End Date:
 sponsor.sponsorship.form.label.type = Type:
+sponsor.sponsorship.form.label.amount = Amount:
 sponsor.sponsorship.form.label.email = Email Contact:
 sponsor.sponsorship.form.label.url = Link:
 sponsor.sponsorship.form.label.project = Project:
 sponsor.sponsorship.form.label.draftMode = Draft Mode:
 
+sponsor.sponsorship.form.placeholder.contact = example@us.es
 sponsor.sponsorship.form.placeholder.link = http://localhost:8080/Acme-SF
 		
 sponsor.sponsorship.form.button.invoice = Invoices
