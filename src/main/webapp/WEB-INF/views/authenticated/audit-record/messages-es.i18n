@@ -1,0 +1,23 @@
+authenticated.auditRecord.list.label.code = Código
+authenticated.auditRecord.list.label.periodStart = Comienzo de período 
+authenticated.auditRecord.list.label.periodEnd = Fin de Período
+authenticated.auditRecord.list.label.mark = Nota
+authenticated.audit-record.list.title = Registros
+
+authenticated.auditRecord.list.button.create = Crear
+
+authenticated.audit-record.form.title = Registro
+authenticated.auditRecord.form.label.code = Código
+authenticated.auditRecord.form.label.periodStart = Comienzo de período
+authenticated.auditRecord.form.label.periodEnd = Fin de período
+authenticated.auditRecord.form.mark = Nota
+authenticated.auditRecord.form.codeAudit = Auditación
+authenticated.auditRecord.form.label.optionalLink = Enlace (Opcional) 
+authenticated.auditRecord.form.button.update = Actualizar
+authenticated.auditRecord.form.button.delete = Eliminar
+authenticated.auditRecord.form.button.create = Crear
+
+authenticated.auditRecord.form.error.code = El código ya está en uso
+authenticated.auditRecord.form.error.periodStart = La fecha de inicio del período debe ser después de la fecha de ejecución de la auditación
+authenticated.auditRecord.form.error.periodEnd = Debería ser después del comienzo del perído
+authenticated.auditRecord.form.error.periodEnd.length = Debería ser al menos una hora

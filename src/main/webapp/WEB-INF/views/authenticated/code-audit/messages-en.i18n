@@ -1,0 +1,26 @@
+authenticated.code-audit.list.title = Code Audits
+
+authenticated.codeAudit.list.label.code = Code
+authenticated.codeAudit.list.label.type = Type
+authenticated.codeAudit.list.label.mark = Mark
+authenticated.codeAudit.form.label.project = Project
+authenticated.codeAudit.list.button.create = Create
+
+authenticated.code-audit.form.title = Code Audit
+
+authenticated.codeAudit.form.label.code = Code
+authenticated.codeAudit.form.label.executionDate = Execution date
+authenticated.codeAudit.form.label.type = Type
+authenticated.codeAudit.form.mark = Mark
+authenticated.codeAudit.form.label.correctiveActions = Corrective Actions
+authenticated.codeAudit.form.label.optionalLink = Optional Link
+authenticated.codeAudit.form.label.project = Project
+authenticated.codeAudit.form.button.update = Update
+authenticated.codeAudit.form.button.delete = Delete
+authenticated.codeAudit.form.button.publish = Publish
+authenticated.codeAudit.form.button.create = Create
+authenticated.codeAudit.form.button.list.auditRecords = List records
+
+authenticated.codeAudit.form.error.code = Another audit with this code already exists
+authenticated.codeAudit.form.error.executionDate = Must be in the past
+authenticated.codeAudit.form.error.mark = The mark must be at least C
