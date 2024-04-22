@@ -14,13 +14,13 @@ import acme.roles.Sponsor;
 public class SponsorInvoiceController extends AbstractController<Sponsor, Invoice> {
 
 	@Autowired
-	protected SponsorInvoiceListService	listService;
+	protected SponsorInvoiceListService		listService;
 
 	@Autowired
-	protected SponsorInvoiceShowService	showService;
-	//
-	//	@Autowired
-	//	protected SponsorInvoiceCreateService	createService;
+	protected SponsorInvoiceShowService		showService;
+
+	@Autowired
+	protected SponsorInvoiceCreateService	createService;
 	//
 	//	@Autowired
 	//	protected SponsorInvoiceUpdateService	updateService;
@@ -36,7 +36,7 @@ public class SponsorInvoiceController extends AbstractController<Sponsor, Invoic
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
-		//		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("create", this.createService);
 		//		super.addBasicCommand("delete", this.deleteService);
 		//		super.addBasicCommand("update", this.updateService);
 		//		super.addCustomCommand("publish", "update", this.publishService);

@@ -16,13 +16,13 @@ sponsor.invoice.form.label.totalAmount = Cantidad total
 sponsor.invoice.form.error.noInvoices = Este patrocinio no tiene facturas
 sponsor.invoice.form.error.invoicesnp = Algunas facturas no están publicadas
 
-sponsor.sponsorship.form.error.spam = El texto está considerado spam
+sponsor.invoice.form.error.spam = El texto está considerado spam
 
 sponsor.invoice.form.error.code = Este código ya existe
 sponsor.invoice.form.error.cost = El coste debe estar entre 0 y 1000000
 sponsor.invoice.form.error.cost2 = La divisa no está aceptada por el sistema
-sponsor.invoice.form.error.end-period= La fecha de fin es incorrecta
-sponsor.invoice.form.error.start-period= La fecha de inicio es incorrecta
+sponsor.invoice.form.error.due-date-date= La fecha de pago es incorrecta
+sponsor.invoice.form.error.registration-time-date= La fecha de registro es incorrecta
 validation.invoice.code = El código debe tener la siguiente estructura: IN-1234-1203
 
 sponsor.invoice.create = Crear

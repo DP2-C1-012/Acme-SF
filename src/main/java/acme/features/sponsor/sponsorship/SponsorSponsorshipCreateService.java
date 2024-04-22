@@ -56,22 +56,22 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void validate(final Sponsorship object) {
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("amount"))
-			super.state(SponsorSponsorshipCreateService.validateMoneyQuantity(object.getAmount()), "amount", "sponsor.sponsorship.form.error.amount");
+			super.state(this.validateMoneyQuantity(object.getAmount()), "amount", "sponsor.sponsorship.form.error.amount");
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Sponsorship existing;
 			existing = this.repository.findOneSponsorshipByCode(object.getCode());
 			super.state(existing == null, "code", "sponsor.sponsorship.form.error.code");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("amount"))
-			super.state(SponsorSponsorshipCreateService.validateMoneyCurrency(object.getAmount()), "amount", "sponsor.sponsorship.form.error.amount");
+			super.state(this.validateMoneyCurrency(object.getAmount()), "amount", "sponsor.sponsorship.form.error.amount");
 		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
 			super.state(MomentHelper.isAfterOrEqual(object.getStartDate(), MomentHelper.getCurrentMoment()), "startDate", "sponsor.sponsorship.form.error.start-date");
-			super.state(SponsorSponsorshipCreateService.validateDate(object.getStartDate()), "startDate", "sponsor.sponsorship.form.error.dates");
+			super.state(this.validateDate(object.getStartDate()), "startDate", "sponsor.sponsorship.form.error.dates");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
-			super.state(SponsorSponsorshipCreateService.validateDate(object.getEndDate()), "endDate", "sponsor.sponsorship.form.error.dates");
+			super.state(this.validateDate(object.getEndDate()), "endDate", "sponsor.sponsorship.form.error.dates");
 			if (object.getStartDate() != null)
-				super.state(SponsorSponsorshipCreateService.validateMoment(object.getStartDate(), object.getEndDate()), "endDate", "sponsor.sponsorship.form.error.end-date");
+				super.state(this.validateMoment(object.getStartDate(), object.getEndDate()), "endDate", "sponsor.sponsorship.form.error.end-date");
 		}
 	}
 
@@ -102,18 +102,18 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		super.getResponse().addData(dataset);
 	}
 
-	public static boolean validateMoneyQuantity(final Money value) {
+	public boolean validateMoneyQuantity(final Money value) {
 		return value.getAmount() >= 0 && value.getAmount() <= 1000000;
 	}
-	public static boolean validateMoneyCurrency(final Money value) {
+	public boolean validateMoneyCurrency(final Money value) {
 		//Validate here currency
 		return true;
 	}
-	public static boolean validateDate(final Date value) {
+	public boolean validateDate(final Date value) {
 		//Validate here date
 		return true;
 	}
-	public static boolean validateMoment(final Date startDate, final Date endDate) {
+	public boolean validateMoment(final Date startDate, final Date endDate) {
 		//Validate here moment 1 month at least
 		Date minimum = MomentHelper.deltaFromMoment(startDate, 30, ChronoUnit.DAYS);
 		return MomentHelper.isAfterOrEqual(endDate, minimum);

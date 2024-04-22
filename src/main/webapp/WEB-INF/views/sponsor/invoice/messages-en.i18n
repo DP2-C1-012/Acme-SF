@@ -25,6 +25,7 @@ sponsor.invoice.form.error.end-period= The end period is incorrect
 sponsor.invoice.form.error.start-period= The start period is incorrect
 validation.invoice.code = The code must have the following structure: IN-1234-1203
 
+sponsor.invoice.create = Create
 sponsor.invoice.form.button.delete = Delete
 sponsor.invoice.form.button.update = Update
 sponsor.invoice.form.button.publish = Publish
