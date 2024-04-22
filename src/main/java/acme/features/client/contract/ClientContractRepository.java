@@ -26,4 +26,7 @@ public interface ClientContractRepository extends AbstractRepository {
 	@Query("select pr from Project pr where pr.id = :id")
 	Project getProjectById(int id);
 
+	@Query("select p from Project p where p.draftMode = false")
+	Collection<Project> getPublishedProjects();
+
 }

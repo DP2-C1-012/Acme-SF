@@ -60,7 +60,7 @@ master.menu.auditor.auditRecord = Create a record
 # master.menu.client #############################################
 
 master.menu.client = Client
-master.menu.client.contract = Contract
+master.menu.client.contract = Contracts
 
 # master.menu.user-account ####################################################
 

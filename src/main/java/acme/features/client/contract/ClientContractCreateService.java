@@ -1,11 +1,14 @@
 
 package acme.features.client.contract;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
 import acme.entities.projects.Project;
 import acme.roles.Client;
@@ -62,10 +65,17 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 	@Override
 	public void unbind(final Contract object) {
 		assert object != null;
+
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "moment", "provider", "customer", "goals", "budget");
+		final SelectChoices choices = new SelectChoices();
+		Collection<Project> projects;
+		projects = this.repository.getPublishedProjects();
+		for (final Project p : projects)
+			choices.add(Integer.toString(p.getId()), p.getCode() + " - " + p.getTitle(), false);
 
+		dataset.put("projects", choices);
 		super.getResponse().addData(dataset);
 
 	}

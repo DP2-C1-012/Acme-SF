@@ -58,7 +58,7 @@ master.menu.auditor.auditRecord = Crear un registro
 # master.menu.client #############################################
 
 master.menu.client = Cliente
-master.menu.client.contract = Contrato
+master.menu.client.contract = Contratos
 
 # master.menu.user-account ####################################################
 
