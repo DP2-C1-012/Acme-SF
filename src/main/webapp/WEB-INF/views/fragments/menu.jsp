@@ -46,6 +46,9 @@
 			<acme:menu-suboption code="master.menu.auditor.auditRecord" action="/auditor/audit-record/create"/>
 			<acme:menu-suboption code="master.menu.auditor.dashboard" action="/auditor/auditor-dashboard/show"/>
 		</acme:menu-option>
+		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
+			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list"/>
+		</acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>
