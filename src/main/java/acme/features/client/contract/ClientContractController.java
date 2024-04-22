@@ -14,16 +14,22 @@ import acme.roles.Client;
 public class ClientContractController extends AbstractController<Client, Contract> {
 
 	@Autowired
-	private ClientContractListService	listService;
+	private ClientContractListService		listService;
 
 	@Autowired
-	private ClientContractShowService	showService;
+	private ClientContractShowService		showService;
 
 	@Autowired
-	private ClientContractCreateService	createService;
+	private ClientContractCreateService		createService;
 
 	@Autowired
-	private ClientContractDeleteService	deleteService;
+	private ClientContractDeleteService		deleteService;
+
+	@Autowired
+	private ClientContractUpdateService		updateService;
+
+	@Autowired
+	private ClientContractPublishService	publishService;
 
 
 	@PostConstruct
@@ -32,5 +38,7 @@ public class ClientContractController extends AbstractController<Client, Contrac
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("update", this.updateService);
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
 }
