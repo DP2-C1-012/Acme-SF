@@ -7,41 +7,42 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.invoices.Invoice;
-import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Sponsor;
 
 @Service
-public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoice> {
+public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoice> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	protected SponsorInvoiceRepository repository;
 
-	// AbstractService interface ----------------------------------------------
+	// AbstractService interface -------------------------------------
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Invoice object;
+		int id;
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findInvoiceById(id);
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userId = principal.getAccountId();
+		super.getResponse().setAuthorised(object.getSponsorship().getSponsor().getUserAccount().getId() == userId && object.isDraftMode());
 	}
 
 	@Override
 	public void load() {
 		Invoice object;
-		int sponsorshipId;
-		Sponsorship sponsorship;
-		sponsorshipId = super.getRequest().getData("masterId", int.class);
-		super.getResponse().addGlobal("masterId", sponsorshipId);
-		sponsorship = this.repository.findSponsorshipById(sponsorshipId);
-		object = new Invoice();
-		object.setDraftMode(true);
-		object.setSponsorship(sponsorship);
+		int id;
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findInvoiceById(id);
 		super.getBuffer().addData(object);
 	}
 
@@ -57,11 +58,15 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		if (!super.getBuffer().getErrors().hasErrors("quantity"))
 			super.state(this.validateMoneyQuantity(object.getQuantity()), "quantity", "sponsor.invoice.form.error.quantity");
 		if (!super.getBuffer().getErrors().hasErrors("tax"))
-			super.state(this.validateMoneyQuantity(object.getQuantity()), "tax", "sponsor.invoice.form.error.tax");
+			super.state(this.validateMoneyQuantity(object.getTax()), "tax", "sponsor.invoice.form.error.tax");
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Invoice existing;
-			existing = this.repository.findInvoiceByCode(object.getCode());
-			super.state(existing == null, "code", "sponsor.invoice.form.error.code");
+			Invoice inv;
+			inv = this.repository.findInvoiceByCode(object.getCode());
+			final Invoice inv2 = object.getCode().equals("") || object.getCode() == null ? null : this.repository.findInvoiceById(object.getId());
+			if (inv2 != null)
+				super.state(inv2.equals(inv), "code", "sponsor.invoice.form.error.code");
+			else
+				super.state(inv == null, "code", "sponsor.invoice.form.error.code");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("registrationTime")) {
 			super.state(this.validateFuture(object.getRegistrationTime()), "registrationTime", "sponsor.invoice.form.error.registration-time-past");
@@ -76,7 +81,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 
 	@Override
 	public void perform(final Invoice object) {
-		assert object != null;
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
@@ -84,7 +89,8 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void unbind(final Invoice object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode", "sponsorship");
+		dataset.put("totalAmount", object.totalAmount());
 		super.getResponse().addData(dataset);
 	}
 

@@ -4,6 +4,7 @@ package acme.features.sponsor.sponsorship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
@@ -13,27 +14,22 @@ import acme.roles.Sponsor;
 
 @Service
 public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Sponsorship> {
-	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorshipRepository repository;
+	protected SponsorSponsorshipRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int masterId;
-		Sponsorship sponsorship;
-		Sponsor sponsor;
-
-		masterId = super.getRequest().getData("id", int.class);
-		sponsorship = this.repository.findOneSponsorshipById(masterId);
-		sponsor = sponsorship.getSponsor();
-		status = super.getRequest().getPrincipal().getAccountId() == sponsor.getUserAccount().getId();
-
-		super.getResponse().setAuthorised(status);
+		Sponsorship object;
+		int id;
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneSponsorshipById(id);
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userId = principal.getAccountId();
+		super.getResponse().setAuthorised(object.getSponsor().getUserAccount().getId() == userId);
 	}
 
 	@Override
@@ -50,13 +46,12 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 	@Override
 	public void unbind(final Sponsorship object) {
 		assert object != null;
-
-		SelectChoices choices;
 		Dataset dataset;
-
-		choices = SelectChoices.from(SponsorshipType.class, object.getType());
-		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contact", "link", "draftMode", "sponsor", "project");
-		dataset.put("types", choices);
+		dataset = super.unbind(object, "id", "code", "moment", "startDate", "endDate", "amount", "type", "contact", "link", "draftMode", "sponsor");
+		SelectChoices types = SelectChoices.from(SponsorshipType.class, object.getType());
+		dataset.put("project", object.getProject().getCode());
+		dataset.put("types", types);
+		//		dataset.put("money", this.changeCurrency(object.getAmount()));
 		super.getResponse().addData(dataset);
 	}
 }
