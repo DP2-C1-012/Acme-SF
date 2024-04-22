@@ -14,4 +14,9 @@ contract.form.label.provider = Nombre del Proveedor
 contract.form.label.customer = Nombre del Cliente
 contract.form.label.goals = Objetivos
 contract.form.label.budget = Presupuesto
+contract.form.label.project = Proyecto
 contract.form.label.draftMode = Modo borrador
+
+client.contract.list.button.create = Crear Contrato
+
+client.contract.form.button.create = Crear

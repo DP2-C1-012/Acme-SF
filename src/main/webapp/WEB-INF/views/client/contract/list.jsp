@@ -9,3 +9,6 @@
     <acme:list-column code="contract.list.label.goals" path="goals" width="20%"/>
     <acme:list-column code="contract.list.label.budget" path="budget" width="20%"/>
 </acme:list>
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="client.contract.list.button.create" action="/client/contract/create"/>
+</jstl:if>

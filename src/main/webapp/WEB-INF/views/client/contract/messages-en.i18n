@@ -14,4 +14,9 @@ contract.form.label.provider = Provider Name
 contract.form.label.customer = Customer Name
 contract.form.label.goals = Goals
 contract.form.label.budget = Budget
+contract.form.label.project = Project
 contract.form.label.draftMode = Draft Mode
+
+client.contract.list.button.create = Create
+
+client.contract.form.button.create = Create
