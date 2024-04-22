@@ -9,7 +9,7 @@ code-audit-07,Z-996,2022/07/29 23:59,Static,I want to cry,A_PLUS,https://yourmom
 code-audit-08,ZZZ-995,2022/07/29 23:59,Static,I want to cry,A,https://yourmom.zip/,true,auditor-02,project-07
 code-audit-09,ZZZ-994,2022/07/29 23:59,Static,I want to cry,B,https://yourmom.zip/,true,auditor-02,project-07
 code-audit-10,ZZZ-993,2022/07/29 23:59,Static,I want to cry,C,https://yourmom.zip/,true,auditor-02,project-07
-code-audit-11,ZZZ-992,2022/07/29 23:59,Static,I want to cry,F,https://yourmom.zip/,true,auditor-02,project-07
+code-audit-11,ZZZ-992,2022/07/29 23:59,Static,I want to cry,F,https://yourmom.zip/,false,auditor-02,project-07
 code-audit-12,ZZZ-991,2022/07/29 23:59,Static,I want to cry,F_MINUS,https://yourmom.zip/,false,auditor-02,project-07
 code-audit-13,ZZZ-990,2022/07/29 23:59,Static,I,F_MINUS,https://yourmom.zip/,false,auditor-02,project-07
 code-audit-14,ZZZ-989,2022/07/29 23:59,Static,"want to cry so badly my balls hurt and my head is spinning, maybe next time I just write a haiku tho",F_MINUS,https://yourmom.zip/,false,auditor-02,project-07
