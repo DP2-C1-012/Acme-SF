@@ -1,6 +1,9 @@
 
 package acme.features.sponsor.invoice;
 
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
@@ -13,6 +16,7 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.invoices.Invoice;
+import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Sponsor;
 
 @Service
@@ -55,10 +59,17 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	@Override
 	public void validate(final Invoice object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(this.validateMoneyQuantity(object.getQuantity()), "quantity", "sponsor.invoice.form.error.quantity");
-		if (!super.getBuffer().getErrors().hasErrors("tax"))
-			super.state(this.validateMoneyQuantity(object.getTax()), "tax", "sponsor.invoice.form.error.tax");
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+			super.state(this.validateMoneyQuantity(object.getQuantity()), "quantity", "sponsor.invoice.form.error.amount");
+			super.state(this.validateMoneyQuantity(object.getQuantity()), "quantity", "sponsor.invoice.form.error.currency");
+			super.state(this.validateSponsorshipCurrency(object.getQuantity(), object.getSponsorship()), "quantity", "sponsor.invoice.form.error.sponsorship-currency");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("tax")) {
+			super.state(this.validateMoneyQuantity(object.getTax()), "tax", "sponsor.invoice.form.error.amount");
+			super.state(this.validateMoneyQuantity(object.getTax()), "tax", "sponsor.invoice.form.error.currency");
+			if (!super.getBuffer().getErrors().hasErrors("quantity"))
+				super.state(this.validateEqualCurrency(object.getTax(), object.getQuantity()), "tax", "sponsor.invoice.form.error.same-currency");
+		}
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Invoice inv;
 			inv = this.repository.findInvoiceByCode(object.getCode());
@@ -99,11 +110,14 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	}
 	public boolean validateMoneyCurrency(final Money value) {
 		//Validate here currency
-		return true;
+		String currencies = this.repository.findSystemConfigurationCurrencies();
+		return currencies.contains(value.getCurrency());
 	}
 	public boolean validateDate(final Date value) {
-		final Date max = new Date(200, 11, 31, 23, 59);
-		final Date min = new Date(100, 0, 1, 00, 00);
+		LocalDateTime maxDateTime = LocalDateTime.of(2100, Month.DECEMBER, 31, 23, 59);
+		LocalDateTime minDateTime = LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0);
+		final Date max = Date.from(maxDateTime.atZone(ZoneId.systemDefault()).toInstant());
+		final Date min = Date.from(minDateTime.atZone(ZoneId.systemDefault()).toInstant());
 		return MomentHelper.isAfterOrEqual(value, min) && MomentHelper.isBeforeOrEqual(value, max);
 	}
 	public boolean validateMoment(final Date startDate, final Date endDate) {
@@ -114,5 +128,11 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	public boolean validateFuture(final Date registration) {
 		//Validate here moment is past
 		return MomentHelper.isBefore(registration, MomentHelper.getCurrentMoment());
+	}
+	public boolean validateEqualCurrency(final Money value1, final Money value2) {
+		return value1.getCurrency().equals(value2.getCurrency());
+	}
+	public boolean validateSponsorshipCurrency(final Money value, final Sponsorship sp) {
+		return value.getCurrency().equals(sp.getAmount().getCurrency());
 	}
 }

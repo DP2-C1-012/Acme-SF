@@ -52,7 +52,7 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 		super.getResponse().addGlobal("masterId", masterId);
 		dataset.put("masterId", masterId);
 		final Sponsorship sp = this.repository.findSponsorshipById(masterId);
-		final boolean showCreate = sp.getDraftMode();
+		final boolean showCreate = sp.isDraftMode();
 		super.getResponse().addGlobal("showCreate", showCreate);
 		super.getResponse().addData(dataset);
 	}
@@ -64,7 +64,7 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 		masterId = super.getRequest().getData("masterId", int.class);
 		super.getResponse().addGlobal("masterId", masterId);
 		final Sponsorship sp = this.repository.findSponsorshipById(masterId);
-		final boolean showCreate = sp.getDraftMode();
+		final boolean showCreate = sp.isDraftMode();
 		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 

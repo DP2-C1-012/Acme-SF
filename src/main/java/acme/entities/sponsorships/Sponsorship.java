@@ -65,7 +65,7 @@ public class Sponsorship extends AbstractEntity {
 	@Length(max = 255)
 	private String				link;
 
-	private Boolean				draftMode;
+	private boolean				draftMode;
 
 	// Derived attributes -----------------------------------------------------
 

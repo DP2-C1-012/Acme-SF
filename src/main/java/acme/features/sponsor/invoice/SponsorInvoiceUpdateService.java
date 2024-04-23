@@ -1,6 +1,9 @@
 
 package acme.features.sponsor.invoice;
 
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
@@ -53,10 +56,16 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void validate(final Invoice object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(this.validateMoneyQuantity(object.getQuantity()), "quantity", "sponsor.invoice.form.error.quantity");
-		if (!super.getBuffer().getErrors().hasErrors("tax"))
-			super.state(this.validateMoneyQuantity(object.getTax()), "tax", "sponsor.invoice.form.error.tax");
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+			super.state(this.validateMoneyQuantity(object.getQuantity()), "quantity", "sponsor.invoice.form.error.amount");
+			super.state(this.validateMoneyQuantity(object.getQuantity()), "quantity", "sponsor.invoice.form.error.currency");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("tax")) {
+			super.state(this.validateMoneyQuantity(object.getTax()), "tax", "sponsor.invoice.form.error.amount");
+			super.state(this.validateMoneyQuantity(object.getTax()), "tax", "sponsor.invoice.form.error.currency");
+			if (!super.getBuffer().getErrors().hasErrors("quantity"))
+				super.state(this.validateEqualCurrency(object.getTax(), object.getQuantity()), "tax", "sponsor.invoice.form.error.same-currency");
+		}
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Invoice inv;
 			inv = this.repository.findInvoiceByCode(object.getCode());
@@ -97,17 +106,23 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	}
 	public boolean validateMoneyCurrency(final Money value) {
 		//Validate here currency
-		return true;
+		String currencies = this.repository.findSystemConfigurationCurrencies();
+		return currencies.contains(value.getCurrency());
 	}
 	public boolean validateDate(final Date value) {
-		final Date max = new Date(200, 11, 31, 23, 59);
-		final Date min = new Date(100, 0, 1, 00, 00);
+		LocalDateTime maxDateTime = LocalDateTime.of(2100, Month.DECEMBER, 31, 23, 59);
+		LocalDateTime minDateTime = LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0);
+		final Date max = Date.from(maxDateTime.atZone(ZoneId.systemDefault()).toInstant());
+		final Date min = Date.from(minDateTime.atZone(ZoneId.systemDefault()).toInstant());
 		return MomentHelper.isAfterOrEqual(value, min) && MomentHelper.isBeforeOrEqual(value, max);
 	}
 	public boolean validateMoment(final Date startDate, final Date endDate) {
 		//Validate here moment 1 month at least
 		Date minimum = MomentHelper.deltaFromMoment(startDate, 30, ChronoUnit.DAYS);
 		return MomentHelper.isAfterOrEqual(endDate, minimum);
+	}
+	public boolean validateEqualCurrency(final Money value1, final Money value2) {
+		return value1.getCurrency().equals(value2.getCurrency());
 	}
 	public boolean validateFuture(final Date registration) {
 		//Validate here moment is past

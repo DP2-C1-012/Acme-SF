@@ -3,29 +3,28 @@ sponsor.invoice.list.label.code = Código
 sponsor.invoice.list.label.dueDate = Fecha de pago
 sponsor.invoice.list.label.quantity = Cantidad
 
-sponsor.invoice.form.title = Detalles de la factura
-sponsor.invoice.form.label.code = Código
-sponsor.invoice.form.label.registrationTime = Momento de registro
-sponsor.invoice.form.label.dueDate = Fecha de pago
-sponsor.invoice.form.label.quantity = Cantidad
-sponsor.invoice.form.label.link = Enlace
-sponsor.invoice.form.label.tax = Impuesto
-sponsor.invoice.form.label.type = Tipo
-sponsor.invoice.form.label.totalAmount = Cantidad total
+sponsor.invoice.form.title = Detalles de la factura:
+sponsor.invoice.form.label.code = Código:
+sponsor.invoice.form.label.registrationTime = Momento de registro:
+sponsor.invoice.form.label.dueDate = Fecha de pago:
+sponsor.invoice.form.label.quantity = Cantidad:
+sponsor.invoice.form.label.link = Enlace:
+sponsor.invoice.form.label.tax = Impuesto:
+sponsor.invoice.form.label.type = Tipo:
+sponsor.invoice.form.label.totalAmount = Cantidad total:
 sponsor.invoice.form.label.draftMode = Draft Mode
 
-sponsor.invoice.form.error.noInvoices = Este patrocinio no tiene facturas
-sponsor.invoice.form.error.invoicesnp = Algunas facturas no están publicadas
-
-sponsor.invoice.form.error.spam = El texto está considerado spam
+sponsor.invoice.form.placeholder.code = XX-1111-1111
 
 sponsor.invoice.form.error.code = Este código ya existe
-sponsor.invoice.form.error.cost = El coste debe estar entre 0 y 1000000
-sponsor.invoice.form.error.cost2 = La divisa no está aceptada por el sistema
+sponsor.invoice.form.error.amount = La cantidad debe estar entre 0 y 1000000
+sponsor.invoice.form.error.currency = La divisa no está aceptada por el sistema
+sponsor.invoice.form.error.same-currency = Ambos valores deben tener la misma divisa
+sponsor.invoice.form.error.registration-time-date = La fecha de registro no está en el rango permitido
+sponsor.invoice.form.error.registration-time-past = La fecha debe ser pasada
 sponsor.invoice.form.error.due-date-date = La fecha debe seguir el formato adecuado y ser una fecha válida
 sponsor.invoice.form.error.due-date-month = La fecha debe estar al menos un mes por delante de la fecha de registro
-sponsor.invoice.form.error.registration-time-date = La fecha de registro es incorrecta
-sponsor.invoice.form.error.registration-time-past = La fecha debe ser pasada
+sponsor.invoice.form.error.sponsorship-currency = La divisa debe ser la misma que la del patrocinio
 
 sponsor.invoice.create = Crear
 sponsor.invoice.form.button.delete = Eliminar

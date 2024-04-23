@@ -56,7 +56,7 @@ public class Invoice extends AbstractEntity {
 	@Length(max = 255)
 	private String				link;
 
-	protected boolean			draftMode;
+	private boolean				draftMode;
 
 	// Derived attributes -----------------------------------------------------
 
