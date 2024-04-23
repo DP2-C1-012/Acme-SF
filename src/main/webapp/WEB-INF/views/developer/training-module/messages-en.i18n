@@ -1,0 +1,38 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+developer.training-module.list.title = Listing of Training Modules
+
+
+developer.trainingModule.list.label.code = Code
+developer.trainingModule.list.label.creationMoment = Creation Moment
+developer.trainingModule.list.label.draftMode = Draft Mode
+
+
+developer.training-module.form.title = Details
+
+developer.trainingModule.form.label.code = Code
+developer.trainingModule.form.label.creation-moment = Creation Moment
+developer.trainingModule.form.label.update-moment = Update Moment
+developer.trainingModule.form.label.details = Details
+developer.trainingModule.form.label.difficultyLevel = Difficulty Level
+developer.trainingModule.form.label.link = Link
+developer.trainingModule.form.label.total-time = Total Time
+developer.trainingModule.form.label.project = Project
+developer.training-module.form.label.draft-mode = Draft Mode
+developer.training-module.form.label.difficulty-level = Difficulty Level
+
+ 
+developer.training-module.list.button.create = Create
+developer.training-module.form.button.create = Create
+developer.training-module.form.button.update = Update
+developer.training-module.form.button.publish = Publish
+developer.training-module.form.button.delete = Delete
+developer.training-module.form.button.training-session = Training Session

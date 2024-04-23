@@ -1,0 +1,7 @@
+administrator.system-configuration.form.title = Configuración del sistema
+administrator.systemConfiguration.form.label.defaultCurrency = Divisa por defecto
+administrator.systemConfiguration.form.label.acceptedCurrencies = Divisas aceptadas
+administrator.systemConfiguration.form.button.update = Update
+
+administrator.systemConfiguration.error.acceptedCurrencies = Las divisas aceptadas debe de ser un conjunto separado por comas de códigos de tres letras
+administrator.systemConfiguration.error.defaultCurrency = La divisa por defecto debe de estar contenida en las divisas aceptadas

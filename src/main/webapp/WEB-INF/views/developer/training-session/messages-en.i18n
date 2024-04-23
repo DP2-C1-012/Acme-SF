@@ -1,0 +1,25 @@
+developer.training-session.list.title = Listing of Training Sessions
+developer.training-session.form.title = Training Session Form
+
+developer.trainingSession.list.label.code = Code
+developer.trainingSession.list.label.startPeriod = Start Date
+developer.trainingSession.list.label.endPeriod = End Date
+developer.trainingSession.list.label.draftMode = Draft Mode
+developer.trainingSession.list.label.location = Location
+developer.trainingSession.list.label.instructor = Instructor
+
+developer.training-session.form.label.code = Code
+developer.training-session.form.label.startPeriod = Start Date
+developer.training-session.form.label.endPeriod = End Date
+developer.training-session.form.label.location = Location
+developer.training-session.form.label.instructor = Instructor
+developer.training-session.form.label.email = Contact Email
+developer.training-session.form.label.link = Link
+developer.training-session.form.label.draftMode = Draft Mode
+
+developer.training-session.list.button.create = Create
+developer.training-session.form.button.create = Create
+developer.training-session.form.button.update = Update
+developer.training-session.form.button.delete = Delete
+developer.training-session.form.button.publish = Publish
+

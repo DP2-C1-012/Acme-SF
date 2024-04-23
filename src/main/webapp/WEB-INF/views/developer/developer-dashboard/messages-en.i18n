@@ -1,0 +1,9 @@
+developer.developer-dashboard.form.title = Developer Dashboard
+
+developer.dashboard.form.title.general-indicators = General Indicators
+
+developer.dashboard.form.label.num-tm-developer = Number of Developer's Training Modules
+developer.dashboard.form.label.num-ts-link = Number of Training Sessions with Link
+developer.dashboard.form.label.avg-tm-time = Average Training Module Time
+developer.dashboard.form.label.min-tm-time = Minimum Training Module Time
+developer.dashboard.form.label.max-tm-time = Maximum Training Module Time
