@@ -1,0 +1,33 @@
+sponsor.invoice.list.title = Invoices list
+sponsor.invoice.list.label.code = Code
+sponsor.invoice.list.label.dueDate = Due Date
+sponsor.invoice.list.label.quantity = Quantity
+
+sponsor.invoice.form.title = Invoice details:
+sponsor.invoice.form.label.code = Code:
+sponsor.invoice.form.label.registrationTime = RegistrationTime:
+sponsor.invoice.form.label.dueDate = Due Date:
+sponsor.invoice.form.label.quantity = Quantity:
+sponsor.invoice.form.label.link = Link:
+sponsor.invoice.form.label.tax = Tax:
+sponsor.invoice.form.label.type = Type:
+sponsor.invoice.form.label.totalAmount = Total Amount:
+sponsor.invoice.form.label.draftMode = Draft Mode
+
+sponsor.invoice.form.placeholder.code = XX-1111-1111
+
+sponsor.invoice.form.error.code = It exists a invoice with the same code
+sponsor.invoice.form.error.amount = This amount must be positive and lower than 1000000
+sponsor.invoice.form.error.currency = This amount must have an accepted currency
+sponsor.invoice.form.error.same-currency = Both values must have the same currency
+sponsor.invoice.form.error.registration-time-date = The date is not in the range accepted
+sponsor.invoice.form.error.registration-time-past = The date must be in the past
+sponsor.invoice.form.error.due-date-date = The date must follow the correct format and must be a valid date
+sponsor.invoice.form.error.due-date-month = The date must be at least one month ahead registration time
+sponsor.invoice.form.error.sponsorship-currency = The currency must be the same as the sponsorship
+
+sponsor.invoice.create = Create
+sponsor.invoice.form.button.delete = Delete
+sponsor.invoice.form.button.update = Update
+sponsor.invoice.form.button.publish = Publish
+sponsor.invoice.form.button.create = Create

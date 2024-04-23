@@ -1,0 +1,41 @@
+sponsor.sponsorship.list.title = Sponsorships List
+
+sponsor.sponsorship.list.label.code = Code
+sponsor.sponsorship.list.label.type = Type
+sponsor.sponsorship.list.label.amount = Amount
+
+sponsor.sponsorship.list.button.create = Create
+
+sponsor.sponsorship.form.title = Sponsorship Details
+
+sponsor.sponsorship.form.label.code = Code:
+sponsor.sponsorship.form.label.moment = Moment: 
+sponsor.sponsorship.form.label.startDate = Start Date: 
+sponsor.sponsorship.form.label.endDate = End Date:
+sponsor.sponsorship.form.label.type = Type:
+sponsor.sponsorship.form.label.amount = Amount:
+sponsor.sponsorship.form.label.email = Email Contact:
+sponsor.sponsorship.form.label.url = Link:
+sponsor.sponsorship.form.label.project = Project Code:
+sponsor.sponsorship.form.label.draftMode = Draft Mode
+
+sponsor.sponsorship.form.placeholder.code = XXX-111
+sponsor.sponsorship.form.placeholder.contact = example@us.es
+sponsor.sponsorship.form.placeholder.link = http://localhost:8080/Acme-SF
+sponsor.sponsorship.form.placeholder.project = XXX-1111
+		
+sponsor.sponsorship.form.error.code = This code already exists
+sponsor.sponsorship.form.error.amount = This amount must be positive and lower than 1000000
+sponsor.sponsorship.form.error.currency = This amount must have an accepted currency
+sponsor.sponsorship.form.error.start-date = The date must be after or equal moment
+sponsor.sponsorship.form.error.end-date = The duration must be 1 month at least
+sponsor.sponsorship.form.error.date = The date must follow the correct format and must be a valid date
+sponsor.sponsorship.form.error.draft-invoices = There are still some invoices in DraftMode
+sponsor.sponsorship.form.error.exists-invoices = No invoice exists yet
+sponsor.sponsorship.form.error.amount-invoices = The sum of the total amount of all their invoices must be equal to the amount of the sponsorship.
+
+sponsor.sponsorship.form.button.invoice = Invoices
+sponsor.sponsorship.form.button.update = Update
+sponsor.sponsorship.form.button.delete = Delete
+sponsor.sponsorship.form.button.publish = Publish
+sponsor.sponsorship.form.button.create = Create

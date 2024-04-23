@@ -51,6 +51,10 @@
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
 			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
+			<acme:menu-suboption code="master.menu.sponsor.sponsorship" action="/sponsor/sponsorship/list"/>
+		</acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>
