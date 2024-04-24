@@ -50,6 +50,7 @@
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
 			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list"/>
+			<acme:menu-suboption code="master.menu.client.progress-log" action="/client/progress-logs/list-all"/>			
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
