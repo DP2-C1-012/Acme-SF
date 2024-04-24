@@ -1,11 +1,10 @@
 
-package acme.componenents;
+package acme.components;
 
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -28,8 +27,7 @@ public class BannerAdvisor {
 			Date current = MomentHelper.getCurrentMoment();
 			Collection<Banner> all = this.repository.findAllBanners();
 			List<Banner> baList;
-			baList = all.stream().unordered().filter(b -> (b.getDisplayPeriodStart().after(current) || b.getDisplayPeriodStart().equals(current) && (b.getDisplayPeriodEnd().before(current) || b.getDisplayPeriodEnd().equals(current))))
-				.collect(Collectors.toList());
+			baList = all.stream().unordered().filter(b -> (b.getDisplayPeriodStart().after(current) || b.getDisplayPeriodStart().equals(current) && (b.getDisplayPeriodEnd().before(current) || b.getDisplayPeriodEnd().equals(current)))).toList();
 			Random rand = new Random();
 			int index = rand.nextInt(baList.size());
 			res = baList.get(index);

@@ -31,21 +31,17 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 	public void load() {
 		Collection<Sponsorship> object;
 		int sponsorId;
-
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		object = this.repository.findSponsorshipsBySponsorId(sponsorId);
-
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final Sponsorship object) {
 		assert object != null;
-
 		Dataset dataset;
-
 		dataset = super.unbind(object, "code", "type", "amount");
-
 		super.getResponse().addData(dataset);
+
 	}
 }
