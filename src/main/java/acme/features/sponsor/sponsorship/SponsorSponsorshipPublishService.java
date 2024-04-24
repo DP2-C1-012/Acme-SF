@@ -117,7 +117,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		Collection<Project> projects = this.repository.findAllPublishedProjects();
 		for (final Project p : projects) {
 			boolean isSelected = this.validator.isSelectedProject(object, p);
-			choices.add(String.valueOf(p.getId()), p.getCode(), isSelected);
+			choices.add(String.valueOf(p.getId()), String.format("%s -> %s", p.getCode(), p.getTitle()), isSelected);
 		}
 		dataset.put(this.project, choices.getSelected().getKey());
 		dataset.put("projects", choices);

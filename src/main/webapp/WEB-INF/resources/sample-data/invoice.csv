@@ -21,8 +21,8 @@ invoice-19,IN-9000-0002,2021/12/24 06:00,2022/12/24 06:00,EUR 120.0,EUR 20.0,htt
 invoice-20,IN-1000-0003,2021/12/24 06:00,2022/12/24 06:00,EUR 120.0,EUR 20.0,https://example.com,sponsorship-20,true
 invoice-21,IN-2000-0003,2021/12/24 06:00,2022/12/24 06:00,EUR 120.0,EUR 20.0,https://example.com,sponsorship-21,true
 invoice-22,IN-3000-0003,2021/12/24 06:00,2022/12/24 06:00,EUR 120.0,EUR 20.0,https://example.com,sponsorship-22,true
-invoice-23,IN-4000-0003,2021/12/24 06:00,2022/12/24 06:00,EUR 120.0,EUR 20.0,https://example.com,sponsorship-23,true
-invoice-24,IN-5000-0003,2021/12/24 06:00,2022/12/24 06:00,EUR 120.0,EUR 20.0,https://example.com,sponsorship-24,true
+invoice-23,IN-4000-0003,2021/12/24 06:00,2022/12/24 06:00,EUR 100.0,EUR 0.0,https://example.com,sponsorship-23,false
+invoice-24,IN-5000-0003,2021/12/24 06:00,2022/12/24 06:00,EUR 350.0,EUR 150.0,https://example.com,sponsorship-24,false
 invoice-25,IN-6000-0003,2021/12/24 06:00,2022/12/24 06:00,EUR 120.0,EUR 20.0,https://example.com,sponsorship-01,true
 invoice-26,IN-7000-0003,2021/12/24 06:00,2022/12/24 06:00,EUR 120.0,EUR 20.0,,sponsorship-02,true
 invoice-27,IN-8000-0003,2021/12/24 06:00,2022/12/24 06:00,GBP 120.0,EUR 20.0,,sponsorship-03,true
