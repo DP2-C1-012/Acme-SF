@@ -10,6 +10,7 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.ValidatorService;
 import acme.entities.projects.Project;
 import acme.entities.sponsorships.Sponsorship;
 import acme.entities.sponsorships.SponsorshipType;
@@ -19,7 +20,10 @@ import acme.roles.Sponsor;
 public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Sponsorship> {
 
 	@Autowired
-	protected SponsorSponsorshipRepository repository;
+	protected SponsorSponsorshipRepository	repository;
+
+	@Autowired
+	protected ValidatorService				validator;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -54,11 +58,10 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 		SelectChoices types = SelectChoices.from(SponsorshipType.class, object.getType());
 		final SelectChoices choices = new SelectChoices();
 		Collection<Project> projects = this.repository.findAllPublishedProjects();
-		for (final Project p : projects)
-			if (object.getProject() != null && object.getProject().getId() == p.getId())
-				choices.add(String.valueOf(p.getId()), p.getCode(), true);
-			else
-				choices.add(String.valueOf(p.getId()), p.getCode(), false);
+		for (final Project p : projects) {
+			boolean isSelected = this.validator.isSelectedProject(object, p);
+			choices.add(String.valueOf(p.getId()), String.format("%s -> %s", p.getCode(), p.getTitle()), isSelected);
+		}
 
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);

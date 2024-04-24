@@ -36,13 +36,4 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 	@Query("select p from Project p where p.id = :id")
 	Project findOneProjectById(int id);
 
-	@Query("select i from Invoice i where i.sponsorship.id = :id and i.draftMode = true")
-	Collection<Invoice> findInvoicesNotPublishedBySponsorshipId(int id);
-
-	@Query("select i from Invoice i where i.sponsorship.id = :id and i.draftMode = false")
-	Collection<Invoice> findPublishedInvoicesBySponsorshipId(int id);
-
-	@Query("select sc.acceptedCurrencies from SystemConfiguration sc")
-	String findSystemConfigurationCurrencies();
-
 }

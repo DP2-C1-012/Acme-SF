@@ -19,17 +19,25 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected SponsorSponsorshipRepository repository;
+	protected SponsorSponsorshipRepository	repository;
 
 	// AbstractService interface ----------------------------------------------
+
+	private String							id			= "id";
+	private String							amount		= "amount";
+	private String							startDate	= "startDate";
+	private String							endDate		= "endDate";
+	private String							type		= "type";
+	private String							contact		= "contact";
+	private String							link		= "link";
 
 
 	@Override
 	public void authorise() {
 		Sponsorship object;
-		int id;
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneSponsorshipById(id);
+		int spId;
+		spId = super.getRequest().getData(this.id, int.class);
+		object = this.repository.findOneSponsorshipById(spId);
 		final Principal principal = super.getRequest().getPrincipal();
 		final int userId = principal.getAccountId();
 		super.getResponse().setAuthorised(object.getSponsor().getUserAccount().getId() == userId && object.isDraftMode());
@@ -38,10 +46,10 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	@Override
 	public void load() {
 		Sponsorship object;
-		int id;
+		int spId;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneSponsorshipById(id);
+		spId = super.getRequest().getData(this.id, int.class);
+		object = this.repository.findOneSponsorshipById(spId);
 
 		super.getBuffer().addData(object);
 	}
@@ -49,7 +57,6 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	@Override
 	public void bind(final Sponsorship object) {
 		assert object != null;
-		super.bind(object, "id", "startDate", "endDate", "amount", "type", "contact", "link");
 	}
 
 	@Override
@@ -70,7 +77,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "startDate", "endDate", "amount", "type", "contact", "link");
+		dataset = super.unbind(object, this.startDate, this.endDate, this.amount, this.type, this.contact, this.link);
 		super.getResponse().addData(dataset);
 	}
 }

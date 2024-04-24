@@ -19,6 +19,6 @@ public class SponsorDashboard extends AbstractForm {
 	double						maximumAmountOfSponsorships;
 	double						averageQuantityOfInvoices;
 	double						deviationQuantityOfInvoices;
-	double						minimumQuantityOfInvoicess;
+	double						minimumQuantityOfInvoices;
 	double						maximumQuantityOfInvoices;
 }

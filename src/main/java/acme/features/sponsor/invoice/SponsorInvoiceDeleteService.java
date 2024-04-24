@@ -16,17 +16,27 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected SponsorInvoiceRepository repository;
+	protected SponsorInvoiceRepository	repository;
 
 	// AbstractService interface ----------------------------------------------
+
+	private String						id					= "id";
+	private String						code				= "code";
+	private String						quantity			= "quantity";
+	private String						tax					= "tax";
+	private String						link				= "link";
+	private String						dueDate				= "dueDate";
+	private String						registrationTime	= "registrationTime";
+	private String						sponsorship			= "sponsorship";
+	private String						draftMode			= "draftMode";
 
 
 	@Override
 	public void authorise() {
 		Invoice object;
-		int id;
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findInvoiceById(id);
+		int inv;
+		inv = super.getRequest().getData(this.id, int.class);
+		object = this.repository.findInvoiceById(inv);
 		final Principal principal = super.getRequest().getPrincipal();
 		final int userId = principal.getAccountId();
 		super.getResponse().setAuthorised(object.getSponsorship().getSponsor().getUserAccount().getId() == userId && object.isDraftMode());
@@ -35,16 +45,15 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void load() {
 		Invoice object;
-		int id;
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findInvoiceById(id);
+		int inv;
+		inv = super.getRequest().getData(this.id, int.class);
+		object = this.repository.findInvoiceById(inv);
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void bind(final Invoice object) {
 		assert object != null;
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
 	}
 
 	@Override
@@ -62,7 +71,8 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	public void unbind(final Invoice object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode", "sponsorship");
+		dataset = super.unbind(object, this.code, this.registrationTime, this.dueDate, this.quantity, this.tax, this.link, this.draftMode, this.sponsorship);
 		super.getResponse().addData(dataset);
+
 	}
 }

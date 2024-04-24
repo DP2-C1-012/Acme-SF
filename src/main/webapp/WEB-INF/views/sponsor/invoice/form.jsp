@@ -10,7 +10,6 @@
 	<acme:input-money code="sponsor.invoice.form.label.quantity" path="quantity"/>
 	<acme:input-money code="sponsor.invoice.form.label.tax" path="tax"/>	
 	<acme:input-url code="sponsor.invoice.form.label.link" path="link"/>
-	<acme:input-checkbox code="sponsor.invoice.form.label.draftMode" path="draftMode"/>
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && draftMode == false}">
 			<acme:input-money code="sponsor.invoice.form.label.totalAmount" path="totalAmount" readonly="true"/>	
