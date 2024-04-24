@@ -24,6 +24,11 @@ master.menu.anonymous.fav-link = Aquí estaban nuestros enlaces favoritos
 # master.menu.anonymous.jaime-link = 09222689B: Caballero Hernández, Jaime
 # master.menu.anonymous.juanjo-link = 28844948G: Casamitjana Benítez, Juan José
 
+# master.menu.any #######################################################
+
+master.menu.any = Cualquiera
+master.menu.any.sponsorship = Patrocinios
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
@@ -65,6 +70,8 @@ master.menu.user-account = Cuenta
 master.menu.user-account.general-data = Datos generales
 master.menu.user-account.auditor = Datos de auditor
 master.menu.user-account.become-auditor = Hazte auditor
+master.menu.user-account.sponsor = Datos de patrocinador
+master.menu.user-account.become-sponsor = Hazte patrocinador
 
 # master.menu.authenticated ########################################
 
