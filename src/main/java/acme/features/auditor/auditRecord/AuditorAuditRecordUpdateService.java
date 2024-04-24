@@ -85,11 +85,12 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		if (!super.getBuffer().getErrors().hasErrors("periodStart"))
 			super.state(object.getPeriodStart() != null && object.getCodeAudit() != null && object.getCodeAudit().getExecutionDate().before(object.getPeriodStart()), "periodStart", "auditor.auditRecord.form.error.periodStart");
 		if (!super.getBuffer().getErrors().hasErrors("periodEnd")) {
-			super.state(object.getPeriodEnd() != null && object.getPeriodEnd().after(object.getPeriodStart()), "periodEnd", "auditor.auditRecord.form.error.periodEnd");
-			if (object.getPeriodStart() != null && object.getPeriodEnd() != null) {
+			boolean state = object.getPeriodEnd() != null && object.getPeriodStart() != null && object.getPeriodEnd().after(object.getPeriodStart());
+			if (state) {
 				long seconds = MomentHelper.computeDuration(object.getPeriodStart(), object.getPeriodEnd()).abs().getSeconds();
-				super.state(seconds >= 3600, "periodEnd", "auditor.auditRecord.form.error.periodEnd.length");
+				state = seconds >= 3600;
 			}
+			super.state(state, "periodEnd", "auditor.auditRecord.form.error.periodEnd.length");
 		}
 	}
 
