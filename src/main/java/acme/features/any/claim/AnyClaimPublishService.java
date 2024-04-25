@@ -52,7 +52,7 @@ public class AnyClaimPublishService extends AbstractService<Any, Claim> {
 	@Override
 	public void bind(final Claim object) {
 		assert object != null;
-		super.bind(object, this.code, this.instantiationMoment, this.heading, this.description, this.department, this.email, this.link, this.confirmation);
+		super.bind(object, this.code, this.heading, this.description, this.department, this.email, this.link, this.confirmation);
 	}
 
 	@Override

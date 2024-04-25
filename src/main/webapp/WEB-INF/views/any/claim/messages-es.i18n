@@ -16,5 +16,7 @@ any.claim.form.label.email = Correo electrónico
 any.claim.form.label.link = Enlace
 any.claim.form.label.confirmation = Confirmación
 
-any.claim.list.button.create = Crear
+any.claim.list.button.publish = Publicar
 any.claim.form.button.publish = Publicar
+
+any.claim.form.placeholder.code = C-0000
