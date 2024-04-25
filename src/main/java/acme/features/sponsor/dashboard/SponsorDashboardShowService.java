@@ -2,6 +2,7 @@
 package acme.features.sponsor.dashboard;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,6 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 
 	// AbstractService interface ----------------------------------------------
 
-	private String							euro				= "EUR";
 	public final List<String>				acceptedCurrencies	= new ArrayList<>();
 
 
@@ -47,24 +47,47 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 		principal = super.getRequest().getPrincipal();
 		userId = principal.getAccountId();
 		final Sponsor sponsor = this.repository.findOneSponsorByUserId(userId);
+		String currencies = this.repository.findSystemConfigurationCurrencies();
+		String[] valuesArray = currencies.split(",");
+		for (String value : valuesArray)
+			this.acceptedCurrencies.add(value);
+		Collection<Double> avgSponsorship = new ArrayList<>();
+		Collection<Double> maxSponsorship = new ArrayList<>();
+		Collection<Double> minSponsorship = new ArrayList<>();
+		Collection<Double> devSponsorship = new ArrayList<>();
+		Collection<Double> avgInvoice = new ArrayList<>();
+		Collection<Double> maxInvoice = new ArrayList<>();
+		Collection<Double> minInvoice = new ArrayList<>();
+		Collection<Double> devInvoice = new ArrayList<>();
 
-		final double averageSponsorshipAmount = this.repository.findAverageSponsorshipAmount(sponsor, this.euro).orElse(0.0);
-		final double maxSponsorshipAmount = this.repository.findMaxSponsorshipAmount(sponsor, this.euro).orElse(0.0);
-		final double minSponsorshipAmount = this.repository.findMinSponsorshipAmount(sponsor, this.euro).orElse(0.0);
-		final double devSponsorshipAmount = this.repository.findLinearDevSponsorshipAmount(sponsor, this.euro).orElse(0.0);
-		dashboard.setAverageAmountOfSponsorships(averageSponsorshipAmount);
-		dashboard.setMaximumAmountOfSponsorships(maxSponsorshipAmount);
-		dashboard.setMinimumAmountOfSponsorships(minSponsorshipAmount);
-		dashboard.setDeviationAmountOfSponsorships(devSponsorshipAmount);
+		for (String currency : this.acceptedCurrencies) {
+			final double averageSponsorshipAmount = this.repository.findAverageSponsorshipAmount(sponsor, currency).orElse(0.0);
+			final double maxSponsorshipAmount = this.repository.findMaxSponsorshipAmount(sponsor, currency).orElse(0.0);
+			final double minSponsorshipAmount = this.repository.findMinSponsorshipAmount(sponsor, currency).orElse(0.0);
+			final double devSponsorshipAmount = this.repository.findLinearDevSponsorshipAmount(sponsor, currency).orElse(0.0);
+			final double averageInvoiceQuantity = this.repository.findAverageInvoiceQuantity(sponsor, currency).orElse(0.0);
+			final double maxInvoiceQuantity = this.repository.findMaxInvoiceQuantity(sponsor, currency).orElse(0.0);
+			final double minInvoiceQuantity = this.repository.findMinInvoiceQuantity(sponsor, currency).orElse(0.0);
+			final double devInvoiceQuantity = this.repository.findLinearDevInvoiceQuantity(sponsor, currency).orElse(0.0);
 
-		final double averageInvoiceQuantity = this.repository.findAverageInvoiceQuantity(sponsor, this.euro).orElse(0.0);
-		final double maxInvoiceQuantity = this.repository.findMaxInvoiceQuantity(sponsor, this.euro).orElse(0.0);
-		final double minInvoiceQuantity = this.repository.findMinInvoiceQuantity(sponsor, this.euro).orElse(0.0);
-		final double devInvoiceQuantity = this.repository.findLinearDevInvoiceQuantity(sponsor, this.euro).orElse(0.0);
-		dashboard.setAverageQuantityOfInvoices(averageInvoiceQuantity);
-		dashboard.setMaximumQuantityOfInvoices(maxInvoiceQuantity);
-		dashboard.setMinimumQuantityOfInvoices(minInvoiceQuantity);
-		dashboard.setDeviationQuantityOfInvoices(devInvoiceQuantity);
+			avgSponsorship.add(averageSponsorshipAmount);
+			maxSponsorship.add(maxSponsorshipAmount);
+			minSponsorship.add(minSponsorshipAmount);
+			devSponsorship.add(devSponsorshipAmount);
+			avgInvoice.add(averageInvoiceQuantity);
+			maxInvoice.add(maxInvoiceQuantity);
+			minInvoice.add(minInvoiceQuantity);
+			devInvoice.add(devInvoiceQuantity);
+		}
+		dashboard.setAverageAmountOfSponsorships(avgSponsorship);
+		dashboard.setMaximumAmountOfSponsorships(maxSponsorship);
+		dashboard.setMinimumAmountOfSponsorships(minSponsorship);
+		dashboard.setDeviationAmountOfSponsorships(devSponsorship);
+
+		dashboard.setAverageQuantityOfInvoices(avgInvoice);
+		dashboard.setMaximumQuantityOfInvoices(maxInvoice);
+		dashboard.setMinimumQuantityOfInvoices(minInvoice);
+		dashboard.setDeviationQuantityOfInvoices(devInvoice);
 
 		List<Invoice> inv = this.repository.findNumOfInvoices(sponsor).orElse(new ArrayList<>());
 		final int numInvoicesWithTaxLessOrEqualThan21 = this.getNInvoicesWithTaxLessOrEqualThan21(inv);
@@ -78,15 +101,9 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 	@Override
 	public void unbind(final SponsorDashboard object) {
 		Dataset dataset;
-		final List<String> acceptedCurrencies = new ArrayList<>();
-		String currencies = this.repository.findSystemConfigurationCurrencies();
-		String[] valuesArray = currencies.split(",");
-		for (String value : valuesArray)
-			acceptedCurrencies.add(value);
-
 		dataset = super.unbind(object, "numberOfInvoicesWithATaskLessOrEqualThan21", "numberOfSponsorshipsWithALink", "averageAmountOfSponsorships", "deviationAmountOfSponsorships", "minimumAmountOfSponsorships", "maximumAmountOfSponsorships",
 			"averageQuantityOfInvoices", "deviationQuantityOfInvoices", "minimumQuantityOfInvoices", "maximumQuantityOfInvoices");
-		dataset.put("acceptedCurrencies", acceptedCurrencies);
+		dataset.put("acceptedCurrencies", this.acceptedCurrencies);
 
 		super.getResponse().addData(dataset);
 	}

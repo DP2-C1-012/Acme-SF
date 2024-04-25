@@ -1,4 +1,4 @@
-key,code,instatiation_moment,heading,description,department,email,link
+key,code,instantiation_moment,heading,description,department,email,link
 claim-01,C-0001,2021/12/24 06:00,P,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
 claim-02,C-0002,2021/12/24 06:00,Pr,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
 claim-03,C-0003,2021/12/24 06:00,Prueba,Esto es una descripcion poco descriptiva,LSI,sponsor1@acme.com,https://example.com
