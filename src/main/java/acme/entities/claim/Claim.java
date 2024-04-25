@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -36,7 +37,7 @@ public class Claim extends AbstractEntity {
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				instatiationMoment;
+	private Date				instantiationMoment;
 
 	@NotBlank
 	@Length(max = 75)
@@ -59,4 +60,7 @@ public class Claim extends AbstractEntity {
 	@URL
 	private String				link;
 
+	@NotNull
+	@Transient
+	private boolean				confirmation;
 }
