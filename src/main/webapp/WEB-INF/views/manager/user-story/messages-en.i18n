@@ -1,5 +1,5 @@
 
-manager.user-story.list.title = Your user story list
+manager.user-story.list.title = User Story list
 manager.userstory.list.label.title = Title
 manager.userstory.list.label.description = Description
 manager.userstory.list.label.cost = Cost
@@ -17,5 +17,6 @@ manager.userstory.form.label.indication = Critical errors?
 manager.userstory.form.button.update = Update
 manager.userstory.form.button.delete = Delete
 manager.userstory.form.button.publish = Publish
+manager.user-story.list.button.deleteFromProject = Delete from a project
 
 manager.userstory.create = Create

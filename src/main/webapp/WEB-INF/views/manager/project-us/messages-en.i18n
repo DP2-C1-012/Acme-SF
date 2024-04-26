@@ -1,0 +1,5 @@
+manager.project-us.form.title = Project-User Story
+manager.projectUs.form.userStory.title	= Title
+manager.projectUs.form.userStory.description = Abstrac
+manager.projectUs.form.project = Proyect
+manager.projectUs.form.button.delete = Delete
