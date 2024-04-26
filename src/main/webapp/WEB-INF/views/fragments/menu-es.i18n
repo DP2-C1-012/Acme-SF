@@ -41,6 +41,16 @@ master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
 
+
+# master.menu.manager ###################################################
+
+master.menu.manager = Manager
+master.menu.manager.project = Panel de proyectos
+master.menu.manager.user-story = Panel de historias de usuario
+master.menu.manager.dashboard = Dashboard
+
+# master.menu.provider ########################################################
+
 # master.menu.sponsor ##########################################################
 
 master.menu.sponsor = Patrocinador
@@ -48,6 +58,7 @@ master.menu.sponsor.sponsorship = Mis patrocinios
 master.menu.sponsor.dashboard = Panel de Patrocinador
 
 # master.menu.developer ##########################################################
+
 
 master.menu.developer = Desarrollador
 master.menu.developer.training-module = Sesiones de Entrenamiento
