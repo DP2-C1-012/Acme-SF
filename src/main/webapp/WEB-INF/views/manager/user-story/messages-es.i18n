@@ -1,0 +1,19 @@
+manager.user-story.list.title = Lista de tus historias de ususario
+manager.userstory.list.label.title = Título
+manager.userstory.list.label.description = Descripcion
+manager.userstory.list.label.cost = Coste
+manager.userstory.list.button.create = Crear historia de usuario
+manager.userstory.list.button.deletePublishedUserStory= Eliminar
+
+manager.user-story.form.title = Detalles de la historia de usuario
+manager.userstory.form.label.description = Descripción
+manager.userstory.form.label.title = Título
+manager.userstory.form.label.estimatedCost = Coste estimado
+manager.userstory.form.label.acceptanceCriteria = Criterio de aceptación
+manager.userstory.form.label.priority = Prioridad
+manager.userstory.form.label.link = Link
+manager.userstory.form.label.indication = ¿Sin errores críticos?
+manager.userstory.form.button.update = Actualizar
+manager.userstory.form.button.delete = Borrar
+manager.userstory.form.button.publish = Publicar
+

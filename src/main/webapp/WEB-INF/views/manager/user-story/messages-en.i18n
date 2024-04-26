@@ -1,0 +1,21 @@
+
+manager.user-story.list.title = Your user story list
+manager.userstory.list.label.title = Title
+manager.userstory.list.label.description = Description
+manager.userstory.list.label.cost = Cost
+manager.userstory.list.button.create = Create user story
+manager.userstory.list.button.deletePublishedUserStory = Delete
+
+manager.user-story.form.title = User Story Details
+manager.userstory.form.label.description = Description
+manager.userstory.form.label.title = Title
+manager.userstory.form.label.estimatedCost = Estimated Cost
+manager.userstory.form.label.acceptanceCriteria = Acceptance Criteria
+manager.userstory.form.label.priority = Priority
+manager.userstory.form.label.link = Link
+manager.userstory.form.label.indication = Critical errors?
+manager.userstory.form.button.update = Update
+manager.userstory.form.button.delete = Delete
+manager.userstory.form.button.publish = Publish
+
+manager.userstory.create = Create

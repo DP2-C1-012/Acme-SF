@@ -1,0 +1,32 @@
+manager.project.list.title = Lista de tus proyectos
+manager.project.list.label.title = Título
+manager.project.list.label.abstrac = Resumen
+manager.project.list.label.cost = Coste
+manager.project.list.button.create = Crear proyecto
+
+manager.project.form.title = Detalles del proyecto
+manager.project.form.label.code = Código
+manager.project.form.label.title = Título
+manager.project.form.label.abstrac = Resumen
+manager.project.form.label.cost = Coste
+manager.project.form.label.link = Enlace
+manager.project.form.label.manager = Mánager
+manager.project.form.label.draftMode = Borrador
+manager.project.form.label.indication = ¿Sin errores críticos?
+manager.project.form.label.money = Coste en divisa actual
+
+manager.project.form.error.nous = Este proyecto no tiene historias de usuario
+manager.project.form.error.critical = Este proyecto tiene errores fatales 
+manager.project.form.error.nouspub = Algunas historias de usuario de este proyecto no están publicadas
+
+manager.project.userStories = Historias de usuario
+
+manager.project.form.error.code = Existe un proyecto con el mismo código
+manager.project.form.error.cost = El coste debe ser positivo
+manager.project.form.error.cost2 = La divisa introducida no es aceptada por el sistema
+
+manager.project.create = Crear
+manager.project.form.button.delete = Eliminar
+manager.project.form.button.update = Actualizar
+manager.project.form.button.publish = Publicar
+manager.project.form.button.create = Crear
