@@ -1,0 +1,41 @@
+sponsor.sponsorship.list.title = Lista de Patrocinios
+
+sponsor.sponsorship.list.label.code = Código
+sponsor.sponsorship.list.label.type = Tipo
+sponsor.sponsorship.list.label.amount = Cantidad
+
+sponsor.sponsorship.list.button.create = Crear
+
+sponsor.sponsorship.form.title = Detalles del patrocinador 
+sponsor.sponsorship.form.label.code = Código:
+sponsor.sponsorship.form.label.moment = Momento: 
+sponsor.sponsorship.form.label.startDate = Fecha de inicio:
+sponsor.sponsorship.form.label.endDate = Fecha de fin:
+sponsor.sponsorship.form.label.amount= Cantidad:
+sponsor.sponsorship.form.label.type = Tipo:
+sponsor.sponsorship.form.label.email = Correo de contacto:
+sponsor.sponsorship.form.label.url = Enlace:
+sponsor.sponsorship.form.label.project = Código del Proyecto:
+sponsor.sponsorship.form.label.draftMode = Draft Mode
+
+sponsor.sponsorship.form.placeholder.code = XXX-111
+sponsor.sponsorship.form.placeholder.contact = example@us.es
+sponsor.sponsorship.form.placeholder.link = http://localhost:8080/Acme-SF
+sponsor.sponsorship.form.placeholder.project = XXX-1111
+
+sponsor.sponsorship.form.error.code = Ya existe este código
+sponsor.sponsorship.form.error.amount = La cantidad debe estar entre 0 y 1000000
+sponsor.sponsorship.form.error.currency = La divisa no está aceptada por el sistema
+sponsor.sponsorship.form.error.start-date = La fecha debe ser posterior o igual al instante actual
+sponsor.sponsorship.form.error.end-date = Debe durar un mes cómo mínimo
+sponsor.sponsorship.form.error.date = La fecha debe estar en el rango permitido por el sistema
+sponsor.sponsorship.form.error.draft-invoices = Aún hay facturas sin publicar
+sponsor.sponsorship.form.error.exists-invoices = No existen facturas aún
+sponsor.sponsorship.form.error.amount-invoices = El sumatorio del total de las facturas debe ser igual al valor del patrocinio
+
+		
+sponsor.sponsorship.form.button.invoice = Facturas
+sponsor.sponsorship.form.button.update = Actualizar
+sponsor.sponsorship.form.button.delete = Eliminar
+sponsor.sponsorship.form.button.publish = Publicar
+sponsor.sponsorship.form.button.create = Crear

@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -52,7 +53,10 @@ public class Invoice extends AbstractEntity {
 	private Money				tax;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
+
+	private boolean				draftMode;
 
 	// Derived attributes -----------------------------------------------------
 

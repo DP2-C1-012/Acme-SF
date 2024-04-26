@@ -22,6 +22,10 @@ public class Client extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
+	/*
+	 * Attributes
+	 */
+
 	@Column(unique = true)
 	@NotBlank
 	@Pattern(regexp = "CLI-[0-9]{4}")

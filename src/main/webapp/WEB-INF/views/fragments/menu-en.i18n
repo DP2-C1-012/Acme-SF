@@ -24,15 +24,23 @@ master.menu.anonymous.fav-link = Here were our favourite links
 # master.menu.anonymous.jaime-link = 09222689B: Caballero Hernández, Jaime
 # master.menu.anonymous.juanjo-link = 28844948G: Casamitjana Benítez, Juan José
 
+# master.menu.any #######################################################
+
+master.menu.any = Any
+master.menu.any.sponsorship = Sponsorships
+master.menu.any.claim = Claims
 
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
 master.menu.administrator.dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
+master.menu.administrator.banner = List banners
+master.menu.administrator.system-configuration = System Configuration
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
+
 
 # master.menu.manager ###################################################
 
@@ -42,20 +50,43 @@ master.menu.manager.user-story = User stories panel
 master.menu.manager.dashboard = Dashboard
 
 # master.menu.provider ########################################################
+# master.menu.sponsor ##########################################################
 
-master.menu.provider = Provider
-master.menu.provider.favourite-link = Favourite link
+master.menu.sponsor = Sponsor
+master.menu.sponsor.sponsorship = My Sponsorships
+master.menu.sponsor.dashboard = Sponsor Dashboard
 
-# master.menu.consumer ##########################################################
+# master.menu.developer ##########################################################
 
-master.menu.consumer = Consumer
-master.menu.consumer.favourite-link = Favourite link
+master.menu.developer = Developer
+master.menu.developer.training-module = Training Module
+master.menu.developer.dashboard = Developer Dashboard
+
+
+# master.menu.auditor #############################################
+
+master.menu.auditor = Auditor
+master.menu.auditor.codeAudit = List my audits
+master.menu.auditor.auditRecord = Create a record
+master.menu.auditor.dashboard = Dashboard
+
+# master.menu.client #############################################
+
+master.menu.client = Client
+master.menu.client.contract = Contracts
+master.menu.client.client-dashboard = Client dashboard
+master.menu.client.progress-log = Progress logs
 
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
 master.menu.user-account.general-data = General data
-master.menu.user-account.provider = Provider data
-master.menu.user-account.become-provider = Become a provider
-master.menu.user-account.consumer = Consumer data
-master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.auditor = Auditor data
+master.menu.user-account.become-auditor = Become an Auditor
+master.menu.user-account.sponsor = Sponsor data
+master.menu.user-account.become-sponsor = Become an Sponsor
+
+# master.menu.authenticated ########################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.codeAudits = List audits

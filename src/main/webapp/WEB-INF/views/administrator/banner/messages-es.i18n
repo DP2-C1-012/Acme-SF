@@ -1,0 +1,23 @@
+administrator.banner.list.title = Pancartas
+administrator.banner.list.label.instantiationMommen = Momento de instanciación
+administrator.banner.list.label.displayPeriodStart = Comienzo de período
+administrator.banner.list.label.displayPeriodEnd = Fin de período
+
+administrator.banner.list.button.create = Crear
+
+administrator.banner.form.title = Pancarta
+administrator.banner.form.label.instantiationMomment = Momento de instanciación
+administrator.banner.form.label.displayPeriodStart = Comienzo de período
+administrator.banner.form.label.displayPeriodEnd = Fin de período
+administrator.banner.form.label.updateMomment = Última actualización
+administrator.banner.form.label.slogan = Slogan
+administrator.banner.form.label.pictureURL = URL de la imagen
+administrator.banner.form.label.link = Link
+
+administrator.banner.form.button.update = Actualizar
+administrator.banner.form.button.delete = Borrar
+administrator.banner.form.button.create = Crear
+
+administrator.banner.form.update.pictureURL = Debe de ser una url a una imagen
+administrator.banner.form.update.displayPeriodEnd = El fin del período debe ser después del comienzo
+administrator.banner.form.update.displayPeriodStart = El comienzo del período debe ser al menos una semana después del momento de instanciación
