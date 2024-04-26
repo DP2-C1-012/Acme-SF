@@ -56,6 +56,8 @@ public class ProgressLogs extends AbstractEntity {
 	@Length(max = 75)
 	private String				responsible;
 
+	private boolean				draftMode;
+
 	/*
 	 * Relations
 	 */
