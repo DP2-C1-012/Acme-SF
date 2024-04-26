@@ -65,6 +65,7 @@ master.menu.auditor.dashboard = Dashboard
 
 master.menu.client = Client
 master.menu.client.contract = Contracts
+master.menu.client.client-dashboard = Client dashboard
 master.menu.client.progress-log = Progress logs
 
 # master.menu.user-account ####################################################
