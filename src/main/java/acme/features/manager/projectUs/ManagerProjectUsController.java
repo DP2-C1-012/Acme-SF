@@ -14,11 +14,15 @@ import acme.roles.Manager;
 public class ManagerProjectUsController extends AbstractController<Manager, ProjectUs> {
 
 	@Autowired
-	protected ManagerProjectUsDeleteService deleteService;
+	protected ManagerProjectUsDeleteService	deleteService;
+
+	@Autowired
+	protected ManagerProjectUsCreateService	createService;
 
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("create", this.createService);
 	}
 }

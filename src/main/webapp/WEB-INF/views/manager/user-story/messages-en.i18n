@@ -18,5 +18,6 @@ manager.userstory.form.button.update = Update
 manager.userstory.form.button.delete = Delete
 manager.userstory.form.button.publish = Publish
 manager.user-story.list.button.deleteFromProject = Delete from a project
+manager.user-story.list.button.add = Add to a project
 
 manager.userstory.create = Create

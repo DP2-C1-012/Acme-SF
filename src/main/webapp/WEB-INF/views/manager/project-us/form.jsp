@@ -2,13 +2,6 @@
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
-<jstl:choose>	 
-	<jstl:when test="${_command == 'create'}">
-		<h2>
-			<acme:message code="manager.projectUs.form.userStory.info"/>
-		</h2>
-	</jstl:when>
-</jstl:choose>
 	<table class="table table-sm">
 	<tr>
 		<th scope="row">
