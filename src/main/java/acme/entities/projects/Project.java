@@ -42,7 +42,6 @@ public class Project extends AbstractEntity {
 	@NotNull
 	private String				abstrac;
 
-	@Valid
 	@NotNull
 	private Money				cost;
 

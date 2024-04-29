@@ -1,0 +1,11 @@
+authenticated.manager.form.title = Detalles de mánager
+
+authenticated.manager.form.label.degree = Título
+authenticated.manager.form.label.overview = Descripción general
+authenticated.manager.form.label.certifications = Certificaciones
+authenticated.manager.form.label.link = Enlace
+
+authenticated.manager.form.button.create = Crear
+authenticated.manager.form.button.update = Actualizar
+
+authenticated.manager.form.error.spam = El texto introducido está considerado como Spam

@@ -1,0 +1,13 @@
+auditor.auditor-dashboard.form.title = Dashboard
+auditor.dashboard.form.title.general-indicators = General indicators
+
+auditor.dashboard.totalDynamicCodeAudits = Total Dynamic audits
+auditor.dashboard.totalStaticCodeAudits = Total static audits
+auditor.dashboard.minAuditRecords = Minimum records per audit
+auditor.dashboard.maxAuditRecords = Maximum records per audit
+auditor.dashboard.averageNumAuditRecords = Average records per audit
+auditor.dashboard.deviationNumAuditRecords = Standard deviation of records per audit
+auditor.dashboard.minPeriodLength = Minimum period length of records in hours
+auditor.dashboard.maxPeriodLength = Maximum period length of records in hours
+auditor.dashboard.averageNumPeriodLength = Average period length of records in hours
+auditor.dashboard.deviationNumPeriodLength = Standard deviation of period length of records in hours

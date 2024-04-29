@@ -1,0 +1,10 @@
+manager.manager-dashboard.form.title= Dashboard del Manager
+manager.dashboard.form.label.totalNumberUserStories	= Número de Historias de Usuario
+manager.dashboard.form.label.averageEstimatedCostUserStories = Costo Promedio Estimado de Historias de Usuario
+manager.dashboard.form.label.deviationEstimatedCostUserStories	= Desviación Estimada del Costo de Historias de Usuario
+manager.dashboard.form.label.minimunEstimatedCostUserStories = Costo Mínimo Estimado de Historias de Usuario
+manager.dashboard.form.label.maximumEstimatedCostUserStories = Costo Máximo Estimado de Historias de Usuario
+manager.dashboard.form.label.averageCostProjects = Costo Promedio Estimado de Proyectos
+manager.dashboard.form.label.deviationCostProjects = Desviación Estimada del Costo de Proyectos
+manager.dashboard.form.label.minimunCostProjects = Costo Mínimo Estimado de Proyectos
+manager.dashboard.form.label.maximumCostProjects = Costo Máximo Estimado de Proyectos

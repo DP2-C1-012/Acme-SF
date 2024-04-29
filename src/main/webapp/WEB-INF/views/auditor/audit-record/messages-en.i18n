@@ -1,0 +1,23 @@
+auditor.auditRecord.list.label.code = Code
+auditor.auditRecord.list.label.periodStart = Period starts on
+auditor.auditRecord.list.label.periodEnd = Period ends on
+auditor.auditRecord.list.label.mark = Mark
+auditor.audit-record.list.title = Records
+
+auditor.auditRecord.list.button.create = Create
+
+auditor.audit-record.form.title = Record
+auditor.auditRecord.form.label.code = Code
+auditor.auditRecord.form.label.periodStart = Period starts on
+auditor.auditRecord.form.label.periodEnd = Period ends on
+auditor.auditRecord.form.mark = Mark
+auditor.auditRecord.form.codeAudit = Audit
+auditor.auditRecord.form.label.optionalLink = Link (Optional) 
+auditor.auditRecord.form.button.update = Update
+auditor.auditRecord.form.button.delete = Delete
+auditor.auditRecord.form.button.create = Create
+
+auditor.auditRecord.form.error.code = This code is already taken
+auditor.auditRecord.form.error.periodStart = The starting date of the period must be after the execution date of the audit
+auditor.auditRecord.form.error.periodEnd = Should be after the start of the period
+auditor.auditRecord.form.error.periodEnd.length = Should be at least one hour

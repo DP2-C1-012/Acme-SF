@@ -1,0 +1,23 @@
+administrator.banner.list.title = Banners
+administrator.banner.list.label.instantiationMomment = Instantiation Mamen
+administrator.banner.list.label.displayPeriodStart = Display period starts on
+administrator.banner.list.label.displayPeriodEnd = Display period ends on
+
+administrator.banner.list.button.create = Create
+
+administrator.banner.form.title = Banner
+administrator.banner.form.label.instantiationMomment = Instantiation Moment
+administrator.banner.form.label.displayPeriodStart = Display period starts on
+administrator.banner.form.label.displayPeriodEnd = Display period ends on
+administrator.banner.form.label.updateMomment = Last updated on
+administrator.banner.form.label.slogan = Slogan
+administrator.banner.form.label.pictureURL = Image URL
+administrator.banner.form.label.link = link
+
+administrator.banner.form.button.update = Update
+administrator.banner.form.button.delete = Delete
+administrator.banner.form.button.create = Create
+
+administrator.banner.form.update.pictureURL = Must be a link to an image
+administrator.banner.form.update.displayPeriodEnd = = Must be after the start of the period
+administrator.banner.form.update.displayPeriodStart = Must be after the instantiation moment

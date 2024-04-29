@@ -24,26 +24,41 @@ master.menu.anonymous.fav-link = Aquí estaban nuestros enlaces favoritos
 # master.menu.anonymous.jaime-link = 09222689B: Caballero Hernández, Jaime
 # master.menu.anonymous.juanjo-link = 28844948G: Casamitjana Benítez, Juan José
 
+# master.menu.any #######################################################
+
+master.menu.any = Cualquiera
+master.menu.any.sponsorship = Patrocinios
+master.menu.any.claim = Reclamaciones
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
 master.menu.administrator.dashboard = Panel de indicadores
 master.menu.administrator.user-accounts = Cuentas de usuario
+master.menu.administrator.banner = Listar pancartas
+master.menu.administrator.system-configuration = Configuración del sistema
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
 
+
+# master.menu.manager ###################################################
+
+master.menu.manager = Manager
+master.menu.manager.project = Panel de proyectos
+master.menu.manager.user-story = Panel de historias de usuario
+master.menu.manager.dashboard = Dashboard
+
 # master.menu.provider ########################################################
 
-master.menu.provider = Proveedor
-master.menu.provider.favourite-link = Enlace favorito
+# master.menu.sponsor ##########################################################
 
-# master.menu.consumer ##########################################################
-
-master.menu.consumer = Consumidor
-master.menu.consumer.favourite-link = Enlace favorito
+master.menu.sponsor = Patrocinador
+master.menu.sponsor.sponsorship = Mis patrocinios
+master.menu.sponsor.dashboard = Panel de Patrocinador
 
 # master.menu.developer ##########################################################
+
 
 master.menu.developer = Desarrollador
 master.menu.developer.training-module = Sesiones de Entrenamiento
@@ -53,12 +68,26 @@ master.menu.developer.dashboard = Panel de Desarrollador
 
 master.menu.auditor = Auditor
 master.menu.auditor.codeAudit = Listar mis auditaciones
+master.menu.auditor.auditRecord = Crear un registro
+master.menu.auditor.dashboard = Panel de control
+
+# master.menu.client #############################################
+
+master.menu.client = Cliente
+master.menu.client.contract = Contratos
+master.menu.client.client-dashboard = Panel de Cliente
+master.menu.client.progress-log = Lista de progreso
 
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
 master.menu.user-account.general-data = Datos generales
-master.menu.user-account.provider = Datos de proveedor
-master.menu.user-account.become-provider = Hazte proveedor
-master.menu.user-account.consumer = Datos de consumidor
-master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.auditor = Datos de auditor
+master.menu.user-account.become-auditor = Hazte auditor
+master.menu.user-account.sponsor = Datos de patrocinador
+master.menu.user-account.become-sponsor = Hazte patrocinador
+
+# master.menu.authenticated ########################################
+
+master.menu.authenticated = Autenticado
+master.menu.authenticated.codeAudits = Listar auditaciones

@@ -1,0 +1,13 @@
+auditor.auditor-dashboard.form.title= Panel
+auditor.dashboard.form.title.general-indicators = Indicadores generales
+
+auditor.dashboard.totalDynamicCodeAudits = Número total de auditaciones dinámicas
+auditor.dashboard.totalStaticCodeAudits = Número total de auditaciones estáticas
+auditor.dashboard.minAuditRecords = Número mínimo de registros por auditación
+auditor.dashboard.maxAuditRecords = Número máximo de registros por auditación
+auditor.dashboard.averageNumAuditRecords = Número medio de registros por auditación
+auditor.dashboard.deviationNumAuditRecords = Desviación estándar de registros por auditación
+auditor.dashboard.minPeriodLength = Duración mínima de registros en horas
+auditor.dashboard.maxPeriodLength = Duración máxima de registros en horas
+auditor.dashboard.averageNumPeriodLength = Duración media de registros en horas
+auditor.dashboard.deviationNumPeriodLength = Desviación estándar de la duración de registros en horas
