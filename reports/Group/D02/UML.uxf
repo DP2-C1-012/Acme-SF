@@ -942,53 +942,6 @@ bg=#E0B0FF</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1752</x>
-      <y>1092</y>
-      <w>138</w>
-      <h>18</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;210.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>1794</x>
-      <y>1080</y>
-      <w>60</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>makes
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>1758</x>
-      <y>1080</y>
-      <w>30</w>
-      <h>18</h>
-    </coordinates>
-    <panel_attributes>0 ..*
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>1866</x>
-      <y>1080</y>
-      <w>18</w>
-      <h>18</h>
-    </coordinates>
-    <panel_attributes>1
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Text</id>
     <coordinates>
       <x>1674</x>
@@ -1103,17 +1056,17 @@ m2= 1..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1782</x>
+      <x>1764</x>
       <y>918</y>
-      <w>162</w>
+      <w>156</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 created &gt;
-m1= 0..*
-m2= 1
+m1= 1
+m2= 0..*
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;150.0;240.0;150.0;240.0;190.0</additional_attributes>
+    <additional_attributes>230.0;190.0;230.0;150.0;10.0;150.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
