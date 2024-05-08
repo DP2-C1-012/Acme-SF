@@ -5,10 +5,18 @@
 
 <acme:list>
 	<acme:list-column code="developer.trainingSession.list.label.code" path="code" width="15%"/>
-	<acme:list-column code="developer.trainingSession.list.label.startPeriod" path="startPeriod" width="20%"/>
+	<acme:list-column code="developer.training_session.list.label.location" path="location" width="35%" />	
 	<acme:list-column code="developer.trainingSession.list.label.instructor" path="instructor" width="20%"/>
 	<acme:list-column code="developer.trainingSession.list.label.draftMode" path="draftMode" width="20%"/>
+	<acme:list-column code="developer.training_session.list.label.module" path="module" width="20%" />
+	
 </acme:list>
-<jstl:if test="${_command == 'list'}">
-	<acme:button code="developer.training-session.list.button.create" action="/developer/training-session/create?trainingModuleId=${trainingModuleId}"/>
-</jstl:if>
+
+<jstl:choose>	
+	<jstl:when test="${_command == 'list'} }">
+		<acme:button code="developer.training-session.list.button.create" action="/developer/training-session/create?trainingModuleId=${trainingModuleId}"/>
+	</jstl:when> 
+	<jstl:when test="${_command == 'list-all'}">
+		<acme:button code="developer.training-session.list.button.create" action="/developer/training-session/create"/>
+	</jstl:when>			
+</jstl:choose>

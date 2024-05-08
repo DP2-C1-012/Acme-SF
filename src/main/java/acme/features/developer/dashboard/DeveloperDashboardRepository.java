@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.trainingModule.TrainingModule;
+import acme.entities.trainingSession.TrainingSession;
 
 @Repository
 public interface DeveloperDashboardRepository extends AbstractRepository {
@@ -20,5 +21,8 @@ public interface DeveloperDashboardRepository extends AbstractRepository {
 
 	@Query("select count(ts) from TrainingSession ts where ts.trainingModule.developer.id = :id and ts.link is not null")
 	Integer numberOfTrainingSessionsWithLink(int id);
+
+	@Query("select ts from TrainingSession ts where ts.trainingModule = :trainingModule")
+	Collection<TrainingSession> findTrainingSessionsByTrainingModule(TrainingModule trainingModule);
 
 }

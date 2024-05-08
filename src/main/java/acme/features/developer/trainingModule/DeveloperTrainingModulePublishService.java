@@ -52,15 +52,10 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
-		int projectId;
-		Project project;
-
-		projectId = super.getRequest().getData("project", int.class);
-		project = this.repository.findOneProjectById(projectId);
-
 		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link");
+		int projectId = super.getRequest().getData("project", int.class);
+		Project project = this.repository.findOneProjectById(projectId);
 		object.setProject(project);
-
 	}
 
 	@Override
@@ -103,9 +98,19 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link");
 
-		SelectChoices choices;
-		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
-		dataset.put("difficultyLevels", choices);
+		final SelectChoices choices = new SelectChoices();
+		SelectChoices difficultyLevel = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
+
+		Collection<Project> projects;
+		projects = this.repository.findAllPublishedProjects();
+		for (final Project p : projects)
+			if (object.getProject() != null && object.getProject().getId() == p.getId())
+				choices.add(String.valueOf(p.getId()), p.getCode(), true);
+			else
+				choices.add(String.valueOf(p.getId()), p.getCode(), false);
+
+		dataset.put("difficultyLevels", difficultyLevel);
+		dataset.put("projects", choices);
 
 		super.getResponse().addData(dataset);
 

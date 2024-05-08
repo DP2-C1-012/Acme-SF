@@ -16,6 +16,7 @@ import acme.client.helpers.MomentHelper;
 import acme.entities.invoices.Invoice;
 import acme.entities.projects.Project;
 import acme.entities.sponsorships.Sponsorship;
+import acme.entities.trainingModule.TrainingModule;
 
 @Service
 public class ValidatorService {
@@ -84,6 +85,9 @@ public class ValidatorService {
 	}
 
 	public boolean isSelectedProject(final Sponsorship object, final Project project) {
+		return object.getProject() != null && object.getProject().getId() == project.getId();
+	}
+	public boolean isSelectedProject(final TrainingModule object, final Project project) {
 		return object.getProject() != null && object.getProject().getId() == project.getId();
 	}
 }

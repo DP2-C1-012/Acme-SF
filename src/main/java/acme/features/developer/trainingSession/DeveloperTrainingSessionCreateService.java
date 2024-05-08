@@ -6,11 +6,11 @@ import java.time.temporal.ChronoUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
+import acme.client.data.models.Errors;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
-import acme.entities.trainingModule.TrainingModule;
+import acme.client.views.SelectChoices;
 import acme.entities.trainingSession.TrainingSession;
 import acme.roles.Developer;
 
@@ -23,31 +23,18 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 	@Override
 	public void authorise() {
-		TrainingModule object;
-		int trainingModuleId;
-
-		trainingModuleId = super.getRequest().getData("trainingModuleId", int.class);
-		object = this.repository.findTrainingModuleById(trainingModuleId);
-		System.out.println(object);
-		final Principal principal = super.getRequest().getPrincipal();
-		final int userAccountId = principal.getAccountId();
-
-		super.getResponse().setAuthorised(object.getDeveloper().getUserAccount().getId() == userAccountId);
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Developer.class);
+		super.getResponse().setAuthorised(status);
 
 	}
 
 	@Override
 	public void load() {
 		TrainingSession object;
-		int trainingModuleId;
-		TrainingModule tm;
-
 		object = new TrainingSession();
 		object.setDraftMode(true);
-		trainingModuleId = super.getRequest().getData("trainingModuleId", int.class);
-		System.out.println("moduleIdcc: " + trainingModuleId);
-		tm = this.repository.findTrainingModuleById(trainingModuleId);
-		object.setTrainingModule(tm);
+
 		super.getBuffer().addData(object);
 	}
 
@@ -55,7 +42,8 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 	public void bind(final TrainingSession object) {
 		assert object != null;
 
-		super.bind(object, "code", "startPeriod", "instructor", "location", "endPeriod", "email", "link");
+		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode", "trainingModule");
+		System.out.println(super.getBuffer().getGlobal("$errors", Errors.class));
 	}
 
 	@Override
@@ -72,7 +60,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
 			super.state(MomentHelper.isAfter(object.getStartPeriod(), object.getTrainingModule().getCreationMoment()), "startMoment", "developer.training-session.form.error.startBeforeCreate");
 
-		if (!super.getBuffer().getErrors().hasErrors("endPeriod") && !super.getBuffer().getErrors().hasErrors("endPeriod")) {
+		if (!super.getBuffer().getErrors().hasErrors("endPeriod")) {
 			super.state(MomentHelper.isAfter(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "developer.training-session.form.error.endBeforeStart");
 			super.state(MomentHelper.isAfter(object.getEndPeriod(), MomentHelper.deltaFromMoment(object.getStartPeriod(), 7, ChronoUnit.DAYS)), "endPeriod", "developer.training-session.form.error.periodTooShort");
 		}
@@ -89,8 +77,12 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 	public void unbind(final TrainingSession object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "startPeriod", "instructor", "location", "endPeriod", "email", "link");
-		super.getResponse().addGlobal("trainingModuleId", super.getRequest().getData("trainingModuleId", int.class));
+		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode", "trainingModule");
+		final SelectChoices choices;
+		choices = SelectChoices.from(this.repository.findTrainingModulesNotPublishedByDeveloperId(super.getRequest().getPrincipal().getAccountId()), "code", object.getTrainingModule());
+		dataset.put("module", choices.getSelected().getKey());
+		dataset.put("modules", choices);
+		System.out.println(super.getBuffer().getGlobal("$errors", Errors.class));
 		super.getResponse().addData(dataset);
 	}
 

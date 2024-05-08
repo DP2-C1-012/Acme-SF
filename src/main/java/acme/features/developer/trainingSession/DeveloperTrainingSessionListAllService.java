@@ -14,42 +14,35 @@ import acme.entities.trainingSession.TrainingSession;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingSessionListService extends AbstractService<Developer, TrainingSession> {
+public class DeveloperTrainingSessionListAllService extends AbstractService<Developer, TrainingSession> {
 
 	@Autowired
-	private DeveloperTrainingSessionRepository repository;
+	protected DeveloperTrainingSessionRepository repository;
+
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		TrainingModule object;
-		int tmId;
-
-		tmId = super.getRequest().getData("trainingModuleId", int.class);
-		object = this.repository.findTrainingModuleById(tmId);
-		final Principal principal = super.getRequest().getPrincipal();
-		final int userAccountId = principal.getAccountId();
-
-		super.getResponse().setAuthorised(object.getDeveloper().getUserAccount().getId() == userAccountId);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
 		Collection<TrainingSession> objects;
-		int tmId;
-
-		tmId = super.getRequest().getData("trainingModuleId", int.class);
-		objects = this.repository.findAllTrainingSessionsBytrainingModuleId(tmId);
+		Collection<TrainingModule> tm;
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
+		tm = this.repository.listMyTrainingModule(userAccountId);
+		objects = tm.stream().map(t -> this.repository.findAllTrainingSessionsBytrainingModuleId(t.getId())).flatMap(Collection::stream).toList();
 		super.getBuffer().addData(objects);
 	}
 
 	@Override
 	public void unbind(final TrainingSession object) {
 		assert object != null;
-
 		Dataset dataset;
-
-		dataset = super.unbind(object, "code", "startPeriod", "instructor", "location", "endPeriod", "draftMode");
+		dataset = super.unbind(object, "code", "location", "instructor", "draftMode");
 		dataset.put("module", object.getTrainingModule().getCode());
 		super.getResponse().addData(dataset);
 	}

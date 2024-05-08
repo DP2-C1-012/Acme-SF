@@ -29,6 +29,8 @@ developer.trainingModule.form.label.project = Project
 developer.training-module.form.label.draft-mode = Draft Mode
 developer.training-module.form.label.difficulty-level = Difficulty Level
 
+developer.training-module.form.placeholder.code = XXX-111
+developer.training-module.form.placeholder.link = http://localhost:8080/Acme-SF
  
 developer.training-module.list.button.create = Create
 developer.training-module.form.button.create = Create
@@ -36,3 +38,10 @@ developer.training-module.form.button.update = Update
 developer.training-module.form.button.publish = Publish
 developer.training-module.form.button.delete = Delete
 developer.training-module.form.button.training-session = Training Session
+
+
+developer.training-module.form.error.duplicateCode = Duplicate code already exists.
+developer.trainingModule.form.error.creationMoment = Invalid creation moment format.
+developer.trainingModule.form.error.updateMoment = Invalid update moment format.
+developer.trainingModule.form.error.updateMoment-after-createMoment = Update moment cannot be before creation moment.
+developer.trainingModule.form.error.details = Details must not be empty and should be less than 100 characters.

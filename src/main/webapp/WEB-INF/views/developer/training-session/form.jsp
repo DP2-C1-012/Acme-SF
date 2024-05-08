@@ -19,7 +19,8 @@
 				<acme:submit code="developer.training-session.form.button.publish" action="/developer/training-session/publish"/>	
 			</jstl:when> 
 			<jstl:when test="${_command == 'create'}">
-				<acme:submit code="developer.training-session.list.button.create" action="/developer/training-session/create?trainingModuleId=${trainingModuleId}"/>
+				<acme:input-select code="developer.training_session.form.label.trainingModule" path="trainingModule" choices="${modules}"/>
+				<acme:submit code="developer.training-session.list.button.create" action="/developer/training-session/create"/>
 			</jstl:when>			
 		</jstl:choose>	
 </acme:form>

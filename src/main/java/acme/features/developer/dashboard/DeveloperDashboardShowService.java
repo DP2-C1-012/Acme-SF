@@ -2,6 +2,7 @@
 package acme.features.developer.dashboard;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.trainingModule.TrainingModule;
+import acme.entities.trainingSession.TrainingSession;
 import acme.forms.DeveloperDashboard;
 import acme.roles.Developer;
 
@@ -24,6 +26,16 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 		boolean status;
 		status = super.getRequest().getPrincipal().hasRole(Developer.class);
 		super.getResponse().setAuthorised(status);
+	}
+
+	public Integer getEstimatedTotalTime(final TrainingModule tm) {
+		int totalTime = 0;
+
+		List<TrainingSession> sessions = this.repository.findTrainingSessionsByTrainingModule(tm).stream().toList();
+		for (TrainingSession session : sessions)
+			totalTime += session.getEndPeriod().getTime() - session.getStartPeriod().getTime();
+
+		return totalTime / 3600000;
 	}
 
 	@Override
@@ -42,9 +54,9 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 
 		numOfTrainingModuleOfDeveloper = this.repository.findNumOfTrainingModuleOfDeveloper(id);
 		numTrainingSessionsWithLink = this.repository.numberOfTrainingSessionsWithLink(id);
-		averageTrainingModuleTime = trainingModules.stream().mapToInt(TrainingModule::getTotalTime).average().orElse(0.0);
-		minTrainingModuleTime = trainingModules.stream().mapToInt(TrainingModule::getTotalTime).min().orElse(0);
-		maxTrainingModuleTime = trainingModules.stream().mapToInt(TrainingModule::getTotalTime).max().orElse(0);
+		averageTrainingModuleTime = trainingModules.stream().mapToInt(tm -> this.getEstimatedTotalTime(tm)).average().orElse(0.0);
+		minTrainingModuleTime = trainingModules.stream().mapToInt(tm -> this.getEstimatedTotalTime(tm)).min().orElse(0);
+		maxTrainingModuleTime = trainingModules.stream().mapToInt(tm -> this.getEstimatedTotalTime(tm)).max().orElse(0);
 
 		developerDashboard = new DeveloperDashboard();
 

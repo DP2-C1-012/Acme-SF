@@ -59,31 +59,16 @@ public class TrainingModule extends AbstractEntity {
 
 	// Derived attributes -----------------------------------------------------
 
-	private Integer				totalTime;
-
-
 	@Transient
-	public Integer getTotalTime() {
-		int totalTime = 0;
-		if (this.updateMoment != null) {
-			totalTime = (int) (this.updateMoment.getTime() - this.creationMoment.getTime());
-			//Pasamos de milisegundos a horas enteras
-			if (totalTime >= 0)
-				return totalTime / (1000 * 60 * 60);
-			else
-				return 0;
-		} else
-			return totalTime;
-	}
-
+	private Integer				estimatedTotalTime;
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	private Developer	developer;
+	private Developer			developer;
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	protected Project	project;
+	protected Project			project;
 }
