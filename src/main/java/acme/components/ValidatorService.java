@@ -98,7 +98,8 @@ public class ValidatorService {
 	}
 
 	public boolean validateExistsPublishedTrainingSessions(final int id) {
-		Collection<TrainingSession> pTrainingSessions = this.repository.findTrainingSessionsNotPublishedByDeveloperId(id);
-		return !pTrainingSessions.isEmpty();
+		Collection<TrainingSession> pTrainingSessions = this.repository.findTrainingSessionsNotPublishedByTrainingModuleId(id);
+
+		return pTrainingSessions.isEmpty();
 	}
 }

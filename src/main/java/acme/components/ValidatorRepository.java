@@ -23,5 +23,5 @@ public interface ValidatorRepository extends AbstractRepository {
 	String findSystemConfigurationCurrencies();
 
 	@Query("select ts from TrainingSession ts where ts.trainingModule.id = :id and ts.draftMode = true")
-	Collection<TrainingSession> findTrainingSessionsNotPublishedByDeveloperId(int id);
+	Collection<TrainingSession> findTrainingSessionsNotPublishedByTrainingModuleId(int id);
 }

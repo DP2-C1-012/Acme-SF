@@ -2,6 +2,7 @@
 package acme.features.developer.trainingModule;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,24 +66,29 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
-		super.state(this.validator.validateExistsPublishedTrainingSessions(object.getId()), "*", "developer.training-module.form.error.draftMode-trainingSessions");
-
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			TrainingModule existing;
-
-			existing = this.repository.findTrainingModuleByCode(object.getCode());
-			super.state(existing == null, "code", "developer.training-module.form.error.duplicated");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
-			super.state(MomentHelper.isAfter(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.update-date-not-valid");
-
+		Date m = MomentHelper.getCurrentMoment();
 		Collection<TrainingSession> sessions;
 		int totalSessions;
 
 		sessions = this.repository.findTrainingSessionsByTrainingModule(object);
 		totalSessions = sessions.size();
+
 		super.state(totalSessions >= 1, "*", "developer.training-module.form.error.not-enough-training-sessions");
+		if (!super.getBuffer().getErrors().hasErrors())
+			super.state(this.validator.validateExistsPublishedTrainingSessions(object.getId()), "*", "developer.training-module.form.error.draftMode-trainingSessions");
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			TrainingModule tm;
+			tm = this.repository.findTrainingModuleByCode(object.getCode());
+			super.state(tm.getId() == object.getId(), "code", "developer.trainingModule.form.error.duplicated-code");
+
+		}
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment")) {
+			super.state(m.after(object.getCreationMoment()), "creationMoment", "developer.trainingModule.form.error.creationMoment");
+			if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !(object.getUpdateMoment() == null) && object.getCreationMoment() == null)
+				super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.updateMoment-after-createMoment");
+
+		}
 
 	}
 
