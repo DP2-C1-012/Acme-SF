@@ -11,6 +11,7 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.ValidatorService;
 import acme.entities.projects.Project;
 import acme.entities.trainingModule.DifficultyLevel;
 import acme.entities.trainingModule.TrainingModule;
@@ -21,7 +22,10 @@ import acme.roles.Developer;
 public class DeveloperTrainingModulePublishService extends AbstractService<Developer, TrainingModule> {
 
 	@Autowired
-	private DeveloperTrainingModuleRepository repository;
+	private DeveloperTrainingModuleRepository	repository;
+
+	@Autowired
+	protected ValidatorService					validator;
 
 
 	@Override
@@ -61,6 +65,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
+		super.state(this.validator.validateExistsPublishedTrainingSessions(object.getId()), "*", "developer.training-module.form.error.draftMode-trainingSessions");
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingModule existing;
@@ -72,14 +77,13 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
 			super.state(MomentHelper.isAfter(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.update-date-not-valid");
 
-		{
-			Collection<TrainingSession> sessions;
-			int totalSessions;
+		Collection<TrainingSession> sessions;
+		int totalSessions;
 
-			sessions = this.repository.findTrainingSessionsByTrainingModule(object);
-			totalSessions = sessions.size();
-			super.state(totalSessions >= 1, "*", "developer.training-module.form.error.not-enough-training-sessions");
-		}
+		sessions = this.repository.findTrainingSessionsByTrainingModule(object);
+		totalSessions = sessions.size();
+		super.state(totalSessions >= 1, "*", "developer.training-module.form.error.not-enough-training-sessions");
+
 	}
 
 	@Override

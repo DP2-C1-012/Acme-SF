@@ -44,3 +44,5 @@ developer.trainingModule.form.error.creationMoment = Formato de momento de creac
 developer.trainingModule.form.error.updateMoment = Formato de momento de actualización no válido.
 developer.trainingModule.form.error.updateMoment-after-createMoment = El momento de actualización no puede ser anterior al momento de creación.
 developer.trainingModule.form.error.details = Los detalles no deben estar vacíos y deben tener menos de 100 caracteres.
+developer.training-module.form.error.draftMode-trainingSessions = Hay Training Sessions en modo borrador todavía.
+developer.training-module.form.error.not-enough-training-sessions = No existen Training Sessions.

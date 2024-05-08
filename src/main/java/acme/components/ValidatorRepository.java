@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.invoices.Invoice;
+import acme.entities.trainingSession.TrainingSession;
 
 @Repository
 public interface ValidatorRepository extends AbstractRepository {
@@ -20,4 +21,7 @@ public interface ValidatorRepository extends AbstractRepository {
 
 	@Query("select sc.acceptedCurrencies from SystemConfiguration sc")
 	String findSystemConfigurationCurrencies();
+
+	@Query("select ts from TrainingSession ts where ts.trainingModule.id = :id and ts.draftMode = true")
+	Collection<TrainingSession> findTrainingSessionsNotPublishedByDeveloperId(int id);
 }

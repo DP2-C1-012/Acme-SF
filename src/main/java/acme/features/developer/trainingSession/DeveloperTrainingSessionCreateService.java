@@ -58,7 +58,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
-			super.state(MomentHelper.isAfter(object.getStartPeriod(), object.getTrainingModule().getCreationMoment()), "startMoment", "developer.training-session.form.error.startBeforeCreate");
+			super.state(MomentHelper.isAfter(object.getStartPeriod(), object.getTrainingModule().getCreationMoment()), "startPeriod", "developer.training-session.form.error.startBeforeCreate");
 
 		if (!super.getBuffer().getErrors().hasErrors("endPeriod")) {
 			super.state(MomentHelper.isAfter(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "developer.training-session.form.error.endBeforeStart");
@@ -80,9 +80,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode", "trainingModule");
 		final SelectChoices choices;
 		choices = SelectChoices.from(this.repository.findTrainingModulesNotPublishedByDeveloperId(super.getRequest().getPrincipal().getAccountId()), "code", object.getTrainingModule());
-		dataset.put("module", choices.getSelected().getKey());
 		dataset.put("modules", choices);
-		System.out.println(super.getBuffer().getGlobal("$errors", Errors.class));
 		super.getResponse().addData(dataset);
 	}
 

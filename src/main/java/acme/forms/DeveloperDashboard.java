@@ -9,12 +9,6 @@ import lombok.Setter;
 @Setter
 public class DeveloperDashboard extends AbstractForm {
 
-	/*
-	 * total number of training modules with an update moment;
-	 * total number of training sessions with a link;
-	 * average,deviation, minimum and maximum time of the training modules.
-	 */
-
 	protected static final long	serialVersionUID	= 1L;
 
 	private Integer				numOfTrainingModuleOfDeveloper;

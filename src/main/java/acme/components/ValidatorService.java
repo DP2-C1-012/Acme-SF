@@ -17,6 +17,7 @@ import acme.entities.invoices.Invoice;
 import acme.entities.projects.Project;
 import acme.entities.sponsorships.Sponsorship;
 import acme.entities.trainingModule.TrainingModule;
+import acme.entities.trainingSession.TrainingSession;
 
 @Service
 public class ValidatorService {
@@ -87,7 +88,17 @@ public class ValidatorService {
 	public boolean isSelectedProject(final Sponsorship object, final Project project) {
 		return object.getProject() != null && object.getProject().getId() == project.getId();
 	}
+
 	public boolean isSelectedProject(final TrainingModule object, final Project project) {
 		return object.getProject() != null && object.getProject().getId() == project.getId();
+	}
+
+	public boolean isSelectedTrainingModule(final TrainingSession object, final TrainingModule tm) {
+		return object.getTrainingModule() != null && object.getTrainingModule().getId() == tm.getId();
+	}
+
+	public boolean validateExistsPublishedTrainingSessions(final int id) {
+		Collection<TrainingSession> pTrainingSessions = this.repository.findTrainingSessionsNotPublishedByDeveloperId(id);
+		return !pTrainingSessions.isEmpty();
 	}
 }

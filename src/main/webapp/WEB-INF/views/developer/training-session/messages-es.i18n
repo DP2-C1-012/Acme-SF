@@ -1,27 +1,26 @@
-developer.training-session.list.title = Listado de Módulos de Entrenamiento
-developer.training-session.form.title = Formulario de Módulo de Entrenamiento
+developer.training-session.list.title = Listado de Sesiones de Entrenamiento
+developer.training-session.form.title = Formulario de Sesión de Entrenamiento
 
 developer.trainingSession.list.label.code = Código
 developer.trainingSession.list.label.startPeriod = Fecha de Inicio
-developer.trainingSession.list.label.endPeriod = Fecha de Fin
+developer.trainingSession.list.label.endPeriod = Fecha de Finalización
 developer.trainingSession.list.label.draftMode = Modo Borrador
 developer.trainingSession.list.label.location = Ubicación
 developer.trainingSession.list.label.instructor = Instructor
+developer.trainingSession.list.label.module = Módulo de Entrenamiento
 
 developer.training-session.form.label.code = Código
 developer.training-session.form.label.startPeriod = Fecha de Inicio
-developer.training-session.form.label.endPeriod = Fecha de Fin
+developer.training-session.form.label.endPeriod = Fecha de Finalización
 developer.training-session.form.label.location = Ubicación
 developer.training-session.form.label.instructor = Instructor
-developer.training-session.form.label.email = Correo de Contacto
+developer.training-session.form.label.email = Correo Electrónico de Contacto
 developer.training-session.form.label.link = Enlace
 developer.training-session.form.label.draftMode = Modo Borrador
+developer.training_session.form.label.trainingModule = Módulo de Entrenamiento
 
 developer.training-session.list.button.create = Crear
 developer.training-session.form.button.create = Crear
 developer.training-session.form.button.update = Actualizar
-developer.training-session.form.button.delete = Eliminar
+developer.training-session.form.button.delete = Borrar
 developer.training-session.form.button.publish = Publicar
-
-
-

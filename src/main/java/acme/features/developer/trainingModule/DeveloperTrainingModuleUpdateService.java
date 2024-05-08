@@ -64,16 +64,20 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		assert object != null;
 		Date m = MomentHelper.getCurrentMoment();
 
+		System.out.println(m);
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingModule tm;
 			tm = this.repository.findTrainingModuleByCode(object.getCode());
-			super.state(tm == null || tm.getId() == object.getId(), "code", "developer.trainingModule.form.error.code");
+			super.state(tm.getId() == object.getId(), "code", "developer.trainingModule.form.error.duplicated-code");
 
 		}
-		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment")) {
 			super.state(m.after(object.getCreationMoment()), "creationMoment", "developer.trainingModule.form.error.creationMoment");
-		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !(object.getUpdateMoment() == null))
-			super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.updateMoment-after-createMoment");
+			if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !(object.getUpdateMoment() == null) && object.getCreationMoment() == null)
+				super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.updateMoment-after-createMoment");
+
+		}
 	}
 
 	@Override

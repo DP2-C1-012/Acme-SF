@@ -93,11 +93,8 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 				choices.add(String.valueOf(p.getId()), p.getCode() + " - " + p.getTitle(), true);
 			else
 				choices.add(String.valueOf(p.getId()), p.getCode() + " - " + p.getTitle(), false);
-		System.out.println(choices);
-
 		dataset.put("difficultyLevels", difficultyLevel);
 		dataset.put("projects", choices);
-		System.out.println(choices);
 
 		super.getResponse().addData(dataset);
 	}
