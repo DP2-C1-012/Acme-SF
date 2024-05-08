@@ -33,9 +33,9 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 
 		List<TrainingSession> sessions = this.repository.findTrainingSessionsByTrainingModule(tm).stream().toList();
 		for (TrainingSession session : sessions)
-			totalTime += session.getEndPeriod().getTime() - session.getStartPeriod().getTime();
+			totalTime += session.getEndPeriod().getTime() / 3600000 - session.getStartPeriod().getTime() / 3600000;
 
-		return totalTime / 3600000;
+		return totalTime;
 	}
 
 	@Override
