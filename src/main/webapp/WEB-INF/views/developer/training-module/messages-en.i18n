@@ -42,6 +42,7 @@ developer.training-module.form.button.training-session = Training Session
 developer.training-module.form.error.draftMode-trainingSessions = There are still some training sessions in DraftMode
 developer.training-module.form.error.not-enough-training-sessions = No Training Sessions exists yet
 developer.trainingModule.form.error.duplicated-code = Duplicated Code.
+
 developer.trainingModule.form.error.null-code = Code is null.
 
 developer.training-module.form.error.duplicateCode = Duplicate code already exists.

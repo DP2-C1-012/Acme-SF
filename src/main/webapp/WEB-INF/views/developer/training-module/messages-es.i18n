@@ -39,10 +39,10 @@ developer.training-module.form.button.publish = Publicar
 developer.training-module.form.button.delete = Eliminar
 developer.training-module.form.button.training-session = Sesiones de Entrenamiento
 
-developer.training-module.form.error.duplicateCode = El código duplicado ya existe.
-developer.trainingModule.form.error.creationMoment = Formato de momento de creación no válido.
-developer.trainingModule.form.error.updateMoment = Formato de momento de actualización no válido.
-developer.trainingModule.form.error.updateMoment-after-createMoment = El momento de actualización no puede ser anterior al momento de creación.
-developer.trainingModule.form.error.details = Los detalles no deben estar vacíos y deben tener menos de 100 caracteres.
-developer.training-module.form.error.draftMode-trainingSessions = Hay Training Sessions en modo borrador todavía.
-developer.training-module.form.error.not-enough-training-sessions = No existen Training Sessions.
+developer.trainingModule.form.error.duplicated-code = El código duplicado ya existe
+developer.trainingModule.form.error.creationMoment = Formato de momento de creación no válido
+developer.trainingModule.form.error.updateMoment = Formato de momento de actualización no válido
+developer.trainingModule.form.error.updateMoment-after-createMoment = El momento de actualización no puede ser anterior al momento de creación
+developer.trainingModule.form.error.details = Los detalles no deben estar vacíos y deben tener menos de 100 caracteres
+developer.training-module.form.error.draftMode-trainingSessions = Hay Training Sessions en modo borrador todavía
+developer.training-module.form.error.not-enough-training-sessions = No existen Training Sessions

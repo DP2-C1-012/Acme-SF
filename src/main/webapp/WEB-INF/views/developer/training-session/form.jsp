@@ -23,6 +23,7 @@
 				<acme:input-textbox code="developer.training_session.form.label.module" path="module"/>
 			</jstl:when>	
 			<jstl:when test="${_command == 'create'}">
+				<acme:input-select code="developer.training_session.form.label.trainingModule" path="trainingModule" choices="${modules}"/>
 				<acme:submit code="developer.training-session.list.button.create" action="/developer/training-session/create"/>
 			</jstl:when>			
 		</jstl:choose>	
