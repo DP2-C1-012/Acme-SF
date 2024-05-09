@@ -17,3 +17,5 @@ authenticated.developer.form.label.email = Correo de Contacto
 authenticated.developer.form.label.link = Enlace 
 
 authenticated.developer.form.button.create = Registrar
+authenticated.developer.form.button.update = Actualizar
+

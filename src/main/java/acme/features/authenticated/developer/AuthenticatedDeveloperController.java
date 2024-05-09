@@ -27,7 +27,10 @@ public class AuthenticatedDeveloperController extends AbstractController<Authent
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedDeveloperCreateService createService;
+	private AuthenticatedDeveloperCreateService	createService;
+
+	@Autowired
+	private AuthenticatedDeveloperUpdate		updateService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -35,6 +38,8 @@ public class AuthenticatedDeveloperController extends AbstractController<Authent
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("update", this.updateService);
+
 	}
 
 }

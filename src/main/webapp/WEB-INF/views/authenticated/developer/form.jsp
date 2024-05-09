@@ -23,4 +23,7 @@
 	<acme:input-url code="authenticated.developer.form.label.link" path="link"/>
 
 	<acme:submit test="${_command == 'create'}" code="authenticated.developer.form.button.create" action="/authenticated/developer/create"/>
+	<jstl:if test="${_command == 'update'}">
+		<acme:submit code="authenticated.developer.form.button.update" action="/authenticated/developer/update"/>
+	</jstl:if>
 </acme:form>

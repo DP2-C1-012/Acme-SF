@@ -59,6 +59,7 @@ public class TrainingModule extends AbstractEntity {
 
 	// Derived attributes -----------------------------------------------------
 
+	@Transient
 	private Integer				totalTime;
 
 
