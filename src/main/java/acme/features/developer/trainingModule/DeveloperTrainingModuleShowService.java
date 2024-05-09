@@ -45,7 +45,6 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		int totalTime = 0;
 
 		List<TrainingSession> sessions = this.repository.findTrainingSessionsByTrainingModule(tm).stream().toList();
-		System.out.println(sessions);
 		for (TrainingSession session : sessions)
 			totalTime += session.getEndPeriod().getTime() / 3600000 - session.getStartPeriod().getTime() / 3600000;
 		return totalTime;
