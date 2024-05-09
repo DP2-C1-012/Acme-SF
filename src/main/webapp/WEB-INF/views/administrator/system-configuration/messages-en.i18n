@@ -1,0 +1,7 @@
+administrator.system-configuration.form.title = System Configuration
+administrator.systemConfiguration.form.label.defaultCurrency = Default Currency
+administrator.systemConfiguration.form.label.acceptedCurrencies = Accepted Currencies
+administrator.systemConfiguration.form.button.update = Update
+
+administrator.systemConfiguration.error.acceptedCurrencies = The accepted currencies must be a set of comma separated three letter codes
+administrator.systemConfiguration.error.defaultCurrency = The default currency must be contained within the accepted currencies

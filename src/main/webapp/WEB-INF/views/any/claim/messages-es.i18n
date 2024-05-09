@@ -1,0 +1,22 @@
+any.claim.list.title = Reclamaciones
+any.claim.form.title = Detalles de la reclamación
+any.claim.list.label.code = Código
+any.claim.list.label.instantiationMoment = Momento de creación
+any.claim.list.label.department = Departamento
+
+any.claim.form.error.instantiationMoment = Fecha inválida
+any.claim.form.error.confirmation = Para publicar la reclamación hace falta confirmar
+
+any.claim.form.label.code = Código
+any.claim.form.label.instantiationMoment = Momento de creación
+any.claim.form.label.heading = Encabezamiento
+any.claim.form.label.description = Descripción
+any.claim.form.label.department = Departamento
+any.claim.form.label.email = Correo electrónico
+any.claim.form.label.link = Enlace
+any.claim.form.label.confirmation = Confirmación
+
+any.claim.list.button.publish = Publicar
+any.claim.form.button.publish = Publicar
+
+any.claim.form.placeholder.code = C-0000

@@ -45,7 +45,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 
 	@Override
 	public void bind(final CodeAudit object) {
-		super.bind(object, "published");
+		super.bind(object, "code", "executionDate", "correctiveActions", "optionalLink", "type", "project");
 	}
 
 	@Override
@@ -63,10 +63,10 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	public void perform(final CodeAudit object) {
 		Collection<AuditRecord> auditRecords;
 		auditRecords = this.repository.findCodeAuditAuditRecordsByCodeAuditID(object.getId());
-		auditRecords.stream().forEach(ar -> {
+		for (AuditRecord ar : auditRecords) {
 			ar.setPublished(true);
 			this.repository.save(ar);
-		});
+		}
 		object.setPublished(true);
 		this.repository.save(object);
 	}

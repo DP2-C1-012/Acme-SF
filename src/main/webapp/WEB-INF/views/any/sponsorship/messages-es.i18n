@@ -1,0 +1,16 @@
+any.sponsorship.list.title = Lista de Patrocinios
+
+any.sponsorship.list.label.code = Código
+any.sponsorship.list.label.type = Tipo
+any.sponsorship.list.label.amount = Cantidad
+
+any.sponsorship.form.title = Detalles del patrocinador 
+any.sponsorship.form.label.code = Código:
+any.sponsorship.form.label.moment = Momento: 
+any.sponsorship.form.label.startDate = Fecha de inicio:
+any.sponsorship.form.label.endDate = Fecha de fin:
+any.sponsorship.form.label.amount= Cantidad:
+any.sponsorship.form.label.type = Tipo:
+any.sponsorship.form.label.contact = Correo de contacto:
+any.sponsorship.form.label.link = Enlace:
+any.sponsorship.form.label.draftMode = Draft Mode

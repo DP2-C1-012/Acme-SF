@@ -1,0 +1,15 @@
+sponsor.sponsor-dashboard.form.title= Sponsor Dashboard
+sponsor.dashboard.form.label.metrics= Metrics
+sponsor.dashboard.form.label.average-sponsorship= Average Sponsorship Amount
+sponsor.dashboard.form.label.min-sponsorship= Min Sponsorship Amount
+sponsor.dashboard.form.label.max-sponsorship= Max Sponsorship Amount
+sponsor.dashboard.form.label.dev-sponsorship= Linear Deviation Sponsorship Amount
+sponsor.dashboard.form.label.average-invoice= Avergae Invoice Quantity
+sponsor.dashboard.form.label.max-invoice= Max Invoice Quantity
+sponsor.dashboard.form.label.min-invoice= Min Invoice Quantity
+sponsor.dashboard.form.label.dev-invoice= Linear Deviation Invoice Quantity
+sponsor.dashboard.form.label.tax-invoice= Number of Invoices With 21 or less taxes
+sponsor.dashboard.form.label.link-sponsorship= Number of Sponsorship with Link
+sponsor.dashboard.form.label.total= Total
+sponsor.dashboard.form.title.invoices = Invoices
+sponsor.dashboard.form.title.sponsorships= Sponsorships

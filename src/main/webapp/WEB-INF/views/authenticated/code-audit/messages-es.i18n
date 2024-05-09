@@ -1,0 +1,26 @@
+authenticated.code-audit.list.title = Auditaciones de Código
+
+authenticated.codeAudit.list.label.code = Código
+authenticated.codeAudit.list.label.type = Tipo
+authenticated.codeAudit.list.label.mark = Nota
+authenticated.codeAudit.form.label.project = Proyecto
+authenticated.codeAudit.list.button.create = Crear
+
+authenticated.code-audit.form.title=Auditación de Código
+
+authenticated.codeAudit.form.label.code = Código
+authenticated.codeAudit.form.label.executionDate = Fecha de ejecución
+authenticated.codeAudit.form.label.type = Tipo
+authenticated.codeAudit.form.mark = Nota
+authenticated.codeAudit.form.label.correctiveActions = Acciones correctivas
+authenticated.codeAudit.form.label.optionalLink = Link Opcional
+authenticated.codeAudit.form.label.project = Proyecto
+authenticated.codeAudit.form.button.update = Actualizar
+authenticated.codeAudit.form.button.delete = Eliminar
+authenticated.codeAudit.form.button.publish = Publicar
+authenticated.codeAudit.form.button.create = Crear
+authenticated.codeAudit.form.button.list.auditRecords = Ver registros
+
+authenticated.codeAudit.form.error.code = Otra auditación con este código ya existe
+authenticated.codeAudit.form.error.executionDate = Debe estar en el pasado
+authenticated.codeAudit.form.error.mark = La nota debe de ser al menos C
