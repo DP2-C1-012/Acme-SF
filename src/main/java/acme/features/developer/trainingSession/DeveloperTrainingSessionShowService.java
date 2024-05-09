@@ -1,11 +1,16 @@
 
 package acme.features.developer.trainingSession;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.components.ValidatorService;
+import acme.entities.trainingModule.TrainingModule;
 import acme.entities.trainingSession.TrainingSession;
 import acme.roles.Developer;
 
@@ -15,9 +20,10 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private DeveloperTrainingSessionRepository repository;
+	private DeveloperTrainingSessionRepository	repository;
 
-	// AbstractService interface ----------------------------------------------
+	@Autowired
+	protected ValidatorService					validator;
 
 
 	@Override
@@ -51,10 +57,20 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 	@Override
 	public void unbind(final TrainingSession object) {
 		assert object != null;
-
 		Dataset dataset;
+		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode", "trainingModule");
+		SelectChoices choices = new SelectChoices();
 
-		dataset = super.unbind(object, "code", "startPeriod", "instructor", "location", "endPeriod", "email", "link", "draftMode");
+		Collection<TrainingModule> tms;
+		tms = this.repository.findTrainingModulesNotPublishedByDeveloperId(super.getRequest().getPrincipal().getAccountId());
+
+		for (final TrainingModule tm : tms) {
+			boolean isSelected = this.validator.isSelectedTrainingModule(object, tm);
+			choices.add(String.valueOf(tm.getId()), tm.getCode(), isSelected);
+		}
+		dataset.put("module", object.getTrainingModule().getCode());
+
+		dataset.put("modules", choices);
 
 		super.getResponse().addData(dataset);
 	}

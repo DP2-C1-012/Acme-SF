@@ -63,10 +63,7 @@ public class TrainingSession extends AbstractEntity {
 
 	@Transient
 	public Integer getPeriod() {
-		if (this.endPeriod != null)
-			return (int) (this.endPeriod.getTime() - this.startPeriod.getTime());
-		else
-			return (int) (new Date().getTime() - this.startPeriod.getTime());
+		return (int) (new Date().getTime() - this.startPeriod.getTime());
 	}
 
 

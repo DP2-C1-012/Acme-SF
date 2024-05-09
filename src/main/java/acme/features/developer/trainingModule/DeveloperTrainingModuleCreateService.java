@@ -1,12 +1,14 @@
 
 package acme.features.developer.trainingModule;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
@@ -43,39 +45,30 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
-		int projectId;
-		Project project;
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "project");
 
-		projectId = super.getRequest().getData("project", int.class);
-		project = this.repository.findOneProjectById(projectId);
-
-		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link");
-		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
-		Date creationMoment = object.getCreationMoment();
+		Date m = MomentHelper.getCurrentMoment();
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			TrainingModule existing;
-
-			existing = this.repository.findTrainingModuleByCode(object.getCode());
-			super.state(existing == null, "code", "developer.training-module.form.error.duplicateCode");
+			TrainingModule tm;
+			tm = this.repository.findTrainingModuleByCode(object.getCode());
+			final TrainingModule tm2 = object.getCode().equals("") || object.getCode() == null ? null : this.repository.findTrainingModuleById(object.getId());
+			if (tm2 != null)
+				super.state(tm2.equals(tm), "code", "developer.training-module.form.error.code");
+			else
+				super.state(tm == null, "code", "developer.training-module.form.error.code");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("creationMoment")) {
-			Date now = new Date();
-			if (creationMoment == null || creationMoment.after(now))
-				super.state(false, "creationMoment", "developer.trainingModule.form.error.creationMoment");
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
+			super.state(m.after(object.getCreationMoment()), "creationMoment", "developer.trainingModule.form.error.creationMoment");
+		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !(object.getUpdateMoment() == null)) {
+			super.state(m.after(object.getUpdateMoment()), "updateMoment", "developer.trainingModule.form.error.updateMoment");
+			super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.updateMoment-after-createMoment");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("details"))
-			if (object.getDetails() == null || object.getDetails().isBlank() || object.getDetails().length() > 100)
-				super.state(false, "details", "developer.trainingModule.form.error.details");
-
-		Date now = new Date(); // Obtener la fecha actual
-		Date updateMoment = object.getUpdateMoment();
-		if (updateMoment != null && updateMoment.after(now) && updateMoment.after(creationMoment))
-			super.state(false, "updateMoment", "developer.trainingModule.form.error.updateMoment");
 	}
 
 	@Override
@@ -88,11 +81,20 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void unbind(final TrainingModule object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "project");
 
-		SelectChoices choices;
-		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
-		dataset.put("difficultyLevels", choices);
+		SelectChoices difficultyLevel = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
+		final SelectChoices choices = new SelectChoices();
+		Collection<Project> projects;
+		projects = this.repository.findAllPublishedProjects();
+
+		for (final Project p : projects)
+			if (object.getProject() != null && object.getProject().getId() == p.getId())
+				choices.add(String.valueOf(p.getId()), p.getCode() + " - " + p.getTitle(), true);
+			else
+				choices.add(String.valueOf(p.getId()), p.getCode() + " - " + p.getTitle(), false);
+		dataset.put("difficultyLevels", difficultyLevel);
+		dataset.put("projects", choices);
 
 		super.getResponse().addData(dataset);
 	}

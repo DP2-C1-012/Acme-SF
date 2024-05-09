@@ -14,22 +14,25 @@ import acme.roles.Developer;
 public class DeveloperTrainingSessionController extends AbstractController<Developer, TrainingSession> {
 
 	@Autowired
-	protected DeveloperTrainingSessionListService	listTrainingSessions;
+	protected DeveloperTrainingSessionListService		listTrainingSessions;
 
 	@Autowired
-	private DeveloperTrainingSessionShowService		showService;
+	private DeveloperTrainingSessionShowService			showService;
 
 	@Autowired
-	private DeveloperTrainingSessionCreateService	createService;
+	private DeveloperTrainingSessionCreateService		createService;
 
 	@Autowired
-	private DeveloperTrainingSessionUpdateService	updateService;
+	private DeveloperTrainingSessionUpdateService		updateService;
 
 	@Autowired
-	private DeveloperTrainingSessionDeleteService	deleteService;
+	private DeveloperTrainingSessionDeleteService		deleteService;
 
 	@Autowired
-	private DeveloperTrainingSessionPublishService	publishService;
+	private DeveloperTrainingSessionPublishService		publishService;
+
+	@Autowired
+	protected DeveloperTrainingSessionListAllService	listAllService;
 
 
 	@PostConstruct
@@ -39,8 +42,8 @@ public class DeveloperTrainingSessionController extends AbstractController<Devel
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
-
 		super.addCustomCommand("publish", "update", this.publishService);
+		super.addCustomCommand("list-all", "list", this.listAllService);
 	}
 
 }

@@ -5,15 +5,15 @@
 
 <acme:form>
 
-	<acme:input-textbox code="developer.trainingModule.form.label.code" path="code"/>
+	<acme:input-textbox code="developer.trainingModule.form.label.code" path="code" placeholder="developer.training-module.form.placeholder.code"/>
 	<acme:input-moment code="developer.trainingModule.form.label.creation-moment" path="creationMoment"/>
 	<acme:input-moment code="developer.trainingModule.form.label.update-moment" path="updateMoment"/>
 	<acme:input-textarea code="developer.trainingModule.form.label.details" path="details"/>
 	<acme:input-select code="developer.trainingModule.form.label.difficultyLevel" path="difficultyLevel" choices="${difficultyLevels}"/>
-	<acme:input-url code="developer.trainingModule.form.label.link" path="link"/>
-	<acme:input-integer code="developer.trainingModule.form.label.total-time" path="totalTime"  readonly="true"/>
+	<acme:input-url code="developer.trainingModule.form.label.link" path="link" placeholder="developer.training-module.form.placeholder.link" />
+	<acme:input-integer code="developer.trainingModule.form.label.total-time" path="time"  readonly="true"/>
 	<acme:input-checkbox code="developer.training-module.form.label.draft-mode" path="draftMode"/>	
-	<acme:input-integer code="developer.trainingModule.form.label.project" path="project"/>
+	<acme:input-select code="developer.trainingModule.form.label.project" path="project" choices="${projects}"/>
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && draftMode == false}">
 			<acme:button code="developer.training-module.form.button.training-session" action="/developer/training-session/list?trainingModuleId=${id}"/>		
