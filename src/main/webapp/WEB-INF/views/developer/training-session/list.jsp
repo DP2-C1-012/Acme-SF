@@ -11,12 +11,4 @@
 	<acme:list-column code="developer.trainingSession.list.label.module" path="module" width="20%" />
 	
 </acme:list>
-
-<jstl:choose>	
-	<jstl:when test="${_command == 'list'} }">
-		<acme:button code="developer.training-session.list.button.create" action="/developer/training-session/create?trainingModuleId=${trainingModuleId}"/>
-	</jstl:when> 
-	<jstl:when test="${_command == 'list-all'}">
-		<acme:button code="developer.training-session.list.button.create" action="/developer/training-session/create"/>
-	</jstl:when>			
-</jstl:choose>
+<acme:button code="developer.training-session.list.button.create" action="/developer/training-session/create"/>
