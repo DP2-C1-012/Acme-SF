@@ -15,12 +15,18 @@ developer.training-session.form.label.endPeriod = Fecha de Finalización
 developer.training-session.form.label.location = Ubicación
 developer.training-session.form.label.instructor = Instructor
 developer.training-session.form.label.email = Correo Electrónico de Contacto
-developer.training-session.form.label.link = Enlace
+developer.training-session.form.label.link = Enlace (opcional)
 developer.training-session.form.label.draftMode = Modo Borrador
-developer.training_session.form.label.trainingModule = Módulo de Entrenamiento
+developer.training_session.form.label.module  = Módulo de Entrenamiento
+developer.training_session.form.label.trainingModule  = Módulo de Entrenamiento
 
 developer.training-session.list.button.create = Crear
 developer.training-session.form.button.create = Crear
 developer.training-session.form.button.update = Actualizar
 developer.training-session.form.button.delete = Borrar
 developer.training-session.form.button.publish = Publicar
+
+developer.training-session.form.error.trainingModule = No puedes asignar ese módulo de entrenamiento
+developer.training-session.form.error.startBeforeCreate = El período de inicio no puede ser antes de los 7 días posteriores al momento de creación del módulo de entrenamiento seleccionado
+
+developer.training-session.form.placeholder.code = TS-[A-Z]{1,3}-[0-9]{3}

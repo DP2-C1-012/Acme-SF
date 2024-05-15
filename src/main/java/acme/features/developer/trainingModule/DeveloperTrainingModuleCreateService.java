@@ -38,6 +38,8 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		object = new TrainingModule();
 		object.setDraftMode(true);
 		object.setDeveloper(developer);
+		Date moment = MomentHelper.getCurrentMoment();
+		object.setCreationMoment(moment);
 		super.getBuffer().addData(object);
 	}
 
@@ -63,8 +65,6 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			else
 				super.state(tm == null, "code", "developer.training-module.form.error.code");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
-			super.state(m.after(object.getCreationMoment()), "creationMoment", "developer.trainingModule.form.error.creationMoment");
 		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !(object.getUpdateMoment() == null)) {
 			super.state(m.after(object.getUpdateMoment()), "updateMoment", "developer.trainingModule.form.error.updateMoment");
 			super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.updateMoment-after-createMoment");

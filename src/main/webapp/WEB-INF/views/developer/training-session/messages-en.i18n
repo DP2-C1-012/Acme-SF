@@ -15,9 +15,10 @@ developer.training-session.form.label.endPeriod = End Date
 developer.training-session.form.label.location = Location
 developer.training-session.form.label.instructor = Instructor
 developer.training-session.form.label.email = Contact Email
-developer.training-session.form.label.link = Link
+developer.training-session.form.label.link = Link (optional)
 developer.training-session.form.label.draftMode = Draft Mode
-developer.training_session.form.label.trainingModule = Training Module
+developer.training_session.form.label.module  = Training Module
+developer.training_session.form.label.trainingModule  = Training Module
 
 developer.training-session.list.button.create = Create
 developer.training-session.form.button.create = Create
@@ -25,3 +26,8 @@ developer.training-session.form.button.update = Update
 developer.training-session.form.button.delete = Delete
 developer.training-session.form.button.publish = Publish
 
+
+developer.training-session.form.error.trainingModule = Cannot assign that training module
+developer.training-session.form.error.startBeforeCreate = Start period cannot be earlier than 7 days from the creation time of the selected training module
+
+developer.training-session.form.placeholder.code = TS-[A-Z]{1,3}-[0-9]{3}

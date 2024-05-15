@@ -29,6 +29,8 @@ master.menu.anonymous.fav-link = Aquí estaban nuestros enlaces favoritos
 master.menu.any = Cualquiera
 master.menu.any.sponsorship = Patrocinios
 master.menu.any.claim = Reclamaciones
+master.menu.any.training-module = Modulo de entrenamiento
+
 
 # master.menu.administrator ###################################################
 
@@ -61,8 +63,9 @@ master.menu.sponsor.dashboard = Panel de Patrocinador
 
 
 master.menu.developer = Desarrollador
-master.menu.developer.training-module = Sesiones de Entrenamiento
+master.menu.developer.training-module = Moduelo de Entrenamiento
 master.menu.developer.dashboard = Panel de Desarrollador
+master.menu.developer.training-session = Sesiones de Entrenamiento
 
 # master.menu.auditor #############################################
 

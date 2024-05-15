@@ -23,7 +23,7 @@ developer.trainingModule.form.label.creation-moment = Creation Moment
 developer.trainingModule.form.label.update-moment = Update Moment
 developer.trainingModule.form.label.details = Details
 developer.trainingModule.form.label.difficultyLevel = Difficulty Level
-developer.trainingModule.form.label.link = Link
+developer.trainingModule.form.label.link = Link (optional)
 developer.trainingModule.form.label.total-time = Total Time
 developer.trainingModule.form.label.project = Project
 developer.training-module.form.label.draft-mode = Draft Mode
@@ -42,9 +42,10 @@ developer.training-module.form.button.training-session = Training Session
 developer.training-module.form.error.draftMode-trainingSessions = There are still some training sessions in DraftMode
 developer.training-module.form.error.not-enough-training-sessions = No Training Sessions exists yet
 developer.trainingModule.form.error.duplicated-code = Duplicated Code.
+developer.trainingModule.form.error.notModify = Cannot be modified
 
 developer.trainingModule.form.error.null-code = Code is null.
-
+developer.trainingModule.form.error.project = Cannot assign that project
 developer.training-module.form.error.duplicateCode = Duplicate code already exists.
 developer.trainingModule.form.error.creationMoment = Invalid creation moment format.
 developer.trainingModule.form.error.updateMoment = Invalid update moment format.

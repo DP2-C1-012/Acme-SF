@@ -19,6 +19,8 @@ import acme.roles.Developer;
 @Service
 public class DeveloperTrainingSessionUpdateService extends AbstractService<Developer, TrainingSession> {
 
+	private String								project	= "project";
+
 	@Autowired
 	private DeveloperTrainingSessionRepository	repository;
 
@@ -49,7 +51,6 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		int tsId;
 
 		tsId = super.getRequest().getData("id", int.class);
-		System.out.println("load" + tsId);
 		ts = this.repository.findTrainingSessionById(tsId);
 
 		super.getBuffer().addData(ts);
@@ -70,9 +71,8 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 	@Override
 	public void validate(final TrainingSession object) {
 		assert object != null;
-
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.getDraftMode(), "draftMode", "developer.training-session.form.error.draftMode");
+		Collection<TrainingModule> tms;
+		tms = this.repository.findTrainingModulesNotPublishedByDeveloperId(super.getRequest().getPrincipal().getAccountId());
 
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
 			super.state(MomentHelper.isAfter(object.getStartPeriod(), object.getTrainingModule().getCreationMoment()), "startMoment", "developer.training-session.form.error.startBeforeCreate");
@@ -81,6 +81,8 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 			super.state(MomentHelper.isAfter(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "developer.training-session.form.error.endBeforeStart");
 			super.state(MomentHelper.isAfter(object.getEndPeriod(), MomentHelper.deltaFromMoment(object.getStartPeriod(), 7, ChronoUnit.DAYS)), "endPeriod", "developer.training-session.form.error.periodTooShort");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("trainingModule"))
+			super.state(tms.contains(object.getTrainingModule()), "trainingModule", "developer.training-session.form.error.trainingModule");
 
 	}
 
@@ -103,8 +105,6 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 
 		for (final TrainingModule tm : tms)
 			choices.add(String.valueOf(tm.getId()), tm.getCode(), false);
-
-		dataset.put("module", object.getTrainingModule().getCode());
 
 		dataset.put("modules", choices);
 
