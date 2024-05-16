@@ -49,9 +49,8 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 		Integer maxTrainingModuleTime;
 
 		id = super.getRequest().getPrincipal().getActiveRoleId();
-		Collection<TrainingModule> trainingModules = this.repository.listMyTrainingModule(id);
+		Collection<TrainingModule> trainingModules = this.repository.listMyPublishTrainingModule(id);
 		System.out.println(trainingModules);
-
 		numOfTrainingModuleOfDeveloper = this.repository.findNumOfTrainingModuleOfDeveloper(id);
 		numTrainingSessionsWithLink = this.repository.numberOfTrainingSessionsWithLink(id);
 		averageTrainingModuleTime = trainingModules.stream().mapToInt(tm -> this.getEstimatedTotalTime(tm)).average().orElse(0.0);

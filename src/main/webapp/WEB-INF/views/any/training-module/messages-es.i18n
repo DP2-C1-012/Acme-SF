@@ -1,10 +1,10 @@
-any.trainingModule.list.title = Módulos de entrenamiento publicados
-any.trainingModule.form.title = Detalles del Módulo de Entrenamiento
+any.training-module.list.title = Módulos de entrenamiento publicados
+any.training-module.form.title = Detalles del módulo de entrenamiento
 
-authenticated.trainingModule.list.label.code = Código
-authenticated.trainingModule.list.label.details = Detalles
-authenticated.trainingModule.list.label.basicLevel = Nivel
-authenticated.trainingModule.list.label.projectCode = Código del Proyecto
+developer.trainingModule.list.label.code = Código
+developer.trainingModule.list.label.difficultyLevel = Nivel de Dificultad
+developer.trainingModule.list.label.creation-moment = Momento de Creación
+developer.trainingModule.list.label.projectCode = Código del Proyecto
 
 any.trainingModule.form.label.code = Código
 any.trainingModule.form.label.creationMoment = Momento de Creación
@@ -14,4 +14,4 @@ any.trainingModule.form.label.updateMoment = Momento de Actualización
 any.trainingModule.form.label.link = Enlace
 any.trainingModule.form.label.developer = Grado del Desarrollador
 developer.trainingModule.form.label.projectCode = Código del Proyecto
-any.trainingModule.form.label.time = Tiempo Total Estimado
+any.trainingModule.form.label.time = Tiempo Total

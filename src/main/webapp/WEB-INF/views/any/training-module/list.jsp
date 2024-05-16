@@ -5,9 +5,8 @@
 
 <acme:list>
 	<acme:list-column code="developer.trainingModule.list.label.code" path="code"  width="20%"/>
-	<acme:list-column code="developer.trainingModule.list.label.details" path="details" width="40%" />
+	<acme:list-column code="developer.trainingModule.list.label.creation-moment" path="creationMoment" width="20%" />
 	<acme:list-column code="developer.trainingModule.list.label.difficultyLevel" path="difficultyLevel" width="20%" />
 	<acme:list-column code="developer.trainingModule.list.label.projectCode" path="projectCode" width="20%" />
-
 
 </acme:list>

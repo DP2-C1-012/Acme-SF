@@ -24,7 +24,6 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 	public void authorise() {
 		TrainingModule object;
 		int tmId;
-
 		tmId = super.getRequest().getData("trainingModuleId", int.class);
 		object = this.repository.findTrainingModuleById(tmId);
 		final Principal principal = super.getRequest().getPrincipal();
@@ -48,9 +47,14 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		assert object != null;
 
 		Dataset dataset;
+		int tmId;
+		tmId = super.getRequest().getData("trainingModuleId", int.class);
+		super.getResponse().addGlobal("trainingModuleId", tmId);
 
 		dataset = super.unbind(object, "code", "startPeriod", "instructor", "location", "endPeriod", "draftMode");
 		dataset.put("module", object.getTrainingModule().getCode());
+		dataset.put("trainingModuleId", tmId);
+
 		super.getResponse().addData(dataset);
 	}
 
