@@ -19,8 +19,6 @@ import acme.roles.Developer;
 @Service
 public class DeveloperTrainingSessionUpdateService extends AbstractService<Developer, TrainingSession> {
 
-	private String								project	= "project";
-
 	@Autowired
 	private DeveloperTrainingSessionRepository	repository;
 
