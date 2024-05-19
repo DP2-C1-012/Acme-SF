@@ -58,7 +58,7 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 	public void unbind(final TrainingSession object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode", "trainingModule");
+		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode");
 		SelectChoices choices = new SelectChoices();
 
 		Collection<TrainingModule> tms;
@@ -68,6 +68,9 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 			boolean isSelected = this.validator.isSelectedTrainingModule(object, tm);
 			choices.add(String.valueOf(tm.getId()), tm.getCode(), isSelected);
 		}
+
+		dataset.put("trainingModule", object.getTrainingModule().getId());
+
 		dataset.put("module", object.getTrainingModule().getCode());
 
 		dataset.put("modules", choices);

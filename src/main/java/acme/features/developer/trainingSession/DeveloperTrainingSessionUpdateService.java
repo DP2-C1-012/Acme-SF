@@ -60,10 +60,11 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 
 		super.bind(object, "code", "startPeriod", "instructor", "location", "endPeriod", "email", "link", "draftMode");
 
-		int trainingModuleId = super.getRequest().getData("trainingModule", int.class);
-		TrainingModule tm = this.repository.findTrainingModuleById(trainingModuleId);
+		int trainingModule = super.getRequest().getData("module", int.class);
+		System.out.println(trainingModule);
+		TrainingModule tm = this.repository.findTrainingModuleById(trainingModule);
+		System.out.println(tm);
 		object.setTrainingModule(tm);
-
 	}
 
 	@Override
@@ -79,15 +80,15 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 			super.state(MomentHelper.isAfter(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "developer.training-session.form.error.endBeforeStart");
 			super.state(MomentHelper.isAfter(object.getEndPeriod(), MomentHelper.deltaFromMoment(object.getStartPeriod(), 7, ChronoUnit.DAYS)), "endPeriod", "developer.training-session.form.error.periodTooShort");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("trainingModule"))
-			super.state(tms.contains(object.getTrainingModule()), "trainingModule", "developer.training-session.form.error.trainingModule");
+		if (!super.getBuffer().getErrors().hasErrors("module"))
+			super.state(tms.contains(object.getTrainingModule()), "module", "developer.training-session.form.error.trainingModule");
 
 	}
 
 	@Override
 	public void perform(final TrainingSession object) {
 		assert object != null;
-
+		object.setDraftMode(true);
 		this.repository.save(object);
 	}
 
