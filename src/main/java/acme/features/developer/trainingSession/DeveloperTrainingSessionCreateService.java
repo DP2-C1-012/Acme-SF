@@ -72,14 +72,15 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 			TrainingSession existing;
 
 			existing = this.repository.findTrainingSessionByCode(object.getCode());
-			super.state(existing == null, this.code, "developer.training-session.form.error.duplicateCode");
+			super.state(existing == null, this.code, "developer.training-session.form.error.duplicate-code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors(this.startPeriod))
 			super.state(MomentHelper.isAfter(object.getStartPeriod(), object.getTrainingModule().getCreationMoment()), "startPeriod", "developer.training-session.form.error.startBeforeCreate");
-		if (!super.getBuffer().getErrors().hasErrors(this.endPeriod)) {
-			super.state(MomentHelper.isAfter(object.getEndPeriod(), object.getStartPeriod()), this.endPeriod, "developer.training-session.form.error.endBeforeStart");
-			super.state(MomentHelper.isAfter(object.getEndPeriod(), MomentHelper.deltaFromMoment(object.getStartPeriod(), 7, ChronoUnit.DAYS)), "endPeriod", "developer.training-session.form.error.periodTooShort");
+		if (!super.getBuffer().getErrors().hasErrors("endPeriod") && !super.getBuffer().getErrors().hasErrors("startPeriod")) {
+			super.state(MomentHelper.isAfter(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "developer.training-session.form.error.endBeforeStart");
+			if (!super.getBuffer().getErrors().hasErrors())
+				super.state(MomentHelper.isAfter(object.getEndPeriod(), MomentHelper.deltaFromMoment(object.getStartPeriod(), 7, ChronoUnit.DAYS)), "endPeriod", "developer.training-session.form.error.periodTooShort");
 		}
 
 	}
