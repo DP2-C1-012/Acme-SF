@@ -19,6 +19,8 @@ developer.training-session.form.label.link = Enlace (opcional)
 developer.training-session.form.label.draftMode = Borrador
 developer.training_session.form.label.module = Módulo
 developer.training_session.form.label.trainingModule = Módulo de Entrenamiento
+developer.training-session.form.label.module = Módulo de Entrenamiento
+
 
 developer.training-session.list.button.create = Crear
 developer.training-session.form.button.create = Crear
@@ -29,7 +31,7 @@ developer.training-session.form.button.publish = Publicar
 developer.training-session.form.placeholder.code = TS-[A-Z]{1,3}-[0-9]{3}
 
 
-developer.training-session.form.error.duplicateCode = Código Duplicado
+developer.training-session.form.error.duplicated-code = = Código Duplicado
 developer.training-session.form.error.trainingModule = Módulo inválido
 developer.training-session.form.error.startBeforeCreate = Inicio no puede ser < 7 días después de creación del módulo
 developer.training-session.form.error.endBeforeStart = Final del periodo debe ser después que el inicio
