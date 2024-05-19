@@ -28,8 +28,7 @@ public class BannerAdvisor {
 			Collection<Banner> all = this.repository.findAllBanners();
 			List<Banner> baList;
 			baList = all.stream().unordered().filter(b -> (b.getDisplayPeriodStart().after(current) || b.getDisplayPeriodStart().equals(current) && (b.getDisplayPeriodEnd().before(current) || b.getDisplayPeriodEnd().equals(current)))).toList();
-			RandomHelper rand = null;
-			int index = RandomHelper.nextInt(baList.size());
+			int index = RandomHelper.nextInt(0, baList.size());
 			res = baList.get(index);
 		} catch (final Throwable oops) {
 			oops.printStackTrace();
