@@ -55,7 +55,7 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	public void bind(final TrainingSession object) {
 		assert object != null;
 
-		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link");
+		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link");
 
 		int trainingModule = super.getRequest().getData("module", int.class);
 		TrainingModule tm = this.repository.findTrainingModuleById(trainingModule);

@@ -48,6 +48,7 @@ public class TrainingSession extends AbstractEntity {
 	private String				email;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	@NotNull

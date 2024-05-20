@@ -78,26 +78,18 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	public void validate(final TrainingModule object) {
 		assert object != null;
 		Collection<Project> projects;
-		Collection<TrainingSession> sessions;
-		int totalSessions;
 
-		sessions = this.repository.findTrainingSessionsByTrainingModule(object);
-		totalSessions = sessions.size();
+		TrainingModule tm;
+		tm = this.repository.findTrainingModuleByCode(object.getCode());
+
 		projects = this.repository.findAllPublishedProjects();
 
-		super.state(totalSessions >= 1, "*", "developer.training-module.form.error.not-enough-training-sessions");
 		if (!super.getBuffer().getErrors().hasErrors())
 			super.state(this.validator.validateExistsPublishedTrainingSessions(object.getId()), "*", "developer.training-module.form.error.draftMode-trainingSessions");
-
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			TrainingModule tm;
-			tm = this.repository.findTrainingModuleByCode(object.getCode());
+		if (!super.getBuffer().getErrors().hasErrors("code") && tm != null)
 			super.state(tm.getId() == object.getId(), "code", "developer.training-module.form.error.duplicated-code");
-
-		}
-		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
-			if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !(object.getUpdateMoment() == null) && object.getCreationMoment() == null)
-				super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.updateMoment-after-createMoment");
+		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !(object.getUpdateMoment() == null) && !(object.getCreationMoment() == null))
+			super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.updateMoment-after-createMoment");
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(projects.contains(object.getProject()), "project", "developer.training-module.form.error.project");
 

@@ -91,7 +91,7 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		if (!super.getBuffer().getErrors().hasErrors("code"))
 			if (tm != null)
 				super.state(tm.getId() == object.getId(), "code", "developer.training-module.form.error.duplicated-code");
-		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !(object.getUpdateMoment() == null) && object.getCreationMoment() == null)
+		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !(object.getUpdateMoment() == null) && !(object.getCreationMoment() == null))
 			super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.updateMoment-after-createMoment");
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(projects.contains(object.getProject()), "project", "developer.training-module.form.error.project");
