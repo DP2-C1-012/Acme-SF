@@ -69,7 +69,7 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 			choices.add(String.valueOf(tm.getId()), tm.getCode(), isSelected);
 		}
 
-		dataset.put("trainingModule", object.getTrainingModule().getId());
+		dataset.put("trainingModuleId", object.getTrainingModule().getId());
 
 		dataset.put("module", object.getTrainingModule().getCode());
 

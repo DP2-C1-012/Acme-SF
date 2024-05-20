@@ -81,6 +81,7 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 			boolean isSelected = this.validator.isSelectedProject(object, p);
 			choicesProject.add(String.valueOf(p.getId()), p.getCode() + " -> " + p.getTitle(), isSelected);
 		}
+		dataset.put("trainingModuleId", object.getId());
 		dataset.put("time", object.getEstimatedTotalTime() + " horas");
 		dataset.put("projects", choicesProject);
 		dataset.put("difficultyLevels", choicesDifficultyLevel);

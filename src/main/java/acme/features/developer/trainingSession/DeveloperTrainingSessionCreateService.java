@@ -76,7 +76,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors(this.startPeriod))
-			super.state(MomentHelper.isAfter(object.getStartPeriod(), object.getTrainingModule().getCreationMoment()), "startPeriod", "developer.training-session.form.error.startBeforeCreate");
+			super.state(MomentHelper.isAfter(object.getStartPeriod(), MomentHelper.deltaFromMoment(object.getTrainingModule().getCreationMoment(), 7, ChronoUnit.DAYS)), "startPeriod", "developer.training-session.form.error.startBeforeCreate");
 		if (!super.getBuffer().getErrors().hasErrors("endPeriod") && !super.getBuffer().getErrors().hasErrors("startPeriod")) {
 			super.state(MomentHelper.isAfter(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "developer.training-session.form.error.endBeforeStart");
 			if (!super.getBuffer().getErrors().hasErrors())

@@ -9,7 +9,7 @@
 	<acme:list-column code="developer.training-session.list.label.instructor" path="instructor" width="20%"/>
 	<acme:list-column code="developer.training-session.list.label.draftMode" path="draftMode" width="20%"/>
 	<acme:list-column code="developer.training-session.list.label.module" path="module" width="20%" />
-	
+
 </acme:list>
 <jstl:choose>	
 	<jstl:when test="${_command == 'list'}">

@@ -2,7 +2,6 @@
 package acme.features.developer.trainingModule;
 
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.components.ValidatorService;
@@ -79,12 +77,13 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
-		Date m = MomentHelper.getCurrentMoment();
+		Collection<Project> projects;
 		Collection<TrainingSession> sessions;
 		int totalSessions;
 
 		sessions = this.repository.findTrainingSessionsByTrainingModule(object);
 		totalSessions = sessions.size();
+		projects = this.repository.findAllPublishedProjects();
 
 		super.state(totalSessions >= 1, "*", "developer.training-module.form.error.not-enough-training-sessions");
 		if (!super.getBuffer().getErrors().hasErrors())
@@ -93,18 +92,16 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingModule tm;
 			tm = this.repository.findTrainingModuleByCode(object.getCode());
-			super.state(tm.getId() == object.getId(), "code", "developer.trainingModule.form.error.duplicated-code");
+			super.state(tm.getId() == object.getId(), "code", "developer.training-module.form.error.duplicated-code");
 
 		}
-		if (!super.getBuffer().getErrors().hasErrors("creationMoment")) {
-			super.state(m.after(object.getCreationMoment()), "creationMoment", "developer.trainingModule.form.error.creationMoment");
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
 			if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !(object.getUpdateMoment() == null) && object.getCreationMoment() == null)
-				super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.updateMoment-after-createMoment");
-
-		}
+				super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.updateMoment-after-createMoment");
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(projects.contains(object.getProject()), "project", "developer.training-module.form.error.project");
 
 	}
-
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;

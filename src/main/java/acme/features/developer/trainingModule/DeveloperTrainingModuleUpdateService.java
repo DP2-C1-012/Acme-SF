@@ -75,6 +75,9 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		int projectId = super.getRequest().getData("project", int.class);
 		Project p = this.repository.findOneProjectById(projectId);
 		object.setProject(p);
+
+		Date moment = MomentHelper.getCurrentMoment();
+		object.setUpdateMoment(moment);
 	}
 
 	@Override
@@ -87,12 +90,11 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 
 		if (!super.getBuffer().getErrors().hasErrors("code"))
 			if (tm != null)
-				super.state(tm.getId() == object.getId(), "code", "developer.trainingModule.form.error.duplicated-code");
+				super.state(tm.getId() == object.getId(), "code", "developer.training-module.form.error.duplicated-code");
 		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !(object.getUpdateMoment() == null) && object.getCreationMoment() == null)
-			super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.updateMoment-after-createMoment");
+			super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.updateMoment-after-createMoment");
 		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(projects.contains(object.getProject()), "project", "developer.trainingModule.form.error.project");
-
+			super.state(projects.contains(object.getProject()), "project", "developer.training-module.form.error.project");
 	}
 
 	@Override
@@ -117,6 +119,7 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		for (final Project p : projects)
 			choicesProject.add(String.valueOf(p.getId()), p.getCode() + " - " + p.getTitle(), false);
 
+		dataset.put("trainingModuleId", object.getId());
 		dataset.put("time", object.getEstimatedTotalTime() + " horas");
 		dataset.put("projects", choicesProject);
 		dataset.put("difficultyLevels", choicesDifficultyLevel);

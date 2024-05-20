@@ -44,10 +44,11 @@ developer.training-module.form.error.not-enough-training-sessions = No Training 
 developer.trainingModule.form.error.duplicated-code = Duplicated Code.
 developer.trainingModule.form.error.notModify = Cannot be modified
 
-developer.trainingModule.form.error.null-code = Code is null.
-developer.trainingModule.form.error.project = Cannot assign that project
+developer.training-module.form.error.null-code = Code is null.
+developer.training-module.form.error.project = Cannot assign that project
 developer.training-module.form.error.duplicateCode = Duplicate code already exists.
-developer.trainingModule.form.error.creationMoment = Invalid creation moment format.
-developer.trainingModule.form.error.updateMoment = Invalid update moment format.
-developer.trainingModule.form.error.updateMoment-after-createMoment = Update moment cannot be before creation moment.
-developer.trainingModule.form.error.details = Details must not be empty and should be less than 100 characters.
+developer.training-module.form.error.duplicated-code = Duplicate code already exists.
+developer.training-module.form.error.creationMoment = Invalid creation moment format.
+developer.training-module.form.error.updateMoment = Invalid update moment format.
+developer.training-module.form.error.updateMoment-after-createMoment = Update moment cannot be before creation moment.
+developer.training-module.form.error.details = Details must not be empty and should be less than 100 characters.
