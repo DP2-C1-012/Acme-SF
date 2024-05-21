@@ -56,6 +56,8 @@
 
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.codeAudits" action="/authenticated/code-audit/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.risks" action="/authenticated/risk/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.objectives" action="/authenticated/objective/list"/>
 
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
