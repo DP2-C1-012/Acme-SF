@@ -12,7 +12,7 @@
 
 </acme:list>
 <jstl:choose>	
-	<jstl:when test="${_command == 'list'}">
+	<jstl:when test="${_command == 'list' && mode == true}">
 		<acme:button code="developer.training-session.list.button.create" action="/developer/training-session/create?trainingModuleId=${trainingModuleId}"/>
 	</jstl:when>			
 </jstl:choose>	

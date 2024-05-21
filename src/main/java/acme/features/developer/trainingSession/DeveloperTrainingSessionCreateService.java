@@ -35,8 +35,14 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 	@Override
 	public void authorise() {
 		boolean status;
+		TrainingModule object;
+		int tmId;
+
+		tmId = super.getRequest().getData("trainingModuleId", int.class);
+		object = this.repository.findTrainingModuleById(tmId);
+
 		status = super.getRequest().getPrincipal().hasRole(Developer.class);
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(status && object.getDraftMode() == true);
 
 	}
 

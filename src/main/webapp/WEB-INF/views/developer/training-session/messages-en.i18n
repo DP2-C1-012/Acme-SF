@@ -30,6 +30,7 @@ developer.training-session.form.button.publish = Publish
 
 developer.training-session.form.placeholder.code = TS-[A-Z]{1,3}-[0-9]{3}
 
+developer.training-session.form.error.duplicated-code = Duplicate Code
 developer.training-session.form.error.duplicate-code = Duplicate Code
 developer.training-session.form.error.trainingModule = Invalid Module
 developer.training-session.form.error.startBeforeCreate = Start cannot be < 7 days after module creation
