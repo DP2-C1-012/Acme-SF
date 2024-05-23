@@ -48,6 +48,7 @@ public class CodeAudit extends AbstractEntity {
 	@NotNull
 	private Mark				mark				= Mark.F_MINUS;
 	@URL
+	@Length(max = 255)
 	private String				optionalLink;
 	private boolean				published;
 	@ManyToOne(optional = false)

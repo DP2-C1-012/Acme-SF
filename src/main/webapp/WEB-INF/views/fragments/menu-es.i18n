@@ -61,7 +61,8 @@ master.menu.sponsor.dashboard = Panel de Patrocinador
 
 
 master.menu.developer = Desarrollador
-master.menu.developer.training-module = Sesiones de Entrenamiento
+master.menu.developer.training-module = Módulos de Entrenamiento
+master.menu.developer.training-session = Sesiones de Entrenamiento
 master.menu.developer.dashboard = Panel de Desarrollador
 
 # master.menu.auditor #############################################
@@ -96,5 +97,8 @@ master.menu.user-account.become-sponsor = Hazte patrocinador
 # master.menu.authenticated ########################################
 
 master.menu.authenticated = Autenticado
-master.menu.authenticated.codeAudits = Listar auditaciones
+master.menu.authenticated.codeAudits = Lista auditaciones
+master.menu.authenticated.risk = Lista riesgos
+master.menu.authenticated.objectives = Lista objetivos
+
 >>>>>>> main

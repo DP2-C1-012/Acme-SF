@@ -54,6 +54,8 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 			existing = this.repository.findOneCodeAuditByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "auditor.codeAudit.form.error.code");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(object.getProject() != null && !object.getProject().isDraftMode(), "project", "auditor.codeAudit.form.error.project");
 	}
 
 	@Override
