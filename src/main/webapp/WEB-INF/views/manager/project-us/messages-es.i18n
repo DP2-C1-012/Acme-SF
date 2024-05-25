@@ -3,5 +3,6 @@ manager.projectUs.form.userStory.title	= Titulo
 manager.projectUs.form.userStory.description = Descripción
 manager.projectUs.form.project = Proyecto
 manager.projectUs.form.button.delete = Borrar
-manager.projectUs.error.containsUs = Este proyecto ya pertenece esta Historia de Usuario
+manager.projectUs.error.containsUs = A este proyecto ya pertenece esta Historia de Usuario
 manager.projectUs.form.button.create = Añadir
+manager.projectUs.error.draftMode= El proyecto no se puede editar

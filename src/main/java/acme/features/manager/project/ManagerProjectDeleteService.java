@@ -26,8 +26,8 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		int id;
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findProjectById(id);
-		Principal principal = super.getRequest().getPrincipal();
-		int userAccountId = principal.getAccountId();
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
 		super.getResponse().setAuthorised(object.getManager().getUserAccount().getId() == userAccountId);
 	}
 
@@ -56,9 +56,9 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
-		Collection<ProjectUs> projectUserStories = this.repository.findProjectUserStoriesByProject(object);
-		for (final ProjectUs pus : projectUserStories)
-			this.repository.delete(pus);
+		final Collection<ProjectUs> projectUserStories = this.repository.findProjectUserStoriesByProject(object);
+		for (final ProjectUs pu : projectUserStories)
+			this.repository.delete(pu);
 		this.repository.delete(object);
 	}
 

@@ -26,8 +26,8 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		int id;
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findProjectById(id);
-		Principal principal = super.getRequest().getPrincipal();
-		int userAccountId = principal.getAccountId();
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
 		super.getResponse().setAuthorised(object.getManager().getUserAccount().getId() == userAccountId);
 	}
 

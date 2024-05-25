@@ -25,7 +25,7 @@ manager.project.userStories = User Stories
 
 manager.project.form.error.code = There's a project with the same code
 manager.project.form.error.cost = The cost must be positive and less than 1000000
-manager.project.form.error.cost2 = The currency entered is not accepted by the system
+manager.project.form.error.currency = The currency entered is not accepted by the system
 validation.project.code = The code must be 3 uppercase letters and 4 numbers joined by -
 
 manager.project.create = Create
