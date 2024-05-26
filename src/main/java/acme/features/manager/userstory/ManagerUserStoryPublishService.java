@@ -8,6 +8,7 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.ValidatorService;
 import acme.entities.userstory.Priority;
 import acme.entities.userstory.UserStory;
 import acme.roles.Manager;
@@ -16,7 +17,10 @@ import acme.roles.Manager;
 public class ManagerUserStoryPublishService extends AbstractService<Manager, UserStory> {
 
 	@Autowired
-	protected ManagerUserStoryRepository repository;
+	protected ManagerUserStoryRepository	repository;
+
+	@Autowired
+	protected ValidatorService				service;
 
 
 	@Override
@@ -25,9 +29,9 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		int id;
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findUserStorieById(id);
-		Principal principal = super.getRequest().getPrincipal();
-		int userAccountId = principal.getAccountId();
-		super.getResponse().setAuthorised(object.getManager().getUserAccount().getId() == userAccountId);
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
+		super.getResponse().setAuthorised(object.isDraftMode() && object.getManager().getUserAccount().getId() == userAccountId);
 	}
 
 	@Override
@@ -42,14 +46,18 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	@Override
 	public void bind(final UserStory object) {
 		assert object != null;
-		super.bind(object, "title", "description", "estimatedCostPerHour", "acceptanceCriteria", "priority", "link");
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
 	}
 
 	@Override
 	public void validate(final UserStory object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("estimatedCost"))
-			super.state(object.getEstimatedCost().getAmount() >= 0, "estimatedCost", "manager.userstory.form.error.estimatedCost");
+		if (!super.getBuffer().getErrors().hasErrors("estimatedCost")) {
+			super.state(this.service.validateMoneyQuantity(object.getEstimatedCost()), "estimatedCost", "manager.user-story.form.error.cost");
+			super.state(this.service.validateMoneyCurrency(object.getEstimatedCost()), "estimatedCost", "manager.user-story.form.error.currency");
+			super.state(this.service.validateCurrencyChange(object.getEstimatedCost(), object.getId()), "estimatedCost", "manager.user-story.form.error.currency");
+
+		}
 		if (!super.getBuffer().getErrors().hasErrors("title"))
 			super.state(object.getTitle().length() >= 0, "title", "manager.userstory.form.error.title");
 		if (!super.getBuffer().getErrors().hasErrors("description"))

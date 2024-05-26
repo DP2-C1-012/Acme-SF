@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.ValidatorService;
 import acme.entities.projects.Project;
 import acme.roles.Manager;
 
@@ -13,7 +14,10 @@ import acme.roles.Manager;
 public class ManagerProjectCreateService extends AbstractService<Manager, Project> {
 
 	@Autowired
-	protected ManagerProjectRepository repository;
+	protected ManagerProjectRepository	repository;
+
+	@Autowired
+	protected ValidatorService			service;
 
 
 	@Override
@@ -40,8 +44,11 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	@Override
 	public void validate(final Project object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("cost"))
-			super.state(object.getCost().getAmount() >= 0, "cost", "manager.project.form.error.cost");
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+			super.state(this.service.validateMoneyQuantity(object.getCost()), "cost", "manager.project.form.error.cost");
+			super.state(this.service.validateMoneyCurrency(object.getCost()), "cost", "manager.project.form.error.currency");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Project exist;
 			exist = this.repository.findProjectByCode(object.getCode());
