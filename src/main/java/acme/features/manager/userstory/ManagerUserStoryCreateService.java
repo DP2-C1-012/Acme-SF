@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.ValidatorService;
 import acme.entities.userstory.Priority;
 import acme.entities.userstory.UserStory;
 import acme.roles.Manager;
@@ -15,7 +16,10 @@ import acme.roles.Manager;
 public class ManagerUserStoryCreateService extends AbstractService<Manager, UserStory> {
 
 	@Autowired
-	protected ManagerUserStoryRepository repository;
+	protected ManagerUserStoryRepository	repository;
+
+	@Autowired
+	protected ValidatorService				service;
 
 
 	@Override
@@ -42,8 +46,11 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	@Override
 	public void validate(final UserStory object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("estimatedCost"))
-			super.state(object.getEstimatedCost().getAmount() >= 0, "estimatedCost", "manager.userstory.form.error.estimatedCost");
+		if (!super.getBuffer().getErrors().hasErrors("estimatedCost")) {
+			super.state(this.service.validateMoneyQuantity(object.getEstimatedCost()), "estimatedCost", "manager.user-story.form.error.cost");
+			super.state(this.service.validateMoneyCurrency(object.getEstimatedCost()), "estimatedCost", "manager.user-story.form.error.currency");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("title"))
 			super.state(object.getTitle().length() >= 0, "title", "manager.userstory.form.error.title");
 		if (!super.getBuffer().getErrors().hasErrors("description"))

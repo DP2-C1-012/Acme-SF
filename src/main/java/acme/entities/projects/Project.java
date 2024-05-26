@@ -50,6 +50,7 @@ public class Project extends AbstractEntity {
 	private boolean				indication;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	private boolean				draftMode;

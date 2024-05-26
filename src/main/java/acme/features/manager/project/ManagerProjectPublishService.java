@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.ValidatorService;
 import acme.entities.projects.Project;
 import acme.entities.userstory.UserStory;
 import acme.roles.Manager;
@@ -17,7 +18,10 @@ import acme.roles.Manager;
 public class ManagerProjectPublishService extends AbstractService<Manager, Project> {
 
 	@Autowired
-	protected ManagerProjectRepository repository;
+	protected ManagerProjectRepository	repository;
+
+	@Autowired
+	protected ValidatorService			service;
 
 
 	@Override
@@ -26,9 +30,9 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		int id;
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findProjectById(id);
-		Principal principal = super.getRequest().getPrincipal();
-		int userAccountId = principal.getAccountId();
-		super.getResponse().setAuthorised(object.getManager().getUserAccount().getId() == userAccountId);
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
+		super.getResponse().setAuthorised(object.isDraftMode() && object.getManager().getUserAccount().getId() == userAccountId);
 	}
 
 	@Override
@@ -59,8 +63,11 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 			super.state(usPublished, "*", "manager.project.form.error.nouspub");
 		}
 		super.state(!object.isIndication(), "indication", "manager.project.form.error.critical");
-		if (!super.getBuffer().getErrors().hasErrors("cost"))
-			super.state(object.getCost().getAmount() >= 0, "cost", "manager.project.form.error.cost");
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+			super.state(this.service.validateMoneyQuantity(object.getCost()), "cost", "manager.project.form.error.cost");
+			super.state(this.service.validateMoneyCurrency(object.getCost()), "cost", "manager.project.form.error.currency");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Project exist;
 			exist = this.repository.findProjectByCode(object.getCode());

@@ -18,5 +18,7 @@ manager.userstory.form.button.delete = Borrar
 manager.userstory.form.button.publish = Publicar
 manager.user-story.list.button.deleteFromProject = Borrar de un proyecto
 manager.user-story.list.button.add = Añadir a un proyecto
+manager.user-story.form.error.cost = El coste debe ser positivo y menor de 1000000
+manager.user-story.form.error.currency = La divisa introducida no es aceptada por el sistema
 
 manager.userstory.create = Crear
