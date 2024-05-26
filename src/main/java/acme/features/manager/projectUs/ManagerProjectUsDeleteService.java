@@ -63,17 +63,15 @@ public class ManagerProjectUsDeleteService extends AbstractService<Manager, Proj
 		Manager manager = this.repository.findManagerById(managerId);
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(object.getProject().isDraftMode(), "project", "manager.projectUs.error.draftMode");
-		if (!super.getBuffer().getErrors().hasErrors("userStory") && !super.getBuffer().getErrors().hasErrors("project")) {
-			final Collection<UserStory> userStories = this.repository.findUserStoriesByProjectId(object.getProject().getId());
-			super.state(!userStories.contains(object.getUserStory()) || userStories.isEmpty(), "project", "manager.projectUserStory.error.containsUs");
-			super.state(object.getProject().getManager().equals(manager) && object.getUserStory().getManager().equals(manager), "project", "manager.projectUserStory.error.containsUs");
-		}
+		if (!super.getBuffer().getErrors().hasErrors("userStory") && !super.getBuffer().getErrors().hasErrors("project"))
+			super.state(object.getProject().getManager().equals(manager) && object.getUserStory().getManager().equals(manager), "project", "manager.projectUs.error.notcontainsUs");
 	}
 
 	@Override
 	public void perform(final ProjectUs object) {
 		assert object != null;
-		this.repository.delete(object);
+		final ProjectUs pus = this.repository.findProjectUserStoryByBoth(object.getProject(), object.getUserStory());
+		this.repository.delete(pus);
 	}
 
 	@Override

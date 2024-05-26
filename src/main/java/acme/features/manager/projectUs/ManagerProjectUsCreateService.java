@@ -65,8 +65,8 @@ public class ManagerProjectUsCreateService extends AbstractService<Manager, Proj
 			super.state(object.getProject().isDraftMode(), "project", "manager.projectUs.error.draftMode");
 		if (!super.getBuffer().getErrors().hasErrors("userStory") && !super.getBuffer().getErrors().hasErrors("project")) {
 			final Collection<UserStory> userStories = this.repository.findUserStoriesByProjectId(object.getProject().getId());
-			super.state(!userStories.contains(object.getUserStory()) || userStories.isEmpty(), "project", "manager.projectUserStory.error.containsUs");
-			super.state(object.getProject().getManager().equals(manager) && object.getUserStory().getManager().equals(manager), "project", "manager.projectUserStory.error.containsUs");
+			super.state(!userStories.contains(object.getUserStory()) || userStories.isEmpty(), "project", "manager.projectUs.error.containsUs");
+			super.state(object.getProject().getManager().equals(manager) && object.getUserStory().getManager().equals(manager), "project", "manager.projectUs.error.containsUs");
 		}
 	}
 
@@ -89,7 +89,7 @@ public class ManagerProjectUsCreateService extends AbstractService<Manager, Proj
 		final UserStory userstory = this.repository.findUserStorieById(userstoryId);
 		dataset.put("draftMode", userstory.isDraftMode());
 
-		SelectChoices choices = new SelectChoices();
+		final SelectChoices choices = new SelectChoices();
 
 		if (object.getProject() == null)
 			choices.add("0", "---", true);

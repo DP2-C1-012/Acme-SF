@@ -45,7 +45,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	public void validate(final Project object) {
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("cost")) {
-			super.state(object.getCost().getAmount() >= 0, "cost", "manager.project.form.error.cost");
+			super.state(this.service.validateMoneyQuantity(object.getCost()), "cost", "manager.project.form.error.cost");
 			super.state(this.service.validateMoneyCurrency(object.getCost()), "cost", "manager.project.form.error.currency");
 		}
 

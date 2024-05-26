@@ -33,3 +33,9 @@ manager.project.form.button.delete = Delete
 manager.project.form.button.update = Update
 manager.project.form.button.publish = Publish
 manager.project.form.button.create = Create
+
+manager.project.form.tm = The project could not be deleted because it has a training module assigned.
+manager.project.form.sponsorship = The project could not be deleted because it has a sponsorship assigned.
+manager.project.form.contract = The project could not be deleted because it has a contract assigned.
+manager.project.form.ca = The project could not be deleted because it has a code audit assigned.
+

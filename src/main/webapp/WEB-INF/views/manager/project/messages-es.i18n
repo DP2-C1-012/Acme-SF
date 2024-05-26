@@ -22,7 +22,7 @@ manager.project.form.error.nouspub = Algunas historias de usuario de este proyec
 manager.project.userStories = Historias de usuario
 
 manager.project.form.error.code = Existe un proyecto con el mismo código
-manager.project.form.error.cost = El coste debe ser positivo
+manager.project.form.error.cost = El coste debe ser positivo y menor de 1000000
 manager.project.form.error.currency = La divisa introducida no es aceptada por el sistema
 validation.project.code = El código debe ser 3 mayusculas seguidas de un guión y 4 números
 
@@ -31,3 +31,8 @@ manager.project.form.button.delete = Eliminar
 manager.project.form.button.update = Actualizar
 manager.project.form.button.publish = Publicar
 manager.project.form.button.create = Crear
+
+manager.project.form.tm = No se ha podido borrar este proyecto ya que tiene un training module asignado
+manager.project.form.sponsorship = No se ha podido borrar este proyecto ya que tiene un sponsorship asignado
+manager.project.form.contract = No se ha podido borrar este proyecto ya que tiene un contract asignado
+manager.project.form.ca = No se ha podido borrar este proyecto ya que tiene un code audit asignado
