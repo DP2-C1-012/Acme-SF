@@ -39,6 +39,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	private String							link		= "link";
 	private String							project		= "project";
 	private String							moment		= "moment";
+	private String							draftMode	= "draftMode";
 
 
 	@Override
@@ -108,7 +109,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, this.code, this.moment, this.startDate, this.endDate, this.type, this.amount, this.link, this.contact);
+		dataset = super.unbind(object, this.code, this.moment, this.startDate, this.endDate, this.type, this.amount, this.link, this.contact, this.draftMode);
 		SelectChoices types = SelectChoices.from(SponsorshipType.class, object.getType());
 		final SelectChoices choices = new SelectChoices();
 		Collection<Project> projects = this.repository.findAllPublishedProjects();

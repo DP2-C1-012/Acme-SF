@@ -9,6 +9,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.components.ValidatorService;
 import acme.entities.invoices.Invoice;
+import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Sponsor;
 
 @Service
@@ -24,15 +25,14 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 
 	// AbstractService interface -------------------------------------
 
-	private String						id					= "id";
-	private String						code				= "code";
-	private String						quantity			= "quantity";
-	private String						tax					= "tax";
-	private String						link				= "link";
-	private String						dueDate				= "dueDate";
-	private String						registrationTime	= "registrationTime";
-	private String						sponsorship			= "sponsorship";
-	private String						draftMode			= "draftMode";
+	private String						id			= "id";
+	private String						code		= "code";
+	private String						quantity	= "quantity";
+	private String						tax			= "tax";
+	private String						link		= "link";
+	private String						dueDate		= "dueDate";
+	private String						sponsorship	= "sponsorship";
+	private String						draftMode	= "draftMode";
 
 
 	@Override
@@ -52,13 +52,15 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		int invId;
 		invId = super.getRequest().getData(this.id, int.class);
 		object = this.repository.findInvoiceById(invId);
+		Sponsorship invSponsorship = this.repository.findSponsorshipByInvId(invId);
+		object.setSponsorship(invSponsorship);
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void bind(final Invoice object) {
 		assert object != null;
-		super.bind(object, this.code, this.registrationTime, this.dueDate, this.quantity, this.tax, this.link);
+		super.bind(object, this.code, this.dueDate, this.quantity, this.tax, this.link);
 	}
 
 	@Override
@@ -82,12 +84,10 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		if (!super.getBuffer().getErrors().hasErrors(this.tax)) {
 			super.state(this.validator.validateMoneyQuantity(object.getTax()), this.tax, "sponsor.invoice.form.error.amount");
 			super.state(this.validator.validateMoneyCurrency(object.getTax()), this.tax, "sponsor.invoice.form.error.currency");
-			if (!super.getBuffer().getErrors().hasErrors(this.quantity))
+			if (!super.getBuffer().getErrors().hasErrors(this.quantity)) {
 				super.state(this.validator.validateEqualCurrency(object.getTax(), object.getQuantity()), "*", "sponsor.invoice.form.error.same-currency");
-		}
-		if (!super.getBuffer().getErrors().hasErrors(this.registrationTime)) {
-			super.state(this.validator.validateFuture(object.getRegistrationTime()), this.registrationTime, "sponsor.invoice.form.error.registration-time-past");
-			super.state(this.validator.validateDate(object.getRegistrationTime()), this.registrationTime, "sponsor.invoice.form.error.registration-time-date");
+				super.state(this.validator.validatePublishedInvoicesAmount(object.getSponsorship(), object.getQuantity().getAmount(), object.getTax().getAmount()), "*", "sponsor.invoice.form.error.published-invoices");
+			}
 		}
 		if (!super.getBuffer().getErrors().hasErrors(this.dueDate)) {
 			super.state(this.validator.validateDate(object.getDueDate()), this.dueDate, "sponsor.invoice.form.error.due-date-date");
@@ -107,7 +107,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	public void unbind(final Invoice object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, this.code, this.registrationTime, this.dueDate, this.quantity, this.tax, this.link, this.draftMode, this.sponsorship);
+		dataset = super.unbind(object, this.code, this.dueDate, this.quantity, this.tax, this.link, this.draftMode, this.sponsorship);
 		dataset.put("totalAmount", object.totalAmount());
 		super.getResponse().addData(dataset);
 	}
