@@ -1,10 +1,10 @@
 client.progress-logs.list.title = Tus actas de progreso
-client.progress-logs.form.title = Detalles del acta
-
 client.progress-logs.list.label.recordId = Id de registro
 client.progress-logs.list.label.completenessPercentage = Porcentaje de Completitud
 client.progress-logs.list.label.responsiblePerson = Responsable
+client.progress-logs.list.label.contract = Contrato
 
+client.progress-logs.form.title = Detalles del acta
 client.progress-logs.form.label.recordId = Id de registro
 client.progress-logs.form.label.completeness = Porcentaje de Completitud
 client.progress-logs.form.label.comment = Comentarios

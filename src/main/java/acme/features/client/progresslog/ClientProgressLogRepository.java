@@ -17,7 +17,7 @@ public interface ClientProgressLogRepository extends AbstractRepository {
 	Collection<ProgressLogs> getProgressLogsByClientId(int id);
 
 	@Query("select pl from ProgressLogs pl where pl.contract.id = :id")
-	Collection<ProgressLogs> getProgressLogsByContract(int id);
+	Collection<ProgressLogs> getProgressLogsByContractId(int id);
 
 	@Query("select pl from ProgressLogs pl where pl.recordId = :id")
 	ProgressLogs getProgressLogsByRecordId(String id);
@@ -25,12 +25,12 @@ public interface ClientProgressLogRepository extends AbstractRepository {
 	@Query("select pl from ProgressLogs pl where pl.id = :id")
 	ProgressLogs getProgressLogsById(int id);
 
-	@Query("select c from Contract c where c.id = :id")
+	@Query("select ct from Contract ct where ct.id = :id")
 	Contract getContractById(int id);
 
-	@Query("select c from Contract c where c.code = :code")
+	@Query("select ct from Contract ct where ct.code = :code")
 	Contract getContractByCode(String code);
 
-	@Query("select c from Contract c where c.client.id = :id")
+	@Query("select ct from Contract ct where ct.client.id = :id")
 	Collection<Contract> getContractsByClient(int id);
 }
