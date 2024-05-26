@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Principal;
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.components.ValidatorService;
@@ -23,15 +24,14 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 
 	// AbstractService interface -------------------------------------
 
-	private String						id					= "id";
-	private String						code				= "code";
-	private String						quantity			= "quantity";
-	private String						tax					= "tax";
-	private String						link				= "link";
-	private String						dueDate				= "dueDate";
-	private String						registrationTime	= "registrationTime";
-	private String						sponsorship			= "sponsorship";
-	private String						draftMode			= "draftMode";
+	private String						id			= "id";
+	private String						code		= "code";
+	private String						quantity	= "quantity";
+	private String						tax			= "tax";
+	private String						link		= "link";
+	private String						dueDate		= "dueDate";
+	private String						sponsorship	= "sponsorship";
+	private String						draftMode	= "draftMode";
 
 
 	@Override
@@ -66,13 +66,9 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	public void validate(final Invoice object) {
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors(this.code)) {
-			Invoice inv;
-			inv = this.repository.findInvoiceByCode(object.getCode());
-			final Invoice inv2 = object.getCode().equals("") || object.getCode() == null ? null : this.repository.findInvoiceById(object.getId());
-			if (inv2 != null)
-				super.state(inv2.equals(inv), this.code, "sponsor.invoice.form.error.code");
-			else
-				super.state(inv == null, this.code, "sponsor.invoice.form.error.code");
+			Invoice inv = this.repository.findInvoiceByCode(object.getCode());
+			if (inv != null)
+				super.state(inv.getId() == object.getId(), this.code, "sponsor.invoice.form.error.code");
 		}
 		if (!super.getBuffer().getErrors().hasErrors(this.quantity)) {
 			super.state(this.validator.validateMoneyQuantity(object.getQuantity()), this.quantity, "sponsor.invoice.form.error.amount");
@@ -103,8 +99,14 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	public void unbind(final Invoice object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, this.code, this.registrationTime, this.dueDate, this.quantity, this.tax, this.link, this.draftMode, this.sponsorship);
-		dataset.put("totalAmount", object.totalAmount());
+		Money emptyAmount = new Money();
+		emptyAmount.setAmount(.0);
+		emptyAmount.setCurrency("EUR");
+		dataset = super.unbind(object, this.code, this.dueDate, this.quantity, this.tax, this.link, this.draftMode, this.sponsorship);
+		if (object.getQuantity() == null || object.getTax() == null)
+			dataset.put("totalAmount", emptyAmount);
+		else
+			dataset.put("totalAmount", object.totalAmount());
 		super.getResponse().addData(dataset);
 	}
 }

@@ -4,7 +4,9 @@ package acme.features.sponsor.sponsorship;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
@@ -95,6 +97,8 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 			if (object.getStartDate() != null)
 				super.state(this.validator.validateMoment(object.getStartDate(), object.getEndDate()), this.endDate, "sponsor.sponsorship.form.error.end-date");
 		}
+		if (object.getProject().isDraftMode())
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error");
 
 	}
 

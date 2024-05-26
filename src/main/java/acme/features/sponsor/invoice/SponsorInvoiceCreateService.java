@@ -66,13 +66,9 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void validate(final Invoice object) {
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors(this.code)) {
-			Invoice inv;
-			inv = this.repository.findInvoiceByCode(object.getCode());
-			final Invoice inv2 = object.getCode().equals("") || object.getCode() == null ? null : this.repository.findInvoiceById(object.getId());
-			if (inv2 != null)
-				super.state(inv2.equals(inv), this.code, "sponsor.invoice.form.error.code");
-			else
-				super.state(inv == null, this.code, "sponsor.invoice.form.error.code");
+			Invoice inv = this.repository.findInvoiceByCode(object.getCode());
+			if (inv != null)
+				super.state(inv.getId() == object.getId(), this.code, "sponsor.invoice.form.error.code");
 		}
 		if (!super.getBuffer().getErrors().hasErrors(this.quantity)) {
 			super.state(this.validator.validateMoneyQuantity(object.getQuantity()), this.quantity, "sponsor.invoice.form.error.amount");

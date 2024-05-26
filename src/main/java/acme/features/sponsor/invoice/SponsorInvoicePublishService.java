@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Principal;
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.components.ValidatorService;
@@ -68,13 +69,8 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors(this.code)) {
 			Invoice inv = this.repository.findInvoiceByCode(object.getCode());
-			Invoice inv2 = null;
-			if (object.getCode() != null && !object.getCode().isEmpty())
-				inv2 = this.repository.findInvoiceById(object.getId());
-			if (inv2 != null)
-				super.state(inv2.equals(inv), this.code, "sponsor.invoice.form.error.code");
-			else
-				super.state(inv == null, this.code, "sponsor.invoice.form.error.code");
+			if (inv != null)
+				super.state(inv.getId() == object.getId(), this.code, "sponsor.invoice.form.error.code");
 		}
 		if (!super.getBuffer().getErrors().hasErrors(this.quantity)) {
 			super.state(this.validator.validateMoneyQuantity(object.getQuantity()), this.quantity, "sponsor.invoice.form.error.amount");
@@ -94,7 +90,6 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 			if (object.getRegistrationTime() != null)
 				super.state(this.validator.validateMoment(object.getRegistrationTime(), object.getDueDate()), this.dueDate, "sponsor.invoice.form.error.due-date-month");
 		}
-
 	}
 
 	@Override
@@ -107,8 +102,14 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	public void unbind(final Invoice object) {
 		assert object != null;
 		Dataset dataset;
+		Money emptyAmount = new Money();
+		emptyAmount.setAmount(.0);
+		emptyAmount.setCurrency("EUR");
 		dataset = super.unbind(object, this.code, this.dueDate, this.quantity, this.tax, this.link, this.draftMode, this.sponsorship);
-		dataset.put("totalAmount", object.totalAmount());
+		if (object.getQuantity() == null || object.getTax() == null)
+			dataset.put("totalAmount", emptyAmount);
+		else
+			dataset.put("totalAmount", object.totalAmount());
 		super.getResponse().addData(dataset);
 	}
 
