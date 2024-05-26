@@ -1,28 +1,20 @@
 
 package acme.features.client.dashboard;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.datatypes.Statistics;
 import acme.forms.ClientDashboard;
 import acme.roles.Client;
 
 @Service
 public class ClientDashboardShowService extends AbstractService<Client, ClientDashboard> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	protected ClientDashboardRepository repository;
-
-	// AbstractService interface ----------------------------------------------
 
 
 	@Override
@@ -34,38 +26,26 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 	public void load() {
 		final ClientDashboard dashboard = new ClientDashboard();
 
-		Principal principal;
-		int userAccountId;
-		principal = super.getRequest().getPrincipal();
-		userAccountId = principal.getAccountId();
-		final Client client = this.repository.findOneClientByUserAccountId(userAccountId);
+		Principal p = super.getRequest().getPrincipal();
+		final Client client = this.repository.getClientByUserAccountId(p.getAccountId());
 
-		//contractBudgetStats
+		final double findAverageContractBudget = this.repository.getAverageContractBudget(client).orElse(0.0);
+		final double findMaxContractBudget = this.repository.getMaxContractBudget(client).orElse(0.0);
+		final double findMinContractBudget = this.repository.getMinContractBudget(client).orElse(0.0);
+		final double findLinearDevContractBudget = this.repository.getLinearDevContractBudget(client).orElse(0.0);
+		final Integer progressLogsWithRateBelow25 = this.repository.getNumPLLess25(client).orElse(0);
+		final Integer progressLogsWithRate25To50 = this.repository.getNumPLWithRate25To50(client).orElse(0);
+		final Integer progressLogsWithRate50To75 = this.repository.getNumPLWithRate50To75(client).orElse(0);
+		final Integer progressLogsWithRateOver75 = this.repository.getNumPLWithRateOver75(client).orElse(0);
 
-		final double findAverageContractBudget = this.repository.findAverageContractBudget(client).orElse(0.0);
-		final double findMaxContractBudget = this.repository.findMaxContractBudget(client).orElse(0.0);
-		final double findMinContractBudget = this.repository.findMinContractBudget(client).orElse(0.0);
-		final double findLinearDevContractBudget = this.repository.findLinearDevContractBudget(client).orElse(0.0);
-		final Statistics contractBudgetStats = new Statistics();
-		contractBudgetStats.setAverage(findAverageContractBudget);
-		contractBudgetStats.setMinimum(findMinContractBudget);
-		contractBudgetStats.setMaximum(findMaxContractBudget);
-		contractBudgetStats.setDeviation(findLinearDevContractBudget);
-		dashboard.setContractBudgetStatistics(contractBudgetStats);
-
-		//progressLogsCompleteness
-		final Map<String, Integer> progressLogsCompleteness = new HashMap<String, Integer>();
-
-		final Integer progressLogsWithRateBelow25 = this.repository.findNumOfprogressLogsLess25(client).orElse(0);
-		final Integer progressLogsWithRate25To50 = this.repository.findNumOfProgressLogsWithRate25To50(client).orElse(0);
-		final Integer progressLogsWithRate50To75 = this.repository.findNumOfProgressLogsWithRate50To75(client).orElse(0);
-		final Integer progressLogsWithRateOver75 = this.repository.findNumOfProgressLogsWithRateOver75(client).orElse(0);
-
-		progressLogsCompleteness.put("less25", progressLogsWithRateBelow25);
-		progressLogsCompleteness.put("25to50", progressLogsWithRate25To50);
-		progressLogsCompleteness.put("50to75", progressLogsWithRate50To75);
-		progressLogsCompleteness.put("over75", progressLogsWithRateOver75);
-		dashboard.setNumCompletenessProgressLogs(progressLogsCompleteness);
+		dashboard.setAverageBudget(findAverageContractBudget);
+		dashboard.setMinimumBudget(findMinContractBudget);
+		dashboard.setMaximunBudget(findMaxContractBudget);
+		dashboard.setDesviationBudget(findLinearDevContractBudget);
+		dashboard.setNumPLCompletenessBelow25(progressLogsWithRateBelow25);
+		dashboard.setNumPLCompletenessBetween25To50(progressLogsWithRate25To50);
+		dashboard.setNumPLCompletenessBetween50To75(progressLogsWithRate50To75);
+		dashboard.setNumPLCompletenessAbove75(progressLogsWithRateOver75);
 
 		super.getBuffer().addData(dashboard);
 	}
@@ -74,7 +54,7 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 	public void unbind(final ClientDashboard object) {
 		Dataset dataset;
 
-		dataset = super.unbind(object, "contractBudgetStatistics", "numCompletenessProgressLogs");
+		dataset = super.unbind(object, "numPLCompletenessBelow25", "numPLCompletenessBetween25To50", "numPLCompletenessBetween50To75", "numPLCompletenessAbove75", "averageBudget", "desviationBudget", "minimumBudget", "maximunBudget");
 
 		super.getResponse().addData(dataset);
 	}

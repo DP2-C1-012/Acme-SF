@@ -14,8 +14,6 @@ import acme.roles.Client;
 @Service
 public class ClientProgressLogPublishService extends AbstractService<Client, ProgressLogs> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	protected ClientProgressLogRepository repository;
 

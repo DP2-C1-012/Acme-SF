@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.contract.Contract;
@@ -26,9 +27,9 @@ public class ClientContractListService extends AbstractService<Client, Contract>
 	@Override
 	public void load() {
 		Collection<Contract> objects;
-
-		objects = this.repository.getAllContract();
-
+		final Principal p = super.getRequest().getPrincipal();
+		final int clientId = p.getAccountId();
+		objects = this.repository.getContractsByClientId(clientId);
 		super.getBuffer().addData(objects);
 	}
 

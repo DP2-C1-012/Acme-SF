@@ -16,8 +16,6 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 	@Autowired
 	protected ClientProgressLogRepository repository;
 
-	// AbstractService interface ----------------------------------------------
-
 
 	@Override
 	public void authorise() {

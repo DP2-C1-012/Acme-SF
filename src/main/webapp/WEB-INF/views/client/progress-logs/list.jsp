@@ -8,9 +8,9 @@
 	<acme:list-column code="client.progress-logs.list.label.recordId" path="recordId"  width="40%"/>
 	<acme:list-column code="client.progress-logs.list.label.completeness" path="completeness" width="40%" />
 	<acme:list-column code="client.progress-logs.list.label.responsible" path="responsible" width="40%" />
-
-
+	<acme:list-column code="client.progress-logs.list.label.contract" path="contract" width="40%" />
 </acme:list>
+
 <jstl:if test="${masterId==null}">
 	<acme:button code="client.progress-logs.create" action="/client/progress-logs/create"/>
 </jstl:if>
