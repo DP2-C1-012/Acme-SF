@@ -102,4 +102,12 @@ public class ValidatorService {
 
 		return pTrainingSessions.isEmpty();
 	}
+	public boolean validatePublishedInvoicesAmount(final Sponsorship sp, final double quantity, final double tax) {
+		Collection<Invoice> pInvoices = this.repository.findPublishedInvoicesBySponsorshipId(sp.getId());
+		double total = quantity + tax;
+		if (!pInvoices.isEmpty())
+			for (final Invoice i : pInvoices)
+				total += i.getQuantity().getAmount() + i.getTax().getAmount();
+		return sp.getAmount().getAmount() >= total;
+	}
 }

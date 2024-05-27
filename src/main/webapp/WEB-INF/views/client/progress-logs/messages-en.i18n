@@ -1,15 +1,15 @@
 client.progress-logs.list.title = Your progress logs
+client.progress-logs.list.label.recordId = Record Id
+client.progress-logs.list.label.completeness = Completeness percentage
+client.progress-logs.list.label.responsible = Responsible person
+client.progress-logs.list.label.contract = Contract
+
 client.progress-logs.form.title = Your progress log
-
-client.progress-logs.list.label.recordId = record id
-client.progress-logs.list.label.completeness = completeness Percentage
-client.progress-logs.list.label.responsible = ResponsiblePerson
-
-client.progress-logs.form.label.recordId = record Id
-client.progress-logs.form.label.completeness = completeness Percentage
+client.progress-logs.form.label.recordId = Record Id
+client.progress-logs.form.label.completeness = Completeness percentage
 client.progress-logs.form.label.comment = comment
-client.progress-logs.form.label.moment = registration Moment
-client.progress-logs.form.label.responsible = responsible person
+client.progress-logs.form.label.moment = Registration moment
+client.progress-logs.form.label.responsible = Responsible person
 client.progress-logs.form.label.contract = Contract
 
 client.progressLogs.form.error.recordId = The record Id must be 2 letters-2 letters-4  numbers

@@ -1,0 +1,13 @@
+authenticated.objective.list.title = Objectives list
+authenticated.objective.list.label.title = Title
+authenticated.objective.list.label.priority = Priority
+authenticated.objective.list.label.link =  Link
+
+authenticated.objective.form.title = Objective details
+authenticated.objective.form.label.instantiationMoment = Instantiation Moment
+authenticated.objective.form.label.startPeriod = Start Date
+authenticated.objective.form.label.endPeriod = End Date
+authenticated.objective.form.label.title = Title
+authenticated.objective.form.label.link = Link
+authenticated.objective.form.label.description= Description
+authenticated.objective.form.label.priority = Priority

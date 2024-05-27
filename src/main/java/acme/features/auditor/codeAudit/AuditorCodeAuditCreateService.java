@@ -56,6 +56,8 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 			now = MomentHelper.getCurrentMoment();
 			super.state(object.getExecutionDate() != null && object.getExecutionDate().before(now), "executionDate", "auditor.codeAudit.form.error.executionDate");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(object.getProject() != null && !object.getProject().isDraftMode(), "project", "auditor.codeAudit.form.error.project");
 	}
 
 	@Override
