@@ -8,13 +8,14 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.data.accounts.UserAccount;
 import acme.client.repositories.AbstractRepository;
+import acme.entities.userstory.Priority;
 import acme.roles.Manager;
 
 @Repository
 public interface ManagerDashboardRepository extends AbstractRepository {
 
-	@Query("select count(u) from UserStory u where u.manager = :manager and u.draftMode=false")
-	Optional<Integer> findNumOfUserStories(Manager manager);
+	@Query("select count(u) from UserStory u where u.priority = :priority and u.draftMode=false and u.manager = :manager")
+	Optional<Integer> findUsPerPriority(Priority priority, Manager manager);
 
 	@Query("select avg(u.estimatedCost.amount) from UserStory u where u.manager = :manager and u.draftMode=false")
 	Optional<Integer> findAverageUserStoryCost(Manager manager);
