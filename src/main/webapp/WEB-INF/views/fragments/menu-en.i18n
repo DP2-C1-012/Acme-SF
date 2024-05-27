@@ -29,6 +29,8 @@ master.menu.anonymous.fav-link = Here were our favourite links
 master.menu.any = Any
 master.menu.any.sponsorship = Sponsorships
 master.menu.any.claim = Claims
+master.menu.any.training-module = Training Modules
+
 
 # master.menu.administrator ###################################################
 
