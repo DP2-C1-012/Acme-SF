@@ -1,11 +1,14 @@
 
 package acme.features.client.contract;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.contract.Contract;
 import acme.roles.Client;
@@ -19,13 +22,13 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	@Override
 	public void authorise() {
-		Contract object;
+		Contract contract;
 		int id;
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.getContractById(id);
-		final Principal principal = super.getRequest().getPrincipal();
-		final int userAccountId = principal.getAccountId();
-		super.getResponse().setAuthorised(object.getClient().getUserAccount().getId() == userAccountId && object.getDraftMode());
+		contract = this.repository.getContractById(id);
+		final Principal p = super.getRequest().getPrincipal();
+		final int userAccountId = p.getAccountId();
+		super.getResponse().setAuthorised(contract.getClient().getUserAccount().getId() == userAccountId && contract.getDraftMode());
 	}
 
 	@Override
@@ -52,7 +55,23 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	@Override
 	public void validate(final Contract object) {
-		assert object != null;
+		if (object == null)
+			throw new IllegalArgumentException("No object found");
+		final Collection<Contract> contracts = this.repository.getContractsFromProjectId(object.getProject().getId());
+		super.state(!contracts.isEmpty(), "*", "manager.project.form.error.noContracts");
+		if (!contracts.isEmpty()) {
+			boolean overBudget = true;
+			double totalBudget = 0.0;
+			for (Contract c : contracts)
+				totalBudget = totalBudget + c.getBudget().getAmount();
+			if (totalBudget < object.getProject().getCost().getAmount())
+				overBudget = false;
+			super.state(overBudget, "*", "manager.project.form.error.overBudget");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("instantiationMoment"))
+			super.state(MomentHelper.isBefore(object.getMoment(), MomentHelper.getCurrentMoment()), "instantiationMoment", "client.contract.form.error.moment");
+
 	}
 
 	@Override
