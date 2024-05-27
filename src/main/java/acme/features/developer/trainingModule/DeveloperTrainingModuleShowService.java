@@ -47,6 +47,7 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		List<TrainingSession> sessions = this.repository.findTrainingSessionsByTrainingModule(tm).stream().toList();
 		for (TrainingSession session : sessions)
 			totalTime += session.getEndPeriod().getTime() / 3600000 - session.getStartPeriod().getTime() / 3600000;
+
 		return totalTime;
 	}
 
@@ -69,7 +70,7 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "project", "draftMode", "developer");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "project", "developer", "draftMode");
 
 		SelectChoices choicesDifficultyLevel = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 		SelectChoices choicesProject = new SelectChoices();
@@ -80,6 +81,8 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 			boolean isSelected = this.validator.isSelectedProject(object, p);
 			choicesProject.add(String.valueOf(p.getId()), p.getCode() + " -> " + p.getTitle(), isSelected);
 		}
+
+		dataset.put("trainingModuleId", object.getId());
 		dataset.put("time", object.getEstimatedTotalTime() + " horas");
 		dataset.put("projects", choicesProject);
 		dataset.put("difficultyLevels", choicesDifficultyLevel);

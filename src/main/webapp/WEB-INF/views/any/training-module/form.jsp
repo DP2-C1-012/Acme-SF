@@ -5,7 +5,7 @@
 
 <acme:form>
 	<acme:input-textbox code="any.trainingModule.form.label.code" path="code"/>	
-	<acme:input-textbox code="any.trainingModule.form.label.details" path="details"/>	
+	<acme:input-textarea code="any.trainingModule.form.label.details" path="details"/>	
 	<acme:input-textbox code="any.trainingModule.form.label.difficultyLevel" path="difficultyLevel"/>
 		<acme:input-moment code="any.trainingModule.form.label.creationMoment" path="creationMoment"/>	
 	<acme:input-moment code="any.trainingModule.form.label.updateMoment" path="updateMoment"/>	

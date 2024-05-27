@@ -1,12 +1,4 @@
-# messages-en.i18n
-#
-# Copyright (C) 2012-2024 Rafael Corchuelo.
-#
-# In keeping with the traditional purpose of furthering education and research, it is
-# the policy of the copyright owner to permit non-commercial use and redistribution of
-# this software. It has been tested carefully, but it is not guaranteed for any particular
-# purposes.  The copyright owner does not offer any warranties or representations, nor do
-# they accept any liabilities with respect to them.
+
 
 developer.training-module.list.title = Listing of Training Modules
 
@@ -23,7 +15,7 @@ developer.trainingModule.form.label.creation-moment = Creation Moment
 developer.trainingModule.form.label.update-moment = Update Moment
 developer.trainingModule.form.label.details = Details
 developer.trainingModule.form.label.difficultyLevel = Difficulty Level
-developer.trainingModule.form.label.link = Link
+developer.trainingModule.form.label.link = Link (optional)
 developer.trainingModule.form.label.total-time = Total Time
 developer.trainingModule.form.label.project = Project
 developer.training-module.form.label.draft-mode = Draft Mode
@@ -42,11 +34,13 @@ developer.training-module.form.button.training-session = Training Session
 developer.training-module.form.error.draftMode-trainingSessions = There are still some training sessions in DraftMode
 developer.training-module.form.error.not-enough-training-sessions = No Training Sessions exists yet
 developer.trainingModule.form.error.duplicated-code = Duplicated Code.
+developer.trainingModule.form.error.notModify = Cannot be modified
 
-developer.trainingModule.form.error.null-code = Code is null.
-
+developer.training-module.form.error.null-code = Code is null.
+developer.training-module.form.error.project = Cannot assign that project
 developer.training-module.form.error.duplicateCode = Duplicate code already exists.
-developer.trainingModule.form.error.creationMoment = Invalid creation moment format.
-developer.trainingModule.form.error.updateMoment = Invalid update moment format.
-developer.trainingModule.form.error.updateMoment-after-createMoment = Update moment cannot be before creation moment.
-developer.trainingModule.form.error.details = Details must not be empty and should be less than 100 characters.
+developer.training-module.form.error.duplicated-code = Duplicate code already exists.
+developer.training-module.form.error.creationMoment = Invalid creation moment format.
+developer.training-module.form.error.updateMoment = Invalid update moment format.
+developer.training-module.form.error.updateMoment-after-createMoment = Update moment cannot be before creation moment.
+developer.training-module.form.error.details = Details must not be empty and should be less than 100 characters.

@@ -7,33 +7,58 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.data.models.Errors;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
+import acme.entities.trainingModule.TrainingModule;
 import acme.entities.trainingSession.TrainingSession;
 import acme.roles.Developer;
 
 @Service
 public class DeveloperTrainingSessionCreateService extends AbstractService<Developer, TrainingSession> {
 
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
-	protected DeveloperTrainingSessionRepository repository;
+	protected DeveloperTrainingSessionRepository	repository;
+
+	// AbstractService interface ----------------------------------------------
+	private String									trainingModuleId	= "trainingModuleId";
+	private String									code				= "code";
+	private String									startPeriod			= "startPeriod";
+	private String									endPeriod			= "endPeriod";
+	private String									location			= "location";
+	private String									instructor			= "instructor";
+	private String									email				= "email";
+	private String									link				= "link";
 
 
 	@Override
 	public void authorise() {
 		boolean status;
+		TrainingModule object;
+		int tmId;
+
+		tmId = super.getRequest().getData("trainingModuleId", int.class);
+		object = this.repository.findTrainingModuleById(tmId);
+
 		status = super.getRequest().getPrincipal().hasRole(Developer.class);
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(status && object.getDraftMode() == true);
 
 	}
 
 	@Override
 	public void load() {
 		TrainingSession object;
+		int tmId;
+		TrainingModule tm;
+
+		tmId = super.getRequest().getData(this.trainingModuleId, int.class);
+		super.getResponse().addGlobal(this.trainingModuleId, tmId);
+		tm = this.repository.findTrainingModuleById(tmId);
+
 		object = new TrainingSession();
 		object.setDraftMode(true);
+		object.setTrainingModule(tm);
 
 		super.getBuffer().addData(object);
 	}
@@ -42,27 +67,26 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 	public void bind(final TrainingSession object) {
 		assert object != null;
 
-		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode", "trainingModule");
-		System.out.println(super.getBuffer().getGlobal("$errors", Errors.class));
+		super.bind(object, this.code, this.startPeriod, this.endPeriod, this.location, this.instructor, this.email, this.link);
 	}
 
 	@Override
 	public void validate(final TrainingSession object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
+		if (!super.getBuffer().getErrors().hasErrors(this.code)) {
 			TrainingSession existing;
 
 			existing = this.repository.findTrainingSessionByCode(object.getCode());
-			super.state(existing == null, "code", "developer.training-session.form.error.duplicateCode");
+			super.state(existing == null, this.code, "developer.training-session.form.error.duplicate-code");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
-			super.state(MomentHelper.isAfter(object.getStartPeriod(), object.getTrainingModule().getCreationMoment()), "startPeriod", "developer.training-session.form.error.startBeforeCreate");
-
-		if (!super.getBuffer().getErrors().hasErrors("endPeriod")) {
+		if (!super.getBuffer().getErrors().hasErrors(this.startPeriod))
+			super.state(MomentHelper.isAfter(object.getStartPeriod(), MomentHelper.deltaFromMoment(object.getTrainingModule().getCreationMoment(), 7, ChronoUnit.DAYS)), "startPeriod", "developer.training-session.form.error.startBeforeCreate");
+		if (!super.getBuffer().getErrors().hasErrors("endPeriod") && !super.getBuffer().getErrors().hasErrors("startPeriod")) {
 			super.state(MomentHelper.isAfter(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "developer.training-session.form.error.endBeforeStart");
-			super.state(MomentHelper.isAfter(object.getEndPeriod(), MomentHelper.deltaFromMoment(object.getStartPeriod(), 7, ChronoUnit.DAYS)), "endPeriod", "developer.training-session.form.error.periodTooShort");
+			if (!super.getBuffer().getErrors().hasErrors())
+				super.state(MomentHelper.isAfter(object.getEndPeriod(), MomentHelper.deltaFromMoment(object.getStartPeriod(), 7, ChronoUnit.DAYS)), "endPeriod", "developer.training-session.form.error.periodTooShort");
 		}
 
 	}
@@ -77,10 +101,9 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 	public void unbind(final TrainingSession object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode", "trainingModule");
-		final SelectChoices choices;
-		choices = SelectChoices.from(this.repository.findTrainingModulesNotPublishedByDeveloperId(super.getRequest().getPrincipal().getAccountId()), "code", object.getTrainingModule());
-		dataset.put("modules", choices);
+
+		dataset = super.unbind(object, this.code, this.startPeriod, this.endPeriod, this.location, this.instructor, this.email, this.link);
+
 		super.getResponse().addData(dataset);
 	}
 
