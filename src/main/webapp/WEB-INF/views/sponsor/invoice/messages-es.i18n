@@ -25,6 +25,7 @@ sponsor.invoice.form.error.registration-time-past = La fecha debe ser pasada
 sponsor.invoice.form.error.due-date-date = La fecha debe seguir el formato adecuado y ser una fecha válida
 sponsor.invoice.form.error.due-date-month = La fecha debe estar al menos un mes por delante de la fecha de registro
 sponsor.invoice.form.error.sponsorship-currency = La divisa debe ser la misma que la del patrocinio
+sponsor.invoice.form.error.published-invoices = No se pueden crear más facturas que superen el importe del patrocinio sumando el total de las facturas
 
 sponsor.invoice.create = Crear
 sponsor.invoice.form.button.delete = Eliminar
