@@ -1,0 +1,15 @@
+
+authenticated.risk.list.title = Risks list
+authenticated.risk.list.label.reference = Reference
+authenticated.risk.list.label.identificationDate = Identification Date
+authenticated.risk.list.label.probability =  Probability
+authenticated.risk.list.label.impact =  Impact
+
+
+authenticated.risk.form.title = Risk details
+authenticated.risk.form.label.reference = Reference
+authenticated.risk.form.label.identificationDate = Identification Date
+authenticated.risk.form.label.impact = Impact
+authenticated.risk.form.label.probability = Probability
+authenticated.risk.form.label.description= Description
+authenticated.risk.form.label.link = Link

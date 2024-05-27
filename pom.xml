@@ -23,8 +23,8 @@
 	
 	<artifactId>Acme-SF</artifactId>
 	
-	<version>D03</version>
-	
+	<version>D04</version>
+
 	<packaging>war</packaging>
 
 	<parent>

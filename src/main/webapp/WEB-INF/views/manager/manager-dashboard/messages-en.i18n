@@ -1,5 +1,8 @@
 manager.manager-dashboard.form.title= Manager Dashboard
-manager.dashboard.form.label.totalNumberUserStories	= Number of User Stories
+manager.dashboard.form.label.wontUs	= Number of Wont User Stories
+manager.dashboard.form.label.couldUs	= Number of Could User Stories
+manager.dashboard.form.label.shouldUs	= Number of Should User Stories
+manager.dashboard.form.label.mustUs	= Number of Must User Stories
 manager.dashboard.form.label.averageEstimatedCostUserStories = Average User Stories estimated cost
 manager.dashboard.form.label.deviationEstimatedCostUserStories	= Estimated deviation of user stories cost
 manager.dashboard.form.label.minimunEstimatedCostUserStories = Minimum cost of user stories

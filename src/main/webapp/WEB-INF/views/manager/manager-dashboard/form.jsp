@@ -6,10 +6,34 @@
 <table class="table table-sm">
 	<tr>
 		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.totalNumberUserStories"/>
+			<acme:message code="manager.dashboard.form.label.shouldUs"/>
 		</th>
 		<td>
-			<acme:print value="${userStoryCount}"/>
+			<acme:print value="${numberOfShouldUs}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.couldUs"/>
+		</th>
+		<td>
+			<acme:print value="${numberOfCouldUs}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.mustUs"/>
+		</th>
+		<td>
+			<acme:print value="${numberOfMustUs}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.wontUs"/>
+		</th>
+		<td>
+			<acme:print value="${numberOfWontUs}"/>
 		</td>
 	</tr>
 	<tr>

@@ -5,3 +5,4 @@ authenticated.sponsor.form.label.web-page = Web page
 authenticated.sponsor.form.label.email = Email
 authenticated.sponsor.form.button.create = Create
 authenticated.sponsor.form.button.update = Update
+authenticated.sponsor.form.placeholder.email = example@us.es

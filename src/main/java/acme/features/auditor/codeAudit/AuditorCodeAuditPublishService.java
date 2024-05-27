@@ -31,7 +31,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		auditorID = super.getRequest().getPrincipal().getActiveRoleId();
 		codeAuditID = super.getRequest().getData("id", int.class);
 		codeAudit = this.repository.findOneCodeAuditByID(codeAuditID);
-		super.getResponse().setAuthorised(auditorID == codeAudit.getAuditor().getId() || !codeAudit.isPublished());
+		super.getResponse().setAuthorised(auditorID == codeAudit.getAuditor().getId() && !codeAudit.isPublished());
 	}
 
 	@Override
@@ -57,6 +57,8 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		}
 		if (!super.getBuffer().getErrors().hasErrors("mark"))
 			super.state(object.getMark() != Mark.F && object.getMark() != Mark.F_MINUS, "mark", "auditor.codeAudit.form.error.mark");
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(object.getProject() != null && !object.getProject().isDraftMode(), "project", "auditor.codeAudit.form.error.project");
 	}
 
 	@Override

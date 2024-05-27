@@ -11,3 +11,8 @@ project-10,ABH-5234,Titulo de longitud normal,abstrac de longitud normal,EUR 0.1
 project-11,ABH-8234,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,true,https://thispersondoesnotexist.com/,false,manager-01
 project-12,ABH-1534,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,false,https://www.leagueoflegends.com/es-es/,false,manager-01
 project-13,ABH-1634,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,false,,false,manager-01
+project-14,ZXY-9999,Titulo de longitud normal,abstrac de longitud normal,EUR 1000000.0,false,,true,manager-02
+project-15,YXY-9999,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,false,,true,manager-02
+project-16,HXY-9999,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,false,,true,manager-02
+project-17,LXY-9999,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,false,,true,manager-02
+project-18,FXY-9999,Titulo de longitud normal,abstrac de longitud normal,EUR 40.0,false,,true,manager-02

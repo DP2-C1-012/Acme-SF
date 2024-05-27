@@ -19,8 +19,6 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 	@Autowired
 	protected ClientProgressLogRepository repository;
 
-	// AbstractService interface ----------------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -38,7 +36,7 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 		Collection<ProgressLogs> objects;
 		int Id;
 		Id = super.getRequest().getData("Id", int.class);
-		objects = this.repository.getProgressLogsByContract(Id);
+		objects = this.repository.getProgressLogsByContractId(Id);
 		super.getBuffer().addData(objects);
 	}
 
@@ -46,7 +44,8 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 	public void unbind(final ProgressLogs object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "recordId", "completeness", "responsible");
+		dataset = super.unbind(object, "recordId", "completeness", "responsible", "contract");
+		dataset.put("contract", object.getContract().getCode());
 		int Id;
 		Id = super.getRequest().getData("Id", int.class);
 		super.getResponse().addGlobal("Id", Id);

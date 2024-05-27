@@ -18,8 +18,6 @@ public class ClientProgressLogListAllService extends AbstractService<Client, Pro
 	@Autowired
 	protected ClientProgressLogRepository repository;
 
-	// AbstractService interface ----------------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -41,7 +39,8 @@ public class ClientProgressLogListAllService extends AbstractService<Client, Pro
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "responsible");
+		dataset = super.unbind(object, "recordId", "completeness", "responsible", "contract");
+		dataset.put("contract", object.getContract().getCode());
 
 		super.getResponse().addData(dataset);
 	}

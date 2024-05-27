@@ -11,7 +11,10 @@ public class ManagerDashboard extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
 
-	Integer						userStoryCount;
+	Integer						numberOfShouldUs;
+	Integer						numberOfMustUs;
+	Integer						numberOfCouldUs;
+	Integer						numberOfWontUs;
 	Integer						averageUserStoryCost;
 	Integer						deviationOfUserStoryCost;
 	Integer						minimumUserStoryCost;

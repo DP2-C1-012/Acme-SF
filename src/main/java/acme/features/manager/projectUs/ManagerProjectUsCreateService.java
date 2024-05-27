@@ -28,8 +28,8 @@ public class ManagerProjectUsCreateService extends AbstractService<Manager, Proj
 		int id;
 		id = super.getRequest().getData("userStoryId", int.class);
 		object = this.repository.findUserStorieById(id);
-		Principal principal = super.getRequest().getPrincipal();
-		int userAccountId = principal.getAccountId();
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
 		super.getResponse().setAuthorised(object.getManager().getUserAccount().getId() == userAccountId);
 	}
 
@@ -59,9 +59,14 @@ public class ManagerProjectUsCreateService extends AbstractService<Manager, Proj
 	@Override
 	public void validate(final ProjectUs object) {
 		assert object != null;
+		int managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		Manager manager = this.repository.findManagerById(managerId);
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(object.getProject().isDraftMode(), "project", "manager.projectUs.error.draftMode");
 		if (!super.getBuffer().getErrors().hasErrors("userStory") && !super.getBuffer().getErrors().hasErrors("project")) {
-			Collection<UserStory> userStories = this.repository.findUserStoriesByProjectId(object.getProject().getId());
-			super.state(!userStories.contains(object.getUserStory()), "project", "manager.projectUserStory.error.containsUs");
+			final Collection<UserStory> userStories = this.repository.findUserStoriesByProjectId(object.getProject().getId());
+			super.state(!userStories.contains(object.getUserStory()) || userStories.isEmpty(), "project", "manager.projectUs.error.containsUs");
+			super.state(object.getProject().getManager().equals(manager) && object.getUserStory().getManager().equals(manager), "project", "manager.projectUs.error.containsUs");
 		}
 	}
 
@@ -76,15 +81,15 @@ public class ManagerProjectUsCreateService extends AbstractService<Manager, Proj
 		assert object != null;
 		Dataset dataset;
 		dataset = super.unbind(object, "userStory", "project");
-		int userstoryId = super.getRequest().getData("userStoryId", int.class);
+		final int userstoryId = super.getRequest().getData("userStoryId", int.class);
 		dataset.put("userStoryId", super.getRequest().getData("userStoryId", int.class));
-		Manager manager = this.repository.findManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		final Manager manager = this.repository.findManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		Collection<Project> projects;
 		projects = this.repository.findDraftModeProjectsByManager(manager);
-		UserStory userstory = this.repository.findUserStorieById(userstoryId);
+		final UserStory userstory = this.repository.findUserStorieById(userstoryId);
 		dataset.put("draftMode", userstory.isDraftMode());
 
-		SelectChoices choices = new SelectChoices();
+		final SelectChoices choices = new SelectChoices();
 
 		if (object.getProject() == null)
 			choices.add("0", "---", true);

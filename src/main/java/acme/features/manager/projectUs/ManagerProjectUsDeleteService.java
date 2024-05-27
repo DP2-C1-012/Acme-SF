@@ -28,8 +28,8 @@ public class ManagerProjectUsDeleteService extends AbstractService<Manager, Proj
 		int id;
 		id = super.getRequest().getData("userStoryId", int.class);
 		object = this.repository.findUserStorieById(id);
-		Principal principal = super.getRequest().getPrincipal();
-		int userAccountId = principal.getAccountId();
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
 		super.getResponse().setAuthorised(object.getManager().getUserAccount().getId() == userAccountId);
 	}
 
@@ -59,8 +59,12 @@ public class ManagerProjectUsDeleteService extends AbstractService<Manager, Proj
 	@Override
 	public void validate(final ProjectUs object) {
 		assert object != null;
+		int managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		Manager manager = this.repository.findManagerById(managerId);
 		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(object.getProject() != null, "project", "manager.projectUserStory.form.error.projectNotNull");
+			super.state(object.getProject().isDraftMode(), "project", "manager.projectUs.error.draftMode");
+		if (!super.getBuffer().getErrors().hasErrors("userStory") && !super.getBuffer().getErrors().hasErrors("project"))
+			super.state(object.getProject().getManager().equals(manager) && object.getUserStory().getManager().equals(manager), "project", "manager.projectUs.error.notcontainsUs");
 	}
 
 	@Override
