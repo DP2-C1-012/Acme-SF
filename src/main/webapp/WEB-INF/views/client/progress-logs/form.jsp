@@ -5,7 +5,7 @@
 
 <acme:form>
 	<acme:input-textbox code="client.progress-logs.form.label.recordId" path="recordId"/>	
-	<acme:input-textbox code="client.progress-logs.form.label.completeness" path="completenessPercentage"/>	
+	<acme:input-textbox code="client.progress-logs.form.label.completeness" path="completeness"/>	
 	<acme:input-textbox code="client.progress-logs.form.label.comment" path="comment"/>	
 	<acme:input-moment code="client.progress-logs.form.label.moment" path="moment"/>	
 	<acme:input-textbox code="client.progress-logs.form.label.responsible" path="responsible"/>
