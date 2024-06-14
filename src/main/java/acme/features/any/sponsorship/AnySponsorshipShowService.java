@@ -42,7 +42,7 @@ public class AnySponsorshipShowService extends AbstractService<Any, Sponsorship>
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "link", "contact");
+		dataset = super.unbind(object, "code", "startDate", "endDate", "amount", "type", "link", "contact");
 		super.getResponse().addData(dataset);
 	}
 }

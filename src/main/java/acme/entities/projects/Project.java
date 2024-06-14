@@ -3,7 +3,9 @@ package acme.entities.projects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -22,6 +24,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(indexes = {
+	@Index(columnList = "id"), @Index(columnList = "manager_id"), @Index(columnList = "code"), @Index(columnList = "manager_id,draftMode")
+})
 public class Project extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;

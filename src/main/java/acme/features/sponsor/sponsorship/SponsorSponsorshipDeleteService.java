@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Principal;
-import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.invoices.Invoice;
 import acme.entities.sponsorships.Sponsorship;
@@ -23,13 +22,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 
 	// AbstractService interface ----------------------------------------------
 
-	private String							id			= "id";
-	private String							amount		= "amount";
-	private String							startDate	= "startDate";
-	private String							endDate		= "endDate";
-	private String							type		= "type";
-	private String							contact		= "contact";
-	private String							link		= "link";
+	private String							id	= "id";
 
 
 	@Override
@@ -71,13 +64,5 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		for (final Invoice i : invoice)
 			this.repository.delete(i);
 		this.repository.delete(object);
-	}
-
-	@Override
-	public void unbind(final Sponsorship object) {
-		assert object != null;
-		Dataset dataset;
-		dataset = super.unbind(object, this.startDate, this.endDate, this.amount, this.type, this.contact, this.link);
-		super.getResponse().addData(dataset);
 	}
 }

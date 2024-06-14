@@ -40,6 +40,7 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 
 		tmId = super.getRequest().getData("trainingModuleId", int.class);
 		objects = this.repository.findAllTrainingSessionsBytrainingModuleId(tmId);
+
 		super.getBuffer().addData(objects);
 	}
 
@@ -51,7 +52,23 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 
 		dataset = super.unbind(object, "code", "startPeriod", "instructor", "location", "endPeriod", "draftMode");
 		dataset.put("module", object.getTrainingModule().getCode());
+
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void unbind(final Collection<TrainingSession> objects) {
+		assert objects != null;
+
+		int tmId;
+		Boolean mode;
+
+		tmId = super.getRequest().getData("trainingModuleId", int.class);
+
+		mode = this.repository.findTrainingModuleById(tmId).getDraftMode();
+		super.getResponse().addGlobal("mode", mode);
+
+		super.getResponse().addGlobal("trainingModuleId", tmId);
 	}
 
 }

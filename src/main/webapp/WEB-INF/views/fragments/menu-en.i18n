@@ -30,6 +30,9 @@ master.menu.any = Any
 master.menu.any.sponsorship = Sponsorships
 master.menu.any.claim = Claims
 
+master.menu.any.training-module = Training Modules
+
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
@@ -62,6 +65,8 @@ master.menu.developer = Developer
 master.menu.developer.training-module = Training Module
 master.menu.developer.training-session = Training Session
 master.menu.developer.dashboard = Developer Dashboard
+master.menu.developer.training-session = Training Session
+
 
 
 # master.menu.auditor #############################################
@@ -100,4 +105,3 @@ master.menu.authenticated.codeAudits = List audits
 master.menu.authenticated.risks = List risks
 master.menu.authenticated.objectives = List objectives
 
->>>>>>> main

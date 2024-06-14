@@ -1,23 +1,26 @@
 developer.training-session.list.title = Listing of Training Sessions
 developer.training-session.form.title = Training Session Form
 
-developer.trainingSession.list.label.code = Code
-developer.trainingSession.list.label.startPeriod = Start Date
-developer.trainingSession.list.label.endPeriod = End Date
-developer.trainingSession.list.label.draftMode = Draft Mode
-developer.trainingSession.list.label.location = Location
-developer.trainingSession.list.label.instructor = Instructor
-developer.trainingSession.list.label.module = Training Module
+
+developer.training-session.list.label.code = Code
+developer.training-session.list.label.startPeriod = Start
+developer.training-session.list.label.endPeriod = End
+developer.training-session.list.label.draftMode = Draft Mode
+developer.training-session.list.label.location = Location
+developer.training-session.list.label.instructor = Instructor
+developer.training-session.list.label.module = Module
 
 developer.training-session.form.label.code = Code
-developer.training-session.form.label.startPeriod = Start Date
-developer.training-session.form.label.endPeriod = End Date
+developer.training-session.form.label.startPeriod = Start
+developer.training-session.form.label.endPeriod = End
 developer.training-session.form.label.location = Location
 developer.training-session.form.label.instructor = Instructor
-developer.training-session.form.label.email = Contact Email
-developer.training-session.form.label.link = Link
+developer.training-session.form.label.email = Email
+developer.training-session.form.label.link = Link (optional)
 developer.training-session.form.label.draftMode = Draft Mode
+developer.training_session.form.label.module = Module
 developer.training_session.form.label.trainingModule = Training Module
+developer.training-session.form.label.module = Training Module
 
 developer.training-session.list.button.create = Create
 developer.training-session.form.button.create = Create
@@ -25,3 +28,11 @@ developer.training-session.form.button.update = Update
 developer.training-session.form.button.delete = Delete
 developer.training-session.form.button.publish = Publish
 
+developer.training-session.form.placeholder.code = TS-[A-Z]{1,3}-[0-9]{3}
+
+developer.training-session.form.error.duplicated-code = Duplicate Code
+developer.training-session.form.error.duplicate-code = Duplicate Code
+developer.training-session.form.error.trainingModule = Invalid Module
+developer.training-session.form.error.startBeforeCreate = Start cannot be < 7 days after module creation
+developer.training-session.form.error.endBeforeStart = End period must be after Start period
+developer.training-session.form.error.periodTooShort = Session must be at least one week

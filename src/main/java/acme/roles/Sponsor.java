@@ -2,6 +2,8 @@
 package acme.roles;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -16,6 +18,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "id")
+})
 public class Sponsor extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
@@ -31,9 +36,11 @@ public class Sponsor extends AbstractRole {
 	private String				benefits;
 
 	@URL
+	@Length(max = 255)
 	private String				webPage;
 
 	@Email
+	@Length(max = 255)
 	private String				email;
 
 }

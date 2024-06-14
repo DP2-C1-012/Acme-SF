@@ -25,6 +25,7 @@ sponsor.invoice.form.error.registration-time-past = The date must be in the past
 sponsor.invoice.form.error.due-date-date = The date must follow the correct format and must be a valid date
 sponsor.invoice.form.error.due-date-month = The date must be at least one month ahead registration time
 sponsor.invoice.form.error.sponsorship-currency = The currency must be the same as the sponsorship
+sponsor.invoice.form.error.published-invoices = No more invoices can be created that exceed the sponsorship amount by adding the invoices total amount
 
 sponsor.invoice.create = Create
 sponsor.invoice.form.button.delete = Delete

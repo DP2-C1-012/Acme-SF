@@ -7,7 +7,7 @@
 # académico. Además, queda estrictamente prohibido que compañeros de la universidad utilicen este proyecto para
 # copiar o plagiar.
 
-﻿# master.menu #################################################################
+# master.menu #################################################################
 
 master.menu.home = Inicio
 master.menu.sign-up = Registrarse
@@ -29,6 +29,9 @@ master.menu.anonymous.fav-link = Aquí estaban nuestros enlaces favoritos
 master.menu.any = Cualquiera
 master.menu.any.sponsorship = Patrocinios
 master.menu.any.claim = Reclamaciones
+master.menu.any.training-module = Modulos de entrenamiento
+
+
 
 # master.menu.administrator ###################################################
 
@@ -62,8 +65,8 @@ master.menu.sponsor.dashboard = Panel de Patrocinador
 
 master.menu.developer = Desarrollador
 master.menu.developer.training-module = Módulos de Entrenamiento
-master.menu.developer.training-session = Sesiones de Entrenamiento
 master.menu.developer.dashboard = Panel de Desarrollador
+master.menu.developer.training-session = Sesiones de Entrenamiento
 
 # master.menu.auditor #############################################
 
@@ -101,4 +104,3 @@ master.menu.authenticated.codeAudits = Lista auditaciones
 master.menu.authenticated.risk = Lista riesgos
 master.menu.authenticated.objectives = Lista objetivos
 
->>>>>>> main

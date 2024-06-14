@@ -38,6 +38,8 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		object = new TrainingModule();
 		object.setDraftMode(true);
 		object.setDeveloper(developer);
+		Date moment = MomentHelper.getCurrentMoment();
+		object.setCreationMoment(moment);
 		super.getBuffer().addData(object);
 	}
 
@@ -45,35 +47,41 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
-		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "project");
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link");
 
+		int projectId = super.getRequest().getData("project", int.class);
+		Project p = this.repository.findOneProjectById(projectId);
+		object.setProject(p);
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
 		Date m = MomentHelper.getCurrentMoment();
+		TrainingModule tm;
+		Collection<Project> projects;
+		projects = this.repository.findAllPublishedProjects();
+		tm = this.repository.findTrainingModuleByCode(object.getCode());
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			TrainingModule tm;
-			tm = this.repository.findTrainingModuleByCode(object.getCode());
-			final TrainingModule tm2 = object.getCode().equals("") || object.getCode() == null ? null : this.repository.findTrainingModuleById(object.getId());
-			if (tm2 != null)
-				super.state(tm2.equals(tm), "code", "developer.training-module.form.error.code");
-			else
-				super.state(tm == null, "code", "developer.training-module.form.error.code");
-		}
-		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
-			super.state(m.after(object.getCreationMoment()), "creationMoment", "developer.trainingModule.form.error.creationMoment");
+		if (!super.getBuffer().getErrors().hasErrors("code"))
+			if (tm != null)
+				super.state(tm.getId() == object.getId(), "code", "developer.training-module.form.error.duplicated-code");
+
 		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !(object.getUpdateMoment() == null)) {
-			super.state(m.after(object.getUpdateMoment()), "updateMoment", "developer.trainingModule.form.error.updateMoment");
-			super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.updateMoment-after-createMoment");
+			super.state(m.after(object.getUpdateMoment()), "updateMoment", "developer.training-module.form.error.updateMoment");
+			super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.updateMoment-after-createMoment");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(projects.contains(object.getProject()), "project", "developer.training-module.form.error.project");
+
 	}
 
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
+		object.setCreationMoment(MomentHelper.getCurrentMoment());
+
 		this.repository.save(object);
 	}
 
