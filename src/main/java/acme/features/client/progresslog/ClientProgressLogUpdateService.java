@@ -5,77 +5,104 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
-import acme.entities.progress_logs.ProgressLogs;
+import acme.entities.contract.Contract;
+import acme.entities.progress_logs.ProgressLog;
 import acme.roles.Client;
 
 @Service
-public class ClientProgressLogUpdateService extends AbstractService<Client, ProgressLogs> {
+public class ClientProgressLogUpdateService extends AbstractService<Client, ProgressLog> {
 
 	@Autowired
-	protected ClientProgressLogRepository repository;
+	private ClientProgressLogRepository repository;
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int progressLogId;
+		Contract contract;
+
+		progressLogId = super.getRequest().getData("id", int.class);
+		contract = this.repository.findOneContractByProgressLogId(progressLogId);
+		ProgressLog pl = this.repository.findOneProgressLogById(progressLogId);
+
+		int activeClientId = super.getRequest().getPrincipal().getActiveRoleId();
+		Client activeClient = this.repository.findOneClientById(activeClientId);
+		boolean clientOwnsPl = pl.getContract().getClient() == activeClient;
+
+		status = pl.isDraftMode() && clientOwnsPl && contract != null && !contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
+
+		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
 	public void load() {
-		ProgressLogs object;
-		object = new ProgressLogs();
-		object.setDraftMode(true);
-		super.getBuffer().addData(object);
-	}
 
-	@Override
-	public void bind(final ProgressLogs object) {
-		if (object == null)
-			throw new IllegalArgumentException("No object found");
-		ProgressLogs object2;
+		ProgressLog object;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object2 = this.repository.getProgressLogsById(id);
-		object.setContract(object2.getContract());
-		super.bind(object, "recordId", "completeness", "comment", "moment", "responsible");
+		object = this.repository.findOneProgressLogById(id);
+
+		super.getBuffer().addData(object);
 
 	}
 
 	@Override
-	public void validate(final ProgressLogs object) {
-		if (object == null)
-			throw new IllegalArgumentException("No object found");
+	public void bind(final ProgressLog object) {
+
+		assert object != null;
+
+		int progressLogId;
+
+		progressLogId = super.getRequest().getData("id", int.class);
+		Contract contract = this.repository.findOneContractByProgressLogId(progressLogId);
+
+		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		object.setContract(contract);
+	}
+
+	@Override
+	public void validate(final ProgressLog object) {
+		assert object != null;
+
 		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
-			ProgressLogs existing;
-			existing = this.repository.getProgressLogsByRecordId(object.getRecordId());
-			final ProgressLogs progressLog2 = object.getRecordId().equals("") || object.getRecordId() == null ? null : this.repository.getProgressLogsByRecordId(object.getRecordId());
-			super.state(existing == null || progressLog2.equals(existing), "code", "client.contract.form.error.code");
-		}
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.isDraftMode(), "draftMode", "client.progressLogs.form.error.draftMode");
+			ProgressLog existing;
 
+			existing = this.repository.findOneProgressLogByRecordId(object.getRecordId());
+			super.state(existing == null || existing.equals(object), "recordId", "client.progress-log.form.error.duplicated");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("completeness")) {
+			Double existing;
+			existing = this.repository.findPublishedProgressLogWithMaxCompletenessPublished(object.getContract().getId()).orElse(0.);
+			super.state(object.getCompleteness() > existing, "completeness", "client.progress-log.form.error.completeness-too-low");
+		}
 		if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
-			super.state(MomentHelper.isBefore(object.getMoment(), MomentHelper.getCurrentMoment()), "instantiationMoment", "client.progressLogs.form.error.moment");
+			super.state(object.getRegistrationMoment().after(object.getContract().getInstantiationMoment()), "registrationMoment", "client.progress-log.form.error.registration-moment-must-be-later");
+
 	}
 
 	@Override
-	public void perform(final ProgressLogs object) {
-		if (object == null)
-			throw new IllegalArgumentException("No object found");
+	public void perform(final ProgressLog object) {
+		assert object != null;
+
 		this.repository.save(object);
 	}
 
 	@Override
-	public void unbind(final ProgressLogs object) {
-		if (object == null)
-			throw new IllegalArgumentException("No object found");
-		Dataset dataset;
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "moment", "responsible", "contract", "draftMode");
+	public void unbind(final ProgressLog object) {
+		assert object != null;
 
-		dataset.put("contractTitle", object.getContract().getCode());
+		Dataset dataset;
+
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+
+		dataset.put("masterId", object.getContract().getId());
+		dataset.put("draftMode", object.isDraftMode());
+
 		super.getResponse().addData(dataset);
 	}
 

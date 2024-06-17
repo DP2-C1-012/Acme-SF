@@ -2,69 +2,84 @@
 package acme.features.client.progresslog;
 
 import java.util.Collection;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.contract.Contract;
-import acme.entities.progress_logs.ProgressLogs;
+import acme.entities.progress_logs.ProgressLog;
 import acme.roles.Client;
 
 @Service
-public class ClientProgressLogListService extends AbstractService<Client, ProgressLogs> {
+public class ClientProgressLogListService extends AbstractService<Client, ProgressLog> {
 
 	@Autowired
-	protected ClientProgressLogRepository repository;
+	private ClientProgressLogRepository repository;
 
 
 	@Override
 	public void authorise() {
-		Contract object;
-		int Id;
-		Id = super.getRequest().getData("Id", int.class);
-		object = this.repository.getContractById(Id);
-		final Principal principal = super.getRequest().getPrincipal();
-		final int userAccountId = principal.getAccountId();
-		super.getResponse().setAuthorised(object.getClient().getUserAccount().getId() == userAccountId);
+
+		boolean status;
+		int masterId;
+		Contract contract;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		contract = this.repository.findOneContractById(masterId);
+		status = contract != null && !contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
+
+		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
 	public void load() {
-		Collection<ProgressLogs> objects;
-		int Id;
-		Id = super.getRequest().getData("Id", int.class);
-		objects = this.repository.getProgressLogsByContractId(Id);
+		Collection<ProgressLog> objects;
+		int masterId;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		objects = this.repository.findManyProgressLogByContractId(masterId);
+
 		super.getBuffer().addData(objects);
 	}
 
 	@Override
-	public void unbind(final ProgressLogs object) {
+	public void unbind(final ProgressLog object) {
 		assert object != null;
+
 		Dataset dataset;
-		dataset = super.unbind(object, "recordId", "completeness", "responsible", "contract");
-		dataset.put("contract", object.getContract().getCode());
-		int Id;
-		Id = super.getRequest().getData("Id", int.class);
-		super.getResponse().addGlobal("Id", Id);
-		dataset.put("Id", Id);
-		final Contract p = this.repository.getContractById(Id);
-		final boolean showCreate = p.getDraftMode();
-		super.getResponse().addGlobal("showCreate", showCreate);
+
+		dataset = super.unbind(object, "recordId", "completeness", "registrationMoment", "responsiblePerson", "draftMode");
+
+		if (object.isDraftMode()) {
+			final Locale local = super.getRequest().getLocale();
+
+			dataset.put("draftMode", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");
+		} else
+			dataset.put("draftMode", "No");
+
 		super.getResponse().addData(dataset);
 	}
 
 	@Override
-	public void unbind(final Collection<ProgressLogs> object) {
-		assert object != null;
-		int Id;
-		Id = super.getRequest().getData("Id", int.class);
-		super.getResponse().addGlobal("Id", Id);
-		final Contract c = this.repository.getContractById(Id);
-		final boolean showCreate = c.getDraftMode();
+	public void unbind(final Collection<ProgressLog> objects) {
+
+		assert objects != null;
+
+		int masterId;
+		Contract contract;
+		final boolean showCreate;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		contract = this.repository.findOneContractById(masterId);
+		showCreate = super.getRequest().getPrincipal().hasRole(contract.getClient());
+
+		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);
+
 	}
 
 }

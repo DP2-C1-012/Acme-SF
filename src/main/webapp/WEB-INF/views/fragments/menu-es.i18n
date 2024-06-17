@@ -75,12 +75,13 @@ master.menu.auditor.codeAudit = Listar mis auditaciones
 master.menu.auditor.auditRecord = Crear un registro
 master.menu.auditor.dashboard = Panel de control
 
-# master.menu.client #############################################
+# master.menu.client #########################################################
 
 master.menu.client = Cliente
-master.menu.client.contract = Contratos
-master.menu.client.client-dashboard = Panel de Cliente
-master.menu.client.progress-log = Lista de progreso
+master.menu.client.list-contract = Ver mis contratos
+master.menu.user-account.become-client = Hazte cliente
+master.menu.user-account.client = Datos de cliente
+master.menu.client.dashboard = Panel de indicadores de cliente
 
 # master.menu.user-account ####################################################
 

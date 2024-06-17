@@ -4,67 +4,91 @@ package acme.features.client.progresslog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.progress_logs.ProgressLogs;
+import acme.entities.contract.Contract;
+import acme.entities.progress_logs.ProgressLog;
 import acme.roles.Client;
 
 @Service
-public class ClientProgressLogDeleteService extends AbstractService<Client, ProgressLogs> {
+public class ClientProgressLogDeleteService extends AbstractService<Client, ProgressLog> {
 
 	@Autowired
-	protected ClientProgressLogRepository repository;
+	private ClientProgressLogRepository repository;
 
 
 	@Override
 	public void authorise() {
-		ProgressLogs object;
-		int id;
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.getProgressLogsById(id);
-		final Principal principal = super.getRequest().getPrincipal();
-		final int userAccountId = principal.getAccountId();
-		super.getResponse().setAuthorised(object.getContract().getClient().getUserAccount().getId() == userAccountId && object.isDraftMode());
+		boolean status;
+		int progressLogId;
+		Contract contract;
+
+		progressLogId = super.getRequest().getData("id", int.class);
+		contract = this.repository.findOneContractByProgressLogId(progressLogId);
+		ProgressLog pl = this.repository.findOneProgressLogById(progressLogId);
+
+		int activeClientId = super.getRequest().getPrincipal().getActiveRoleId();
+		Client activeClient = this.repository.findOneClientById(activeClientId);
+		boolean clientOwnsPl = pl.getContract().getClient() == activeClient;
+
+		status = pl.isDraftMode() && clientOwnsPl && contract != null && !contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
+
+		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
 	public void load() {
-		ProgressLogs object;
+
+		ProgressLog object;
 		int id;
+
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.getProgressLogsById(id);
+		object = this.repository.findOneProgressLogById(id);
+
 		super.getBuffer().addData(object);
+
 	}
 
 	@Override
-	public void bind(final ProgressLogs object) {
-		if (object == null)
-			throw new IllegalArgumentException("No object found");
-		super.bind(object, "recordId", "completeness", "comment", "moment", "responsible");
+	public void bind(final ProgressLog object) {
+
+		assert object != null;
+
+		int progressLogId;
+
+		progressLogId = super.getRequest().getData("id", int.class);
+		Contract contract = this.repository.findOneContractByProgressLogId(progressLogId);
+
+		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		object.setContract(contract);
 	}
 
 	@Override
-	public void validate(final ProgressLogs object) {
-		if (object == null)
-			throw new IllegalArgumentException("No object found");
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.isDraftMode(), "draftMode", "client.progressLogs.form.error.draftMode");
+	public void validate(final ProgressLog object) {
+		assert object != null;
+
 	}
 
 	@Override
-	public void perform(final ProgressLogs object) {
-		if (object == null)
-			throw new IllegalArgumentException("No object found");
+	public void perform(final ProgressLog object) {
+		assert object != null;
+
 		this.repository.delete(object);
 	}
 
 	@Override
-	public void unbind(final ProgressLogs object) {
-		if (object == null)
-			throw new IllegalArgumentException("No object found");
+	public void unbind(final ProgressLog object) {
+		assert object != null;
+
 		Dataset dataset;
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "moment", "responsible", "draftMode", "contract");
+
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+
+		dataset.put("masterId", object.getContract().getId());
+		dataset.put("draftMode", object.isDraftMode());
+
 		super.getResponse().addData(dataset);
 	}
+
 }

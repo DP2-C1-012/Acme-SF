@@ -64,7 +64,7 @@ public class Contract extends AbstractEntity {
 	@NotNull
 	private Money				budget;
 
-	private Boolean				draftMode;
+	private boolean				draftMode;
 
 	/*
 	 * Relations

@@ -1,4 +1,4 @@
-key,code,moment,provider,customer,goals,budget,draftMode,key:project,key:client
+key,code,instantiation-moment,provider-name,customer-name,goals,budget,draft-mode,key:project,key:client
 contract-01,AAA-200,2021/04/09 17:00,"Jorge","Mria","a",5152155.00 USD,true,project-01,client-01
 contract-02,BAG-846,2021/05/16 20:00,"A","a","sad",2171288.0 USD,true,project-02,client-01
 contract-03,ASF-842,2022/01/25 09:00,"Aidiauh oaieshd","Dsaasd","miugn7A",12.50 USD,true,project-01,client-01

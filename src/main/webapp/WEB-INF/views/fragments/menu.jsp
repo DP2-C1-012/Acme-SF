@@ -71,9 +71,8 @@
 			<acme:menu-suboption code="master.menu.auditor.dashboard" action="/auditor/auditor-dashboard/show"/>
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
-			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list"/>
-			<acme:menu-suboption code="master.menu.client.client-dashboard" action="/client/client-dashboard/show"/>
-			<acme:menu-suboption code="master.menu.client.progress-log" action="/client/progress-logs/list-all"/>			
+			<acme:menu-suboption code="master.menu.client.list-contract" action="/client/contract/list-mine"/>
+			<acme:menu-suboption code="master.menu.client.dashboard" action="/client/client-dashboard/show"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">

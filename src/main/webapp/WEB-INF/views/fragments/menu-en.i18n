@@ -76,12 +76,13 @@ master.menu.auditor.codeAudit = List my audits
 master.menu.auditor.auditRecord = Create a record
 master.menu.auditor.dashboard = Dashboard
 
-# master.menu.client #############################################
+# master.menu.client #########################################################
 
 master.menu.client = Client
-master.menu.client.contract = Contracts
-master.menu.client.client-dashboard = Client dashboard
-master.menu.client.progress-log = Progress logs
+master.menu.client.list-contract = List my contracts
+master.menu.user-account.become-client = Become a client
+master.menu.user-account.client = Client data
+master.menu.client.dashboard = Client Dashboard
 
 # master.menu.user-account ####################################################
 
