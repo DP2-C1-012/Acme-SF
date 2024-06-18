@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
 import acme.client.data.accounts.Any;
-import acme.entities.progress_logs.ProgressLog;
+import acme.entities.progressLogs.ProgressLog;
 
 @Controller
 public class AnyProgressLogController extends AbstractController<Any, ProgressLog> {

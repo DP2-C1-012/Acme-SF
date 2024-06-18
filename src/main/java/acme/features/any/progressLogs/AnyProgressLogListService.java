@@ -10,7 +10,7 @@ import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.contract.Contract;
-import acme.entities.progress_logs.ProgressLog;
+import acme.entities.progressLogs.ProgressLog;
 
 @Service
 public class AnyProgressLogListService extends AbstractService<Any, ProgressLog> {

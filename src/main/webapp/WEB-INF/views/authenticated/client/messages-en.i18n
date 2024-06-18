@@ -10,6 +10,3 @@ authenticated.client.form.button.create = Register
 authenticated.client.form.button.update = Update
 
 authenticated.client.form.error.duplicated = This code is already in use
-authenticated.client.form.identification.placeholder = CLI-[0-9]{4}
-authenticated.client.form.companyName.placeholder = Company Name
-authenticated.client.form.email.placeholder = example@domain.com

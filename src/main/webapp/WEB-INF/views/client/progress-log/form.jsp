@@ -4,11 +4,11 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="client.progress-log.form.label.recordId" path="recordId" placeholder="client.progress-log.form.recordId.placeholder"/>
-	<acme:input-double code="client.progress-log.form.label.completeness" path="completeness" placeholder="client.progress-log.form.completeness.placeholder"/>
-	<acme:input-textarea code="client.progress-log.form.label.comment" path="comment" placeholder="client.progress-log.form.comment.placeholder"/>
+	<acme:input-textbox code="client.progress-log.form.label.recordId" path="recordId" placeholder="PG-AB-1234"/>
+	<acme:input-double code="client.progress-log.form.label.completeness" path="completeness" placeholder="0 - 100.00"/>
+	<acme:input-textarea code="client.progress-log.form.label.comment" path="comment" placeholder="client.progress-log.form.placeholder.comment"/>
 	<acme:input-moment code="client.progress-log.form.label.registrationMoment" path="registrationMoment" />
-	<acme:input-textbox code="client.progress-log.form.label.responsiblePerson" path="responsiblePerson" placeholder="client.progress-log.form.responsiblePerson.placeholder"/>
+	<acme:input-textbox code="client.progress-log.form.label.responsiblePerson" path="responsiblePerson" placeholder="Alvaro García"/>
 	
 	<jstl:choose>
 	

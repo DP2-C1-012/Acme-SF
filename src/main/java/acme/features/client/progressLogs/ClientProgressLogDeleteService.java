@@ -1,5 +1,5 @@
 
-package acme.features.client.progresslog;
+package acme.features.client.progressLogs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.contract.Contract;
-import acme.entities.progress_logs.ProgressLog;
+import acme.entities.progressLogs.ProgressLog;
 import acme.roles.Client;
 
 @Service
-public class ClientProgressLogUpdateService extends AbstractService<Client, ProgressLog> {
+public class ClientProgressLogDeleteService extends AbstractService<Client, ProgressLog> {
 
 	@Autowired
 	private ClientProgressLogRepository repository;
@@ -68,28 +68,13 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 	public void validate(final ProgressLog object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
-			ProgressLog existing;
-
-			existing = this.repository.findOneProgressLogByRecordId(object.getRecordId());
-			super.state(existing == null || existing.equals(object), "recordId", "client.progress-log.form.error.duplicated");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("completeness")) {
-			Double existing;
-			existing = this.repository.findPublishedProgressLogWithMaxCompletenessPublished(object.getContract().getId()).orElse(0.);
-			super.state(object.getCompleteness() > existing, "completeness", "client.progress-log.form.error.completeness-too-low");
-		}
-		if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
-			super.state(object.getRegistrationMoment().after(object.getContract().getInstantiationMoment()), "registrationMoment", "client.progress-log.form.error.registration-moment-must-be-later");
-
 	}
 
 	@Override
 	public void perform(final ProgressLog object) {
 		assert object != null;
 
-		this.repository.save(object);
+		this.repository.delete(object);
 	}
 
 	@Override

@@ -4,11 +4,11 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="client.contract.form.label.code" path="code" placeholder="client.contract.form.code.placeholder"/>
+	<acme:input-textbox code="client.contract.form.label.code" path="code" placeholder="ABC-123"/>
 	<acme:input-moment code="client.contract.form.label.instantiationMoment" path="instantiationMoment"/>
-	<acme:input-textbox code="client.contract.form.label.providerName" path="providerName" placeholder="client.contract.form.provider.placeholder"/>	
-	<acme:input-textbox code="client.contract.form.label.customerName" path="customerName" placeholder="client.contract.form.customer.placeholder"/>	
-	<acme:input-textarea code="client.contract.form.label.goals" path="goals" placeholder="client.contract.form.goals.placeholder"/>
+	<acme:input-textbox code="client.contract.form.label.providerName" path="providerName" placeholder="Marcos Ruiz"/>	
+	<acme:input-textbox code="client.contract.form.label.customerName" path="customerName" placeholder="Antonio Bernal"/>	
+	<acme:input-textarea code="client.contract.form.label.goals" path="goals" placeholder="client.contract.form.placeholder.goals"/>
 	<acme:input-money code="client.contract.form.label.budget" path="budget"/>
 	<acme:input-select code="client.contract.form.label.project" path="project" choices="${projects}"/>
 	

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import acme.client.data.datatypes.Money;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.contract.Contract;
-import acme.entities.progress_logs.ProgressLog;
+import acme.entities.progressLogs.ProgressLog;
 import acme.entities.systemConfiguration.SystemConfiguration;
 
 @Repository

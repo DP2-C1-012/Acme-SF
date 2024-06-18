@@ -1,5 +1,5 @@
 
-package acme.features.client.progresslog;
+package acme.features.client.progressLogs;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.contract.Contract;
-import acme.entities.progress_logs.ProgressLog;
+import acme.entities.progressLogs.ProgressLog;
 import acme.roles.Client;
 
 @Repository

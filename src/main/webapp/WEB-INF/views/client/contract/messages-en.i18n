@@ -1,40 +1,40 @@
-client.contract.list.title= List of your contracts
-client.contract.form.title= Contract detail
+client.contract.list.title= List of contracts
 
 client.contract.list.label.code = Code
 client.contract.list.label.instantiationMoment = Instantiation Moment
-client.contract.list.label.providerName = Provider
-client.contract.list.label.customerName = Customer
+client.contract.list.label.providerName = Provider Name
+client.contract.list.label.customerName = Customer Name
 client.contract.list.label.goals = Goals
 client.contract.list.label.budget = Budget
 client.contract.list.label.project = Project
-client.contract.list.label.draftMode = Editable
+client.contract.list.label.draftMode = Draft Mode
+
+client.contract.list.button.create-contract=Create Contract
+
+#############################################################################
+
+client.contract.form.title= Contract details
 
 client.contract.form.label.code = Code
 client.contract.form.label.instantiationMoment = Instantiation Moment
-client.contract.form.label.providerName = Provider
-client.contract.form.label.customerName = Customer
+client.contract.form.label.providerName = Provider Name
+client.contract.form.label.customerName = Customer Name
 client.contract.form.label.goals = Goals
 client.contract.form.label.budget = Budget
 client.contract.form.label.project = Project
 
-client.contract.form.provider.placeholder = Provider
-client.contract.form.customer.placeholder = Customer
-client.contract.form.goals.placeholder = Define its goals
-client.contract.form.code.placeholder = [A-Z]{1,3}-[0-9]{3}
-
-client.contract.form.error.duplicated = This code is already in use
-client.contract.form.error.excededBudget = The budget you entered exceeds the total cost of the project. Please enter a budget that is within the project's budget constraints
-client.contract.form.error.negative-amount = Negative amounts are not allowed
-client.contract.form.error.currency-not-suported = Currency not supported. Supported currencies are EUR, USD, and GBP
-client.contract.form.error.different-currency = The selected currency does not match the project's currency. Please check the project's currency again
-
 client.contract.form.button.update = Update 
 client.contract.form.button.delete = Delete
 client.contract.form.button.publish = Publish
-
-client.progressLog.form.error.duplicated = This identifier already exists.
-
-client.contract.list.button.create-contract=Create Contract
 client.contract.form.button.create-contract=Create Contract
 client.contract.form.button.progressLogs = Progress Logs
+
+client.contract.form.placeholder.goals = Define goals
+
+client.contract.form.error.duplicated = This code is already in use
+client.contract.form.error.negative-amount = Negative amounts are not allowed
+client.contract.form.error.different-currency = The selected currency does not match the project currency.
+client.contract.form.error.currency-not-suported = Currency not supported. Supported currencies are EUR, USD, and GBP
+client.contract.form.error.excededBudget = The budget exceeds the cost of the project. Enter a budget that does not exceed the budgetary constraints of the project.
+
+client.progressLog.form.error.duplicated = This identifier already exists.

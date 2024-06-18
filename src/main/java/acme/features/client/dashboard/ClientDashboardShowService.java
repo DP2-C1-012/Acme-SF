@@ -13,7 +13,7 @@ import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.contract.Contract;
-import acme.entities.progress_logs.ProgressLog;
+import acme.entities.progressLogs.ProgressLog;
 import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.forms.ClientDashboard;
 import acme.roles.Client;
