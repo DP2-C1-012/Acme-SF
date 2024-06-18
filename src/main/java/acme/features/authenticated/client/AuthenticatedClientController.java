@@ -15,6 +15,7 @@ public class AuthenticatedClientController extends AbstractController<Authentica
 
 	@Autowired
 	private AuthenticatedClientCreateService	createService;
+
 	@Autowired
 	private AuthenticatedClientUpdateService	updateService;
 

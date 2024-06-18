@@ -90,5 +90,4 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 
 		super.getResponse().addData(dataset);
 	}
-
 }

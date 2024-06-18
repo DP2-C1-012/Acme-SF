@@ -15,6 +15,7 @@ public class AnyContractController extends AbstractController<Any, Contract> {
 
 	@Autowired
 	private AnyContractListService	listService;
+
 	@Autowired
 	private AnyContractShowService	showService;
 

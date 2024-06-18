@@ -33,7 +33,6 @@ public class AnyContractShowService extends AbstractService<Any, Contract> {
 		status = contract != null && !contract.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
-
 	}
 
 	@Override

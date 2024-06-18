@@ -19,7 +19,6 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 	@Override
 	public void authorise() {
-		// TODO Auto-generated method stub
 		boolean status;
 		int masterId;
 		Contract contract;
@@ -56,9 +55,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 	@Override
 	public void bind(final ProgressLog object) {
-
 		assert object != null;
-
 		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
 	}
 
@@ -86,9 +83,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 	@Override
 	public void perform(final ProgressLog object) {
-
 		assert object != null;
-
 		object.setDraftMode(true);
 		this.repository.save(object);
 	}
@@ -106,5 +101,4 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 		super.getResponse().addData(dataset);
 	}
-
 }

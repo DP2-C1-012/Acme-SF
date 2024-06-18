@@ -22,13 +22,9 @@ public class AuthenticatedClientUpdateService extends AbstractService<Authentica
 
 	@Override
 	public void authorise() {
-
 		boolean status;
-
 		status = super.getRequest().getPrincipal().hasRole(Client.class);
-
 		super.getResponse().setAuthorised(status);
-
 	}
 
 	@Override
@@ -48,11 +44,8 @@ public class AuthenticatedClientUpdateService extends AbstractService<Authentica
 
 	@Override
 	public void bind(final Client object) {
-
 		assert object != null;
-
 		super.bind(object, "identification", "companyName", "type", "email", "link");
-
 	}
 
 	@Override
@@ -70,7 +63,6 @@ public class AuthenticatedClientUpdateService extends AbstractService<Authentica
 	@Override
 	public void perform(final Client object) {
 		assert object != null;
-
 		this.repository.save(object);
 	}
 
@@ -78,7 +70,6 @@ public class AuthenticatedClientUpdateService extends AbstractService<Authentica
 	public void unbind(final Client object) {
 		assert object != null;
 
-		//Collection<ClientRoleType> types;
 		SelectChoices choices;
 
 		choices = SelectChoices.from(ClientType.class, object.getType());

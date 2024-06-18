@@ -15,6 +15,7 @@ public class AnyProgressLogController extends AbstractController<Any, ProgressLo
 
 	@Autowired
 	private AnyProgressLogListService	listService;
+
 	@Autowired
 	private AnyProgressLogShowService	showService;
 

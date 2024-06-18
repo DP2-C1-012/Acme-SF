@@ -32,7 +32,6 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 		status = contract != null && !contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
-
 	}
 
 	@Override
@@ -79,7 +78,5 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);
-
 	}
-
 }
