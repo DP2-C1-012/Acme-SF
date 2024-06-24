@@ -1,7 +1,6 @@
 any.contract.list.title = Contratos publicados
 
 any.contract.list.label.code = Código
-any.contract.list.label.instantiationMoment = Momento de instanciación
 any.contract.list.label.providerName = Nombre del Proveedor
 any.contract.list.label.customerName = Nombre del Cliente
 any.contract.list.label.budget = Presupuesto
@@ -12,7 +11,6 @@ any.contract.list.label.project = Proyecto
 any.contract.form.title = Detalles del contrato
 
 any.contract.form.label.code = Código
-any.contract.form.label.instantiationMoment = Momento de instanciación
 any.contract.form.label.providerName = Nombre del Proveedor
 any.contract.form.label.customerName = Nombre del Cliente
 any.contract.form.label.goals = Objetivos
