@@ -84,28 +84,23 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 			final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getBudget().getCurrency()));
 
 			super.state(foundCurrency, "budget", "client.contract.form.error.currency-not-suported");
-
 		}
-
 	}
 
 	@Override
 	public void perform(final Contract object) {
-
 		assert object != null;
 		this.clientContractRepository.save(object);
 	}
 
 	@Override
 	public void unbind(final Contract object) {
-
 		assert object != null;
 
 		Collection<Project> projects;
 		SelectChoices choices;
 
 		projects = this.clientContractRepository.findAllProjectsPublished();
-
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		Dataset dataset;
