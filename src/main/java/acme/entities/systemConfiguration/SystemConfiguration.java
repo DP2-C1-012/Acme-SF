@@ -3,7 +3,7 @@ package acme.entities.systemConfiguration;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -16,12 +16,12 @@ public class SystemConfiguration extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@NotNull
 	@NotBlank
-	private String				defaultCurrency;
+	@Pattern(regexp = "^[A-Z]{3}$")
+	public String				defaultCurrency;
 
-	@NotNull
 	@NotBlank
-	private String				acceptedCurrencies;
+	@Pattern(regexp = "^([A-Z]{3}(?:,|,\s))*[A-Z]{3}$")
+	public String				acceptedCurrencies;
 
 }

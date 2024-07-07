@@ -30,7 +30,7 @@ master.menu.any = Cualquiera
 master.menu.any.sponsorship = Patrocinios
 master.menu.any.claim = Reclamaciones
 master.menu.any.training-module = Modulos de entrenamiento
-
+master.menu.any.list-contracts = Ver todos los contratos publicados
 
 
 # master.menu.administrator ###################################################
@@ -75,12 +75,11 @@ master.menu.auditor.codeAudit = Listar mis auditaciones
 master.menu.auditor.auditRecord = Crear un registro
 master.menu.auditor.dashboard = Panel de control
 
-# master.menu.client #############################################
+# master.menu.client #########################################################
 
 master.menu.client = Cliente
-master.menu.client.contract = Contratos
-master.menu.client.client-dashboard = Panel de Cliente
-master.menu.client.progress-log = Lista de progreso
+master.menu.client.list-contract = Ver mis contratos
+master.menu.client.dashboard = Panel de indicadores de cliente
 
 # master.menu.user-account ####################################################
 
@@ -96,6 +95,8 @@ master.menu.user-account.auditor = Datos de auditor
 master.menu.user-account.become-auditor = Hazte auditor
 master.menu.user-account.sponsor = Datos de patrocinador
 master.menu.user-account.become-sponsor = Hazte patrocinador
+master.menu.user-account.become-client = Hazte cliente
+master.menu.user-account.client = Datos de cliente
 
 # master.menu.authenticated ########################################
 

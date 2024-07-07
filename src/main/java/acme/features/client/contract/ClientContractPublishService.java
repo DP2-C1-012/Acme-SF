@@ -2,91 +2,133 @@
 package acme.features.client.contract;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
+import acme.entities.projects.Project;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.roles.Client;
 
 @Service
 public class ClientContractPublishService extends AbstractService<Client, Contract> {
 
 	@Autowired
-	protected ClientContractRepository repository;
+	ClientContractRepository clientContractRepository;
 
 
 	@Override
 	public void authorise() {
+		boolean status;
+		int masterId;
 		Contract contract;
-		int id;
-		id = super.getRequest().getData("id", int.class);
-		contract = this.repository.getContractById(id);
-		final Principal p = super.getRequest().getPrincipal();
-		final int userAccountId = p.getAccountId();
-		super.getResponse().setAuthorised(contract.getClient().getUserAccount().getId() == userAccountId && contract.getDraftMode());
+		Client client;
+
+		masterId = super.getRequest().getData("id", int.class);
+		contract = this.clientContractRepository.findOneContractById(masterId);
+		client = contract == null ? null : contract.getClient();
+		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Contract object;
-		object = new Contract();
-		object.setDraftMode(true);
-		super.getBuffer().addData(object);
+		Contract contract;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+
+		contract = this.clientContractRepository.findOneContractById(id);
+
+		super.getBuffer().addData(contract);
 	}
 
 	@Override
 	public void bind(final Contract object) {
 		assert object != null;
 
-		Contract object2;
-		int id;
+		int projectId;
+		Project project;
 
-		id = super.getRequest().getData("id", int.class);
-		object2 = this.repository.getContractById(id);
-		object.setProject(object2.getProject());
-		object.setClient(object2.getClient());
-		super.bind(object, "code", "provider", "moment", "customer", "goals", "budget");
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.clientContractRepository.findOneProjectById(projectId);
+
+		super.bind(object, "code", "providerName", "customerName", "goals", "budget");
+		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final Contract object) {
-		if (object == null)
-			throw new IllegalArgumentException("No object found");
-		final Collection<Contract> contracts = this.repository.getContractsFromProjectId(object.getProject().getId());
-		super.state(!contracts.isEmpty(), "*", "manager.project.form.error.noContracts");
-		if (!contracts.isEmpty()) {
-			boolean overBudget = true;
-			double totalBudget = 0.0;
-			for (Contract c : contracts)
-				totalBudget = totalBudget + c.getBudget().getAmount();
-			if (totalBudget < object.getProject().getCost().getAmount())
-				overBudget = false;
-			super.state(overBudget, "*", "manager.project.form.error.overBudget");
+		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Contract existing;
+
+			existing = this.clientContractRepository.findOneContractByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicated");
+
+			if (!super.getBuffer().getErrors().hasErrors("budget")) {
+				if (object.getProject() != null)
+					super.state(object.getBudget().getCurrency().equals(object.getProject().getCost().getCurrency()), "budget", "client.contract.form.error.different-currency");
+				super.state(this.checkContractsAmountsLessThanProjectCost(object), "budget", "client.contract.form.error.excededBudget");
+				super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
+
+				List<SystemConfiguration> sc = this.clientContractRepository.findSystemConfiguration();
+				final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getBudget().getCurrency()));
+
+				super.state(foundCurrency, "budget", "client.contract.form.error.currency-not-suported");
+
+			}
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("instantiationMoment"))
-			super.state(MomentHelper.isBefore(object.getMoment(), MomentHelper.getCurrentMoment()), "instantiationMoment", "client.contract.form.error.moment");
+	}
 
+	private Boolean checkContractsAmountsLessThanProjectCost(final Contract object) {
+		assert object != null;
+
+		if (object.getProject() != null) {
+			Collection<Contract> contratos = this.clientContractRepository.findManyContractByProjectId(object.getProject().getId());
+
+			Double budgetTotal = contratos.stream().filter(contract -> !contract.isDraftMode()).mapToDouble(contract -> contract.getBudget().getAmount()).sum();
+
+			Double projectCost = object.getProject().getCost().getAmount();
+
+			return projectCost >= budgetTotal + object.getBudget().getAmount();
+		}
+
+		return true;
 	}
 
 	@Override
 	public void perform(final Contract object) {
 		assert object != null;
 		object.setDraftMode(false);
-		this.repository.save(object);
+		this.clientContractRepository.save(object);
 	}
 
 	@Override
 	public void unbind(final Contract object) {
 		assert object != null;
+
+		Collection<Project> projects;
+		SelectChoices choices;
+
+		projects = this.clientContractRepository.findAllProjects();
+		choices = SelectChoices.from(projects, "code", object.getProject());
+
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "moment", "provider", "customer", "goals", "budget", "project", "client", "draftMode");
-		dataset.put("project", object.getProject().getCode());
+
+		dataset = super.unbind(object, "code", "providerName", "customerName", "goals", "budget");
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
+
 		super.getResponse().addData(dataset);
 	}
 
