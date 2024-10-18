@@ -79,6 +79,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
 			if (object.getProject() != null)
 				super.state(object.getBudget().getCurrency().equals(object.getProject().getCost().getCurrency()), "budget", "client.contract.form.error.different-currency");
+			super.state(this.clientContractRepository.findAllProjectsPublished().contains(object.getProject()), "budget", "client.contract.form.error.different-currency");
 
 			List<SystemConfiguration> sc = this.clientContractRepository.findSystemConfiguration();
 			final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getBudget().getCurrency()));
