@@ -77,10 +77,13 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			super.state(object.getBudget().getAmount() < 1000000, "budget", "client.contract.form.error.max-budget");
 			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
-			if (object.getProject() != null)
+			if (object.getProject() != null) {
 				super.state(object.getBudget().getCurrency().equals(object.getProject().getCost().getCurrency()), "budget", "client.contract.form.error.different-currency");
-			super.state(this.clientContractRepository.findAllProjectsPublished().contains(object.getProject()), "budget", "client.contract.form.error.different-currency");
-
+				Collection<Project> publishedProjects = this.clientContractRepository.findAllProjectsPublished();
+				boolean projectExists = publishedProjects.stream().anyMatch(p -> p.getId() == object.getProject().getId());
+				if (!projectExists)
+					throw new IllegalStateException("It is not possible to create a contract with an unpublished project.");
+			}
 			List<SystemConfiguration> sc = this.clientContractRepository.findSystemConfiguration();
 			final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getBudget().getCurrency()));
 
