@@ -75,8 +75,13 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicated");
 
 			if (!super.getBuffer().getErrors().hasErrors("budget")) {
-				if (object.getProject() != null)
+				if (object.getProject() != null) {
 					super.state(object.getBudget().getCurrency().equals(object.getProject().getCost().getCurrency()), "budget", "client.contract.form.error.different-currency");
+					Collection<Project> publishedProjects = this.clientContractRepository.findAllProjectsPublished();
+					boolean projectExists = publishedProjects.stream().anyMatch(p -> p.getId() == object.getProject().getId());
+					if (!projectExists)
+						throw new IllegalStateException("It is not possible to create a contract with an unpublished project.");
+				}
 				super.state(this.checkContractsAmountsLessThanProjectCost(object), "budget", "client.contract.form.error.excededBudget");
 				super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
 
