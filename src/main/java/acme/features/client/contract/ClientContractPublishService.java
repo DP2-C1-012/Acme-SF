@@ -125,7 +125,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		Collection<Project> projects;
 		SelectChoices choices;
 
-		projects = this.clientContractRepository.findAllProjects();
+		projects = this.clientContractRepository.findAllProjectsPublished();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		Dataset dataset;
